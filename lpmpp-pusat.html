@@ -1095,6 +1095,211 @@
       opacity: 1;
     }
 
+    .accordion {
+      display: grid;
+      gap: 18px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .accordion-item {
+      background: white;
+      border: 1px solid var(--surface-200);
+      border-radius: 24px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, .05);
+      overflow: hidden;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .accordion-item[open] {
+      border-color: rgba(30, 58, 138, .16);
+      box-shadow: 0 20px 48px rgba(15, 23, 42, .1);
+    }
+
+    .accordion-item summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      user-select: none;
+    }
+
+    .accordion-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion-item summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--blue-500);
+      transition: transform var(--transition);
+    }
+
+    .accordion-item[open] summary::after {
+      content: '−';
+      transform: rotate(0deg);
+    }
+
+    .accordion-item .content {
+      padding: 0 28px 24px;
+      color: var(--text-dark-secondary);
+      line-height: 1.8;
+    }
+
+    .accordion-item .content p {
+      margin-bottom: 18px;
+    }
+
+    .profile-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 0 16px;
+      border-bottom: 1px solid var(--surface-200);
+      margin-bottom: 18px;
+    }
+
+    .profile-avatar {
+      width: 96px;
+      height: 96px;
+      min-width: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(30, 58, 138, .12), rgba(59, 130, 246, .14));
+      display: grid;
+      place-items: center;
+      color: var(--blue-600);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      border: 1px solid rgba(30, 58, 138, .16);
+      object-fit: cover;
+    }
+
+    .profile-copy {
+      display: grid;
+      gap: 6px;
+    }
+
+    .profile-name {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .profile-title {
+      margin: 0;
+      font-size: .92rem;
+      color: var(--text-dark-secondary);
+      max-width: 680px;
+      line-height: 1.5;
+    }
+
+    .accordion-item .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 14px;
+      background: var(--bg-card);
+      color: var(--blue-600);
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+    }
+
+    .accordion-item .list {
+      margin: 0;
+      padding-left: 22px;
+      list-style: decimal;
+    }
+
+    .accordion-item .list li {
+      margin-bottom: 10px;
+    }
+
+    .accordion-item .detail-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+      color: var(--text-dark-secondary);
+      font-size: .92rem;
+    }
+
+    .accordion-item .detail-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .accordion-item .detail-row span::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--blue-500);
+      border-radius: 50%;
+    }
+
+    .profile-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 0 16px;
+      border-bottom: 1px solid var(--surface-200);
+      margin-bottom: 18px;
+    }
+
+    .profile-avatar {
+      width: 96px;
+      height: 96px;
+      min-width: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(30, 58, 138, .12), rgba(59, 130, 246, .14));
+      display: grid;
+      place-items: center;
+      color: var(--blue-600);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      border: 1px solid rgba(30, 58, 138, .16);
+      object-fit: cover;
+    }
+
+    .profile-copy {
+      display: grid;
+      gap: 6px;
+    }
+
+    .profile-name {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .profile-title {
+      margin: 0;
+      font-size: .92rem;
+      color: var(--text-dark-secondary);
+      max-width: 680px;
+      line-height: 1.5;
+    }
+
+    .accordion-item .detail-row span::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--blue-500);
+      border-radius: 50%;
+    }
+
     .svc-icon {
       width: 56px;
       height: 56px;
@@ -2443,340 +2648,267 @@ LPMPP Universitas Lampung digerakkan oleh enam pusat yang masing-masing mengelol
  </svg>
  </div>
 
- <!-- ===== PUSAT PENJAMINAN MUTU ===== -->
- <section class="section section-light" id="penjaminan">
+ <!-- ===== PUSAT LPMPP ACCORDION ===== -->
+ <section class="section section-light">
  <div class="section-inner">
- <div class="akreditasi-grid" style="align-items: start; grid-template-columns: 1fr 1.2fr;">
- <div class="akreditasi-visual reveal"
- style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(139, 92, 246, 0.05)); border-color: rgba(37, 99, 235, 0.2); padding: 50px; text-align: center;">
- <div class="svc-icon svc-blue" style="width: 80px; height: 80px; margin: 0 auto 20px;">
- <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
- stroke-width="2">
- <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
- </svg>
- </div>
- <h3
- style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--blue-600); margin-bottom: 10px; line-height: 1.25;">
-Pusat Penjaminan Mutu</h3>
- <p
- style="font-size: 0.85rem; color: var(--text-dark-secondary); line-height: 1.6; margin-top: 12px;">
-Bertanggung jawab atas pelaksanaan Sistem Penjaminan Mutu Internal (SPMI) di seluruh unit kerja
- Universitas Lampung.
- </p>
- </div>
- <div class="reveal">
- <div class="section-label">Pusat 01</div>
- <h2 class="section-title">Sistem Penjaminan Mutu Internal (SPMI)</h2>
- <p class="section-subtitle" style="text-align: justify;">
-Pusat Penjaminan Mutu bertugas merencanakan, menerapkan, mengevaluasi, mengendalikan, dan
- meningkatkan standar mutu (siklus PPEPP) di bidang akademik dan non-akademik seluruh unit kerja
- Universitas Lampung - mulai dari tingkat fakultas, program studi, hingga laboratorium.
- </p>
- <div class="news-list" style="margin-top: 28px;">
- <div class="news-item" style="border-color: var(--surface-200); background: white;">
- <div class="news-item-label label-spmi">Tugas & Fungsi</div>
- <h4 style="color: var(--text-dark);">Program Kerja Utama</h4>
- <p style="text-align: justify;">Pelaksanaan Audit Mutu Internal (AMI) di seluruh fakultas
- dan program studi, penyusunan dan pembaruan dokumen SPMI (Kebijakan, Manual, Standar,
- dan Formulir), pendampingan mutu unit kerja, serta penyelenggaraan Rapat Tinjauan
- Manajemen (RTM) sebagai evaluasi berkala pelaksanaan SPMI.</p>
- </div>
- <div class="news-item" style="border-color: var(--surface-200); background: white;">
- <div class="news-item-label label-spmi">Dokumen SPMI</div>
- <h4 style="color: var(--text-dark);">Dokumen yang Dikelola</h4>
- <p style="text-align: justify;">Kebijakan SPMI, Manual SPMI, Standar Pendidikan, Standar
- Penelitian, Standar Pengabdian kepada Masyarakat, Standar MBKM, Standar Tata Pamong, dan
- Standar Greenmetric Universitas Lampung.</p>
- </div>
- </div>
- </div>
- </div>
- </div>
- </section>
-
- <!-- ===== PUSAT AKREDITASI ===== -->
- <section class="section" id="akreditasi">
- <div class="section-inner">
- <div class="akreditasi-grid" style="align-items: start; grid-template-columns: 1.2fr 1fr;">
- <div class="reveal">
- <div class="section-label">Pusat 02</div>
- <h2 class="section-title">Pusat Akreditasi Nasional & Internasional</h2>
- <p class="section-subtitle" style="text-align: justify;">
-Mendampingi seluruh program studi di Universitas Lampung dalam menyusun instrumen akreditasi
- (borang) untuk BAN-PT dan LAM, serta fasilitasi perolehan akreditasi internasional dari lembaga
- seperti ASIC, FIBAA, dan ASIIN.
- </p>
- <div class="news-list" style="margin-top: 28px;">
- <div class="news-item">
- <div class="news-item-label label-akreditasi">Akreditasi Nasional</div>
- <h4>BAN-PT & Lembaga Akreditasi Mandiri (LAM)</h4>
- <p style="text-align: justify;">Review dokumen Instrumen Suplemen Konversi (ISK), penyusunan
- Borang Akreditasi 9 Kriteria, simulasi Asesmen Lapangan (AL), serta monitoring dan
- pembaruan status akreditasi seluruh program studi secara berkala.</p>
- </div>
- <div class="news-item">
- <div class="news-item-label label-akreditasi">Akreditasi Internasional</div>
- <h4>ASIC, FIBAA, ASIIN, dan Lainnya</h4>
- <p style="text-align: justify;">Fasilitasi pendaftaran, penyusunan dokumen Self Evaluation
- Report (SER), pendampingan visitasi asesor internasional, serta pengelolaan Appendix
- Akreditasi Internasional program studi Universitas Lampung.</p>
- </div>
- </div>
- <a href="lpmpp-akreditasi.html" class="btn-outline" style="margin-top: 24px;">Lihat Data Akreditasi
- <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
- stroke-width="2.5">
- <line x1="5" y1="12" x2="19" y2="12"></line>
- <polyline points="12 5 19 12 12 19"></polyline>
- </svg></a>
- </div>
- <div class="akreditasi-visual reveal"
- style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05)); padding: 50px; text-align: center;">
- <div class="svc-icon svc-green"
- style="width: 80px; height: 80px; margin: 0 auto 20px; background: rgba(16, 185, 129, 0.15);">
- <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
- <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
- <polyline points="2 17 12 22 22 17"></polyline>
- <polyline points="2 12 12 17 22 12"></polyline>
- </svg>
- </div>
- <h3
- style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #10b981; margin-bottom: 10px; line-height: 1.25;">
-Pusat Akreditasi Nasional & Internasional</h3>
- <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-top: 12px;">
-Mendampingi program studi dalam proses akreditasi BAN-PT, LAM, serta lembaga akreditasi
- internasional bereputasi.
- </p>
- </div>
- </div>
- </div>
- </section>
-
- <!-- ===== PUSAT KURIKULUM ===== -->
- <section class="section section-light" id="kurikulum">
- <div class="section-inner">
- <div class="akreditasi-grid" style="align-items: start; grid-template-columns: 1fr 1.2fr;">
- <div class="akreditasi-visual reveal"
- style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(168, 85, 247, 0.05)); border-color: rgba(139, 92, 246, 0.2); padding: 50px; text-align: center;">
- <div class="svc-icon svc-purple" style="width: 80px; height: 80px; margin: 0 auto 20px;">
- <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
- stroke-width="2">
- <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
- <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
- </svg>
- </div>
- <h3
- style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--violet-500); margin-bottom: 10px; line-height: 1.25;">
-Pusat Pengembangan Kurikulum & MBKM</h3>
- <p
- style="font-size: 0.85rem; color: var(--text-dark-secondary); line-height: 1.6; margin-top: 12px;">
-Merancang kurikulum berbasis KKNI dan OBE serta mengintegrasikan program Merdeka Belajar Kampus
- Merdeka ke dalam struktur kurikulum program studi.
- </p>
- </div>
- <div class="reveal">
- <div class="section-label">Pusat 03</div>
- <h2 class="section-title">Pengembangan Kurikulum & Merdeka Belajar Kampus Merdeka</h2>
- <p class="section-subtitle" style="text-align: justify;">
-Merancang dan mengevaluasi pedoman kurikulum pendidikan tinggi yang selaras dengan Kerangka
- Kualifikasi Nasional Indonesia (KKNI) dan Outcome-Based Education (OBE), sekaligus
- mengoordinasikan implementasi program Merdeka Belajar Kampus Merdeka (MBKM) di Universitas
- Lampung.
- </p>
- <div class="news-list" style="margin-top: 28px;">
- <div class="news-item" style="border-color: var(--surface-200); background: white;">
- <div class="news-item-label"
- style="background: rgba(139,92,246,.12); color: var(--violet-500);">Kurikulum & OBE
- </div>
- <h4 style="color: var(--text-dark);">Pengembangan Kurikulum Berbasis Capaian</h4>
- <p style="text-align: justify;">Evaluasi dan pembaruan kurikulum program studi, penyusunan
- Buku Pedoman Akademik, penyelenggaraan Lokakarya Rencana Pembelajaran Semester (RPS),
- serta penyusunan buku panduan kurikulum yang diterbitkan secara berkala.</p>
- </div>
- <div class="news-item" style="border-color: var(--surface-200); background: white;">
- <div class="news-item-label"
- style="background: rgba(139,92,246,.12); color: var(--violet-500);">Program MBKM</div>
- <h4 style="color: var(--text-dark);">Integrasi Merdeka Belajar Kampus Merdeka</h4>
- <p style="text-align: justify;">Integrasi kegiatan magang industri, proyek independen,
- pertukaran mahasiswa, dan kegiatan MBKM lainnya ke dalam struktur kurikulum program
- studi sesuai regulasi Kemendikbudristek.</p>
- </div>
- </div>
- </div>
- </div>
- </div>
- </section>
-
- <!-- ===== PUSAT INSTRUKSIONAL ===== -->
- <section class="section" id="instruksional">
- <div class="section-inner">
- <div class="akreditasi-grid" style="align-items: start; grid-template-columns: 1.2fr 1fr;">
- <div class="reveal">
- <div class="section-label">Pusat 04</div>
- <h2 class="section-title">Pusat Pengembangan Aktivitas Instruksional & Inovasi Pembelajaran</h2>
- <p class="section-subtitle" style="text-align: justify;">
-Meningkatkan kapabilitas pedagogik dan andragogi dosen Universitas Lampung melalui program
- pelatihan metodologi pengajaran yang terstruktur, adaptif, dan berorientasi pada inovasi
- pembelajaran aktif.
- </p>
- <div class="news-list" style="margin-top: 28px;">
- <div class="news-item">
- <div class="news-item-label"
- style="background: rgba(251,113,133,.15); color: var(--rose-400);">Pelatihan Dosen</div>
- <h4>PEKERTI & Applied Approach (AA)</h4>
- <p style="text-align: justify;">Penyelenggaraan pelatihan PEKERTI (Peningkatan Keterampilan
- Dasar Teknik Instruksional) bagi dosen baru dan Applied Approach (AA) bagi dosen senior,
- sebagai program peningkatan kompetensi pedagogik wajib yang diakui secara nasional.</p>
- </div>
- <div class="news-item">
- <div class="news-item-label"
- style="background: rgba(251,113,133,.15); color: var(--rose-400);">Inovasi Pembelajaran
- </div>
- <h4>Metode Pembelajaran Aktif & Berbasis Proyek</h4>
- <p style="text-align: justify;">Pengembangan dan diseminasi metode pembelajaran inovatif
- berbasis Project-Based Learning (PjBL) dan Case Method sesuai kebijakan
- Kemendikbudristek, termasuk penyusunan modul dan panduan implementasinya di kelas.</p>
- </div>
- </div>
- </div>
- <div class="akreditasi-visual reveal"
- style="background: linear-gradient(135deg, rgba(251, 113, 133, 0.1), rgba(225, 29, 72, 0.05)); padding: 50px; text-align: center;">
- <div class="svc-icon svc-red"
- style="width: 80px; height: 80px; margin: 0 auto 20px; background: rgba(251, 113, 133, 0.15);">
- <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fb7185" stroke-width="2">
- <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
- </svg>
- </div>
- <h3
- style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #fb7185; margin-bottom: 10px; line-height: 1.25;">
-Pusat Aktivitas Instruksional & Inovasi</h3>
- <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-top: 12px;">
-Meningkatkan kompetensi dosen melalui PEKERTI, AA, dan inovasi metode pembelajaran aktif
- berbasis proyek dan studi kasus.
- </p>
- </div>
- </div>
- </div>
- </section>
-
- <!-- ===== PUSAT DARING & TV ===== -->
- <section class="section section-light" id="daring" style="padding-bottom: 100px;">
- <div class="section-inner">
- <div class="section-head reveal" style="text-align: center; max-width: 800px; margin: 0 auto 56px;">
- <div class="section-label" style="justify-content: center;">Teknologi & Digitalisasi Pembelajaran</div>
- <h2 class="section-title">Pusat Pembelajaran Daring & TV Pendidikan</h2>
- <p class="section-subtitle" style="margin: 0 auto; text-align: justify;">
-Dua pusat yang bersinergi dalam mengelola ekosistem digital dan multimedia Universitas Lampung,
- mendukung penuh penyelenggaraan pembelajaran hibrida, daring, dan pendidikan jarak jauh secara
- berkualitas.
- </p>
+ <div class="section-head reveal" style="text-align: center; max-width: 840px; margin: 0 auto 56px;">
+ <div class="section-label">Daftar Pusat</div>
+ <h2 class="section-title">Pusat LPMPP</h2>
  </div>
 
- <div class="services-grid" style="grid-template-columns: 1fr 1fr;">
- <div class="service-card reveal" style="background: white;">
- <div class="svc-icon svc-teal">
- <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
- stroke-width="2">
- <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
- <line x1="8" y1="21" x2="16" y2="21"></line>
- <line x1="12" y1="17" x2="12" y2="21"></line>
- </svg>
+ <div class="accordion reveal">
+ <details class="accordion-item" id="kurikulum" open>
+ <summary>
+ <strong>Pusat Kurikulum dan Inovasi Instruksional</strong>
+</summary>
+<div class="content">
+ <div class="profile-card">
+  <img class="profile-avatar" src="https://via.placeholder.com/96?text=Foto" alt="Foto Kepala Pusat Anggreini, S.Pd., M.Pd." />
+  <div class="profile-copy">
+   <p class="profile-name">Anggreini, S.Pd., M.Pd.</p>
+   <p class="profile-title">Kepala Pusat Pusat Kurikulum dan Inovasi Instruksional</p>
+  </div>
  </div>
- <div class="section-label" style="font-size: 0.68rem; margin-bottom: 8px;">Pusat 05</div>
- <h3 style="color: var(--text-dark);">Pusat Pembelajaran Daring & Pendidikan Jarak Jauh (PJJ)</h3>
- <p style="color: var(--text-dark-secondary); text-align: justify;">
-Mengembangkan, mengoperasikan, dan memelihara Learning Management System (VCLASS Unila) sebagai
- platform pembelajaran daring resmi Universitas Lampung. Mengintegrasikan VCLASS dengan SPADA
- Nasional (Dikti) dan memfasilitasi penyelenggaraan program Pendidikan Jarak Jauh (PJJ) antar
- perguruan tinggi dalam ekosistem Kampus Merdeka.
- </p>
- <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 8px;">
- <div
- style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-dark-secondary);">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22d3ee"
- stroke-width="2.5">
- <polyline points="20 6 9 17 4 12"></polyline>
- </svg>
-Pengelolaan VCLASS Unila (LMS)
+<p>Memimpin pengembangan kurikulum pendidikan tinggi dan inovasi pembelajaran instruksional di Universitas Lampung.</p>
+ <ol class="list">
+ <li>Mengembangkan dan mengkaji kurikulum pendidikan tinggi (vokasi, akademik, spesialis, dan profesi) di Unila;</li>
+ <li>Melakukan pendampingan penyusunan kurikulum program studi di Unila;</li>
+ <li>Melaksanakan monitoring dan evaluasi implementasi kurikulum;</li>
+ <li>Melakukan koordinasi serta memantau terlaksananya semua proses kegiatan pengkajian dan pengembangan kurikulum di Unila;</li>
+ <li>Menyusun dan melaksanakan program dan kegiatan terkait dengan inovasi pengembangan kurikulum di Unila;</li>
+ <li>Mengkaji dan mengembangkan system pembelajaran berbasis aktivitas instruksional dan inovasi pembelajaran di Unila;</li>
+ <li>Mengembangkan metode pembelajaran, sistem evaluasi, pemanfaatan media,dan sumber belajar, serta strategi implementasinya;</li>
+ <li>Mengkoordinasi terlaksananya seluruh proses kegiatan pengkajian dan pengembangan pembelajaran di Unila;</li>
+ <li>Monitoring dan evaluasi pelaksanaan aktivitas instruksional dan inovasi pembelajaran di Unila;</li>
+ <li>Meningkatkan kuantitas dan kualitas sumber daya dosen Unila pada aspek inovasi pembelajaran;</li>
+ <li>Melakukan kerja sama pengembangan kualitas pembelajaran dengan perguruan tinggi mitra.</li>
+ </ol>
  </div>
- <div
- style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-dark-secondary);">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22d3ee"
- stroke-width="2.5">
- <polyline points="20 6 9 17 4 12"></polyline>
- </svg>
-Integrasi dengan SPADA Nasional
- </div>
- <div
- style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-dark-secondary);">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22d3ee"
- stroke-width="2.5">
- <polyline points="20 6 9 17 4 12"></polyline>
- </svg>
-Fasilitasi program PJJ Kampus Merdeka
- </div>
- <div
- style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-dark-secondary);">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22d3ee"
- stroke-width="2.5">
- <polyline points="20 6 9 17 4 12"></polyline>
- </svg>
-Pelatihan e-learning bagi dosen dan mahasiswa
- </div>
- </div>
- </div>
+ </details>
 
- <div class="service-card reveal" id="tvpendidikan" style="background: white;">
- <div class="svc-icon svc-gold">
- <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
- stroke-width="2">
- <polygon points="23 7 16 12 23 17 23 7"></polygon>
- <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
- </svg>
+ <details class="accordion-item" id="mbkm">
+ <summary>
+ <strong>Pusat Manajemen Merdeka Belajar Kampus Merdeka (MBKM) dan Kelulusan Tepat Waktu</strong>
+</summary>
+<div class="content">
+ <div class="profile-card">
+  <img class="profile-avatar" src="https://via.placeholder.com/96?text=Foto" alt="Foto Kepala Pusat Nur Indah Lestari, S.Pd., M.Pd." />
+  <div class="profile-copy">
+   <p class="profile-name">Nur Indah Lestari, S.Pd., M.Pd.</p>
+   <p class="profile-title">Kepala Pusat Pusat Manajemen Merdeka Belajar Kampus Merdeka (MBKM) dan Kelulusan Tepat Waktu</p>
+  </div>
  </div>
- <div class="section-label" style="font-size: 0.68rem; margin-bottom: 8px; color: var(--amber-500);">
-Pusat 06</div>
- <h3 style="color: var(--text-dark);">Pusat Televisi Pendidikan</h3>
- <p style="color: var(--text-dark-secondary); text-align: justify;">
-Mengelola studio siaran dan fasilitas produksi konten multimedia edukatif Universitas Lampung.
- Bertanggung jawab atas pembuatan video pembelajaran, rekaman kuliah daring, podcast pendidikan,
- serta dokumentasi kegiatan akademik dan kelembagaan dalam format audiovisual yang interaktif dan
- bernilai tinggi.
- </p>
- <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 8px;">
- <div
- style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-dark-secondary);">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f59e0b"
- stroke-width="2.5">
- <polyline points="20 6 9 17 4 12"></polyline>
- </svg>
-Produksi video ajar dan konten pembelajaran
+<p>Mengelola implementasi MBKM dan mendukung strategi kelulusan tepat waktu bagi mahasiswa Universitas Lampung.</p>
+ <ol class="list">
+ <li>Menyusun dan mengevaluasi panduan pelaksanaan program terkait hak mahasiswa Unila untuk melakukan pembelajaran di luar Prodi;</li>
+ <li>Menyusun program dan kegiatan terkait hak mahasiswa Unila untuk melakukan pembelajaran di luar Prodi yang akan diimplementasikan di Universitas Lampung;</li>
+ <li>Monitoring serta evaluasi pelaksanaan program Merdeka Belajar – Kampus Merdeka di Unila;</li>
+ <li>Menyusun program dan kegiatan serta koordinasi dalam meningkatkan kelulusan tepat waktu mahasiswa Unila.</li>
+ </ol>
  </div>
- <div
- style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-dark-secondary);">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f59e0b"
- stroke-width="2.5">
- <polyline points="20 6 9 17 4 12"></polyline>
- </svg>
-Podcast pendidikan dan rekaman kuliah
+ </details>
+
+ <details class="accordion-item" id="penjaminan">
+ <summary>
+ <strong>Pusat Penjaminan Mutu</strong>
+</summary>
+<div class="content">
+ <div class="profile-card">
+  <img class="profile-avatar" src="https://via.placeholder.com/96?text=Foto" alt="Foto Ketua Pusat Iqbal Firdaus, S.Si., M.Si." />
+  <div class="profile-copy">
+   <p class="profile-name">Iqbal Firdaus, S.Si., M.Si.</p>
+   <p class="profile-title">Ketua Pusat Pusat Penjaminan Mutu</p>
+  </div>
  </div>
- <div
- style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-dark-secondary);">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f59e0b"
- stroke-width="2.5">
- <polyline points="20 6 9 17 4 12"></polyline>
- </svg>
-Dokumentasi kegiatan akademik & kelembagaan
+<p>Bertanggung jawab atas pengembangan dan pengelolaan sistem penjaminan mutu internal (SPMI) Universitas Lampung.</p>
+ <ol class="list">
+ <li>Mengembangkan sistem penjaminan mutu internal (SPMI) di Unila;</li>
+ <li>Pengembangan sistem informasi penjaminan mutu dan audit internal secara terpadu;</li>
+ <li>Melaksanakan pelatihan, konsultasi, pendampingan, dan kerja sama di bidang penjaminan mutu akademik;</li>
+ <li>Melakukan evaluasi dan pengembangan secara berkala SPMI Unila, baik pada tingkat universitas, fakultas dan program studi;</li>
+ <li>Koordinasi dan peningkatan kualitas Tim Penjaminan Mutu Fakultas (TPMF) dan Tim Penjaminan Mutu Program Studi (TPMPS).</li>
+ </ol>
  </div>
- <div
- style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-dark-secondary);">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f59e0b"
- stroke-width="2.5">
- <polyline points="20 6 9 17 4 12"></polyline>
- </svg>
-Studio siaran TV pendidikan Unila
+ </details>
+
+ <details class="accordion-item" id="audit-mutu">
+ <summary>
+ <strong>Pusat Audit Mutu, Kepuasan Layanan, dan Sistem Maturitas</strong>
+</summary>
+<div class="content">
+ <div class="profile-card">
+  <img class="profile-avatar" src="https://via.placeholder.com/96?text=Foto" alt="Foto Kepala Pusat Dian Rahmalia, S.P., M.Si." />
+  <div class="profile-copy">
+   <p class="profile-name">Dian Rahmalia, S.P., M.Si.</p>
+   <p class="profile-title">Kepala Pusat Pusat Audit Mutu, Kepuasan Layanan, dan Sistem Maturitas</p>
+  </div>
  </div>
+<p>Melaksanakan audit mutu internal sekaligus mengukur kepuasan layanan dan sistem maturitas data di Universitas Lampung.</p>
+ <ol class="list">
+ <li>Melakukan audit mutu internal terkait mutu akademik pada fakultas, program studi, laboratorium, lembaga, dan UPA;</li>
+ <li>Merevisi borang-borang audit internal mutu akademik dan kinerja unit-unit kerja penunjang;</li>
+ <li>Koordinasi dan peningkatan kualitas Auditor Tim Audit Mutu Internal;</li>
+ <li>Melaporkan secara berkala hasil audit internal kepada rektor, dekan, dan unit kerja yang diaudit;</li>
+ <li>Mendesain instrumen dan sistem informasi pengukuran kepuasan sivitas akademika dan masyarakat terhadap layanan Unila;</li>
+ <li>Melaksanakan survey dan mengevaluasi hasil kepuasan sivitas akademika dan masyarakat terhadap layanan Unila;</li>
+ <li>Menyusun laporan hasil survey kepuasan setiap triwulan;</li>
+ <li>Mengkoordinasikan hasil survey kepuasan dengan pencapaian indikator kinerja utama Unila;</li>
+ <li>Menyusun program dan strategi peningkatan kualitas dan kepuasan sivitas akademika dan masyarakat;</li>
+ <li>Mengelola dan mengkoordinasikan sistem manajemen risiko organisasi dalam upaya peningkatan tingkat kepuasan masyarakat;</li>
+ <li>Mengkoordinasikan sistem penilaian maturitas (kematangan) data pendidikan tinggi di Unila.</li>
+ </ol>
  </div>
+ </details>
+
+ <details class="accordion-item" id="akreditasi-nasional">
+ <summary>
+ <strong>Pusat Akreditasi Nasional</strong>
+</summary>
+<div class="content">
+ <div class="profile-card">
+  <img class="profile-avatar" src="https://via.placeholder.com/96?text=Foto" alt="Foto Kepala Pusat Dr. Agung Putra Wijaya, S.Pd., M.Pd." />
+  <div class="profile-copy">
+   <p class="profile-name">Dr. Agung Putra Wijaya, S.Pd., M.Pd.</p>
+   <p class="profile-title">Kepala Pusat Pusat Akreditasi Nasional</p>
+  </div>
  </div>
+<p>Mengarahkan proses akreditasi nasional untuk institusi dan program studi Universitas Lampung.</p>
+ <ol class="list">
+ <li>Mengkoordinasikan pelaksanaan akreditasi institusi Unila;</li>
+ <li>Melaksanakan pelatihan dan workshop peyusunan dokumen akreditasi nasional program studi;</li>
+ <li>Melakukan pendampingan penyusunan, simulasi, dan visitasi akreditasi program studi (BAN-PT/LAM);</li>
+ <li>Melakukan pendampingan surveillance/banding dari hasil akreditasi (BAN-PT/LAM);</li>
+ <li>Melakukan koordinasi pendampingan penyusunan dokumen, simulasi, dan visitasi akreditasi nasional institusi dan program studi.</li>
+ </ol>
+ </div>
+ </details>
+
+ <details class="accordion-item" id="akreditasi-internasional">
+ <summary>
+ <strong>Pusat Akreditasi Internasional</strong>
+</summary>
+<div class="content">
+ <div class="profile-card">
+  <img class="profile-avatar" src="https://via.placeholder.com/96?text=Foto" alt="Foto Kepala Pusat Priyambodo, S.Pd., M.Sc." />
+  <div class="profile-copy">
+   <p class="profile-name">Priyambodo, S.Pd., M.Sc.</p>
+   <p class="profile-title">Kepala Pusat Pusat Akreditasi Internasional</p>
+  </div>
+ </div>
+<p>Mendukung program studi Universitas Lampung dalam proses akreditasi internasional.</p>
+ <ol class="list">
+ <li>Melaksanakan pelatihan dan workshop peyusunan dokumen akreditasi internasional program studi;</li>
+ <li>Melakukan pendampingan penyusunan, simulasi, dan visitasi akreditasi internasional program studi;</li>
+ <li>Melakukan pendampingan surveillance/banding dari hasil draft acreditation report.</li>
+ </ol>
+ </div>
+ </details>
+
+ <details class="accordion-item" id="tv-pendidikan">
+ <summary>
+ <strong>Pusat Pengelolaan Televisi Pendidikan</strong>
+</summary>
+<div class="content">
+ <div class="profile-card">
+  <img class="profile-avatar" src="https://via.placeholder.com/96?text=Foto" alt="Foto Kepala Pusat Vito Prasetya, S.Sos., M.Si." />
+  <div class="profile-copy">
+   <p class="profile-name">Vito Prasetya, S.Sos., M.Si.</p>
+   <p class="profile-title">Kepala Pusat Pusat Pengelolaan Televisi Pendidikan</p>
+  </div>
+ </div>
+<p>Memperkuat siaran pendidikan dan konten multimedia sebagai media komunikasi kampus dan publikasi akademik.</p>
+ <ol class="list">
+ <li>Menyebarkan informasi (melalui media televisi-Unila TV) dengan menyuguhkan program penyiaran pendidikan yang berkualitas;</li>
+ <li>Mengembangkan penyiaran Unila TV sebagai media komunikasi kampus yang bernilai edukatif;</li>
+ <li>Membangun jejaring kerjasama dengan TV lokal dan nasional agar siaran televisi kampus ‘Unila TV’ semakin eksis di tengah masyarakat;</li>
+ <li>Mengoptimalkan peran Unila TV sebagai wadah image dari institusi Unila dengan mempromosikan prestasi dan keunggulan kampus;</li>
+ <li>Mendokumentasikan berbagai event dan milestone penting kampus dengan menyimpan arsip visual yang bernilai historis serta membuat konten yang dapat digunakan untuk keperluan promosi kampus.</li>
+ </ol>
+ </div>
+ </details>
+
+ <details class="accordion-item" id="kinerja-dosen">
+ <summary>
+ <strong>Pusat Manajemen Kinerja Dosen</strong>
+</summary>
+<div class="content">
+ <div class="profile-card">
+  <img class="profile-avatar" src="https://via.placeholder.com/96?text=Foto" alt="Foto Kepala Pusat Mudji Rachmat Ramelan, S.E., M.B.A." />
+  <div class="profile-copy">
+   <p class="profile-name">Mudji Rachmat Ramelan, S.E., M.B.A.</p>
+   <p class="profile-title">Kepala Pusat Pusat Manajemen Kinerja Dosen</p>
+  </div>
+ </div>
+<p>Memastikan pelaporan dan penilaian kinerja dosen berlangsung tepat waktu dan sesuai pedoman resmi.</p>
+ <ol class="list">
+ <li>Melakukan koordinasi dengan semua unit kerja terkait proses pelaporan kinerja dosen pada setiap semester agar dapat berjalan secara tepat waktu;</li>
+ <li>Menentukan masa pengisian, penilaian dan finalisasi kinerja dosen;</li>
+ <li>Memastikan proses unggah laporan resmi kinerja dosen oleh pimpinan universitas dilakukan sebelum batas akhir pelaporan;</li>
+ <li>Memastikan hasil final laporan resmi kinerja dosen Universitas diserahkan kepada Wakil Rektor Bidang Keuangan dan Umum agar dapat digunakan untuk pembayaran tunjangan sertifikasi dosen dan pembayaran remunerasi;</li>
+ <li>Memastikan proses pengisian BKD memenuhi ketentuan yang terdapat didalam Pedoman Operasional BKD yang berlaku;</li>
+ <li>Meminimalkan jumlah dosen yang tidak memenuhi laporan BKD pada pelaporan setiap semesternya.</li>
+ </ol>
+ </div>
+ </details>
+
+ <details class="accordion-item" id="mata-kuliah-umum">
+ <summary>
+ <strong>Pusat Manajemen Mata Kuliah Umum</strong>
+</summary>
+<div class="content">
+ <div class="profile-card">
+  <img class="profile-avatar" src="https://via.placeholder.com/96?text=Foto" alt="Foto Ketua Pusat Drs. Nusyirwan, M.Si." />
+  <div class="profile-copy">
+   <p class="profile-name">Drs. Nusyirwan, M.Si.</p>
+   <p class="profile-title">Ketua Pusat Pusat Manajemen Mata Kuliah Umum</p>
+  </div>
+ </div>
+<p>Mengkoordinasikan pelaksanaan Mata Kuliah Wajib Kurikulum dan mendukung kualitas pendidikannya.</p>
+ <ol class="list">
+ <li>Mengkoordinasikan pemerataan kelompok Mata Kuliah Wajib Kurikulum (MKWK) yaitu pendidikan Agama, Bahasa Indonesia, Pendidikan Pancasila, dan Pendidikan Kewarganegaraan serta mata kuliah Kewirausahaan sebagai matakuliah Wajib Universitas agar terlaksana secara efektif, efisien, dan profesional;</li>
+ <li>Memberikan pelayanan akademis dan non akademis untuk menunjang penyelenggaraan pendidikan pada MKWK;</li>
+ <li>Peningkatan kualitas dosen tetap dan dosen tidak tetap pengampu MKWK.</li>
+ </ol>
+ </div>
+ </details>
+
+ <details class="accordion-item" id="pmb-pjj-psdku">
+ <summary>
+ <strong>Pusat Pengembangan Penerimaan Mahasiswa Baru (PMB), Pembelajaran Jarak Jauh (PJJ), dan Program Studi di Luar Kampus Utama (PSDKU)</strong>
+</summary>
+<div class="content">
+ <div class="profile-card">
+  <img class="profile-avatar" src="https://via.placeholder.com/96?text=Foto" alt="Foto Kepala Pusat Dr. Eng. Lukmanul Hakim, S.T., M.Sc." />
+  <div class="profile-copy">
+   <p class="profile-name">Dr. Eng. Lukmanul Hakim, S.T., M.Sc.</p>
+   <p class="profile-title">Kepala Pusat Pusat Pengembangan Penerimaan Mahasiswa Baru (PMB), Pembelajaran Jarak Jauh (PJJ), dan Program Studi di Luar Kampus Utama (PSDKU)</p>
+  </div>
+ </div>
+<p>Mengelola penerimaan mahasiswa baru, pembelajaran jarak jauh, dan program studi di luar kampus utama.</p>
+ <ol class="list">
+ <li>Pengembangan instrumen asesmen dalam penyelenggaran sistem seleksi di Univesitas Lampung;</li>
+ <li>Mengembankan program dan melaksanakan penerimaan mahasiswa baru pada semua jalur penerimaan;</li>
+ <li>Menyusun renstra, renop, rencana kerja dan pelaporan program PMB;</li>
+ <li>Mengelola dan melaksanakan sistem adminstrasi dan anggaran PMB;</li>
+ <li>Menyusun dan mengembangkan strategi dan program sosialisasi dan promosi PMB;</li>
+ <li>Mengelola sistem dan melaksanakan program sosialisasi dan promosi kegiatan PMB;</li>
+ <li>Mengelola sistem dan melaksanakan program pengadaan logistik PMB;</li>
+ <li>Mengelola dan melaksanakan program penyiapan PMB;</li>
+ <li>Mengelola dan melaksanakan program pendaftaran mahasiswa baru;</li>
+ <li>Mengelola sistem dan melaksanakan program seleksi/tes PMB;</li>
+ <li>Mengembangkan kerjasama dengan berbagai pihak dalam rangka pelaksanaan program PMB;</li>
+ <li>Mengelola dan melaksanakan sistem penjaminan mutu pelaksanaan PMB;</li>
+ <li>Menyusun roadmap pengembangan dan implementasi pembelajaran daring dan jarak jauh di Unila;</li>
+ <li>Merancang program dan kegiatan peningkatan kompetensi dosen dalam menggunakan pembelajaran daring di Unila;</li>
+ <li>Memfasilitasi dan meningkatkan kuantitas dan kualitas dosen Unila dalam membuat konten pembelajaran daring dan jarak jauh;</li>
+ <li>Mengkoordinasikan sistem untuk pelaksanaan sistem pembelajaran daring dan jarak jauh;</li>
+ <li>Merencanakan dan melaksanakan penyelenggaraan pendidikan jarak jauh di Unila;</li>
+ <li>Mengembangkan model pembelajaran daring pendidikan jarak jauh;</li>
+ <li>Pelatihan dosen dan tutor untuk penyelenggaraan pendidikan jarak jauh pada mata kuliah berbasis daring;</li>
+ <li>Mengkoordinasikan pelaksanaan operasional Program Studi di luar Kampus Utama (PSDKU) Unila.</li>
+ </ol>
+ </div>
+ </details>
  </div>
  </div>
  </section>
