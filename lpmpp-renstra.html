@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peran &amp; Rencana Strategis LPMPP Unila</title>
+    <meta name="description" content="Tugas, fungsi, peran struktur organisasi, dan rencana strategis LPMPP Universitas Lampung." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet" />
+    <style>
+    /* ===================== RESET & BASE ===================== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-primary: #1E3A8A;
+      --bg-secondary: #2E4FAE;
+      --bg-card: rgba(30, 58, 138, .25);
+      --bg-glass: rgba(255, 255, 255, .08);
+      --bg-glass-hover: rgba(255, 255, 255, .13);
+      --surface-light: #f8fafc;
+      --surface-100: #f1f5f9;
+      --surface-200: #e2e8f0;
+
+      --blue-400: #7292D4;
+      --blue-500: #1E3A8A;
+      --blue-600: #152F72;
+      --indigo-500: #4F6FD4;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      
+      --text-primary: #f8fafc;
+      --text-secondary: rgba(248, 250, 252, .7);
+      --text-muted: rgba(248, 250, 252, .5);
+      --text-dark: #0f172a;
+      --text-dark-secondary: #475569;
+
+      --radius: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+
+      --shadow-card: 0 8px 32px rgba(30, 58, 138, .08);
+      --shadow-card-hover: 0 20px 60px rgba(30, 58, 138, .15);
+
+      --transition: .3s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===================== NOISE OVERLAY ===================== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* ===================== TOPBAR & NAVBAR ===================== */
+    .topbar {
+      background: white;
+      border-bottom: 1px solid #e2e8f0;
+      color: #64748b;
+      font-size: .75rem;
+      font-weight: 500;
+      padding: 8px 0;
+    }
+
+    .topbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .topbar-right a {
+      color: #64748b;
+      transition: color var(--transition);
+      margin-left: 20px;
+    }
+    .topbar-right a:hover { color: #f59e0b; }
+
+    /* ===================== NAVBAR ===================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: white;
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom: 1px solid #e2e8f0;
+  transition: all var(--transition);
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, .95);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, .08);
+}
+
+.navbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.logo-badge {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(30, 58, 138, .25);
+  transition: transform var(--transition);
+}
+
+.logo:hover .logo-badge {
+  transform: rotate(-6deg) scale(1.05);
+}
+
+.logo-badge svg {
+  width: 22px;
+  height: 22px;
+}
+
+.logo-text {
+  line-height: 1.2;
+}
+
+.logo-text strong {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #0f172a;
+  display: block;
+  letter-spacing: -.2px;
+}
+
+.logo-text span {
+  font-size: .68rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+}
+
+.nav-links>li {
+  position: relative;
+}
+
+.nav-links>li>a,
+.nav-links>li>button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 7px;
+  font-size: .78rem;
+  font-weight: 600;
+  color: #64748b;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all var(--transition);
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.nav-links>li>a:hover,
+.nav-links>li>button:hover,
+.nav-links>li.active>a,
+.nav-links>li.active>button {
+  color: #1f2937;
+  background: #f1f5f9;
+}
+
+.nav-links>li.active>a,
+.nav-links>li.active>button {
+  color: var(--blue-500);
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 240px;
+  background: white;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .1);
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .25s ease;
+  z-index: 100;
+}
+
+.nav-links>li:hover .dropdown,
+.nav-links>li:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown a {
+  display: block;
+  padding: 10px 14px;
+  font-size: .82rem;
+  font-weight: 500;
+  color: #475569;
+  border-radius: 10px;
+  transition: all var(--transition);
+  margin-bottom: 2px;
+}
+
+.dropdown a:hover {
+  background: #f1f5f9;
+  color: var(--blue-500);
+  padding-left: 18px;
+}
+
+/* Chevron */
+.chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition);
+  color: #64748b;
+}
+
+.nav-links>li:hover .chevron {
+  transform: rotate(180deg);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #0f172a;
+  border-radius: 3px;
+  transition: all var(--transition);
+}
+    /* ===================== HERO ===================== */
+    .hero {
+      position: relative;
+      min-height: 50vh;
+      padding-top: 100px;
+      background: linear-gradient(180deg, rgba(30, 58, 138, .95), var(--bg-primary));
+      display: flex; align-items: center; justify-content: center; text-align: center;
+    }
+    .hero-inner {
+      position: relative;
+      max-width: 1200px; /* Diperlebar agar h1 memiliki ruang maksimum untuk 1 baris */
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Memaksa semua elemen di dalamnya otomatis rata tengah */
+      gap: 16px;
+      padding: 40px 32px;
+      z-index: 1;
+    }
+    
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      background: rgba(245, 158, 11, .1);
+      border: 1px solid rgba(245, 158, 11, .2);
+      border-radius: 50px;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--amber-400);
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      justify-content: center;
+    }
+
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; }
+
+    .hero-title {
+      font-size: clamp(2rem, 3.5vw, 3.2rem); /* Menyesuaikan ukuran agar pas dalam 1 baris di desktop */
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+      letter-spacing: -.03em;
+      margin-bottom: 24px;
+      color: white;
+      font-weight: 800;
+      width: 100%; /* Mengizinkan judul menggunakan ruang selebar hero-inner */
+      text-align: center;
+    }
+
+    .hero-title em { font-style: normal; color: #fbbf24; }
+   .hero-desc {
+      color: rgba(255, 255, 255, .9);
+      font-size: 1rem;
+      max-width: 640px; /* KUNCI: Membatasi lebar teks deskripsi agar tetap kompak di tengah */
+      margin: 0 auto;   /* Memastikan posisi box deskripsi selalu presisi di tengah */
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .curve-divider { width: 100%; overflow: hidden; line-height: 0; }
+    .curve-divider svg { display: block; width: 100%; height: 80px; }
+
+    /* ===================== SECTION & CONTENT ===================== */
+    .section { padding: 100px 32px; }
+    .section-light { background: var(--surface-light); color: var(--text-dark); }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-label {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: rgba(30, 58, 138, .1); color: var(--blue-500);
+      border-radius: 50px; font-size: .75rem; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase; padding: 8px 16px; margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 2.8rem); font-family: 'Playfair Display', serif;
+      margin-bottom: 16px; color: var(--text-dark); line-height: 1.2;
+    }
+    .section-subtitle { font-size: 1rem; color: var(--text-dark-secondary); max-width: 700px; margin: 0 auto; line-height: 1.8; }
+
+    /* Content Card */
+    .content-card {
+      background: white; border: 1px solid var(--surface-200); border-radius: var(--radius-lg);
+      padding: 40px; box-shadow: var(--shadow-card); margin-bottom: 40px;
+    }
+    .content-card p { line-height: 1.8; color: var(--text-dark-secondary); margin-bottom: 16px; text-align: justify; }
+    .content-card p:last-child { margin-bottom: 0; }
+    .content-card strong { color: var(--text-dark); }
+
+    /* Role Cards Grid */
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .role-card {
+      background: white;
+      border: 1px solid var(--surface-200);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: all var(--transition);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .role-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--blue-400);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .role-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(30, 58, 138, .1), rgba(79, 111, 212, .1));
+      color: var(--blue-600); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    .role-info h4 { font-size: 1.05rem; color: var(--blue-600); margin-bottom: 6px; line-height: 1.3; }
+    .role-info p { font-size: 0.85rem; color: var(--text-dark-secondary); line-height: 1.5; margin: 0; text-align: left; }
+
+    /* Download Card */
+    .doc-link-card {
+      display: flex; align-items: center; gap: 20px;
+      padding: 24px 32px; background: linear-gradient(135deg, #ffffff, #f8fafc);
+      border: 1px solid var(--surface-200); border-radius: 20px;
+      color: var(--text-dark); font-weight: 600; transition: all var(--transition);
+      text-decoration: none; max-width: 600px; margin: 0 auto;
+      box-shadow: var(--shadow-card);
+    }
+    .doc-link-card:hover {
+      border-color: var(--blue-500);
+      box-shadow: 0 12px 32px rgba(30, 58, 138, 0.15);
+      transform: translateY(-3px);
+    }
+    .doc-icon-wrap {
+      width: 56px; height: 56px; border-radius: 16px;
+      background: rgba(245, 158, 11, 0.15); color: var(--amber-500);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .doc-link-card .doc-title { font-size: 1.1rem; color: var(--blue-600); display: block; margin-bottom: 4px; }
+    .doc-link-card .doc-meta { font-size: 0.85rem; color: var(--text-dark-secondary); font-weight: 500; }
+
+    /* ===================== FOOTER ===================== */
+    footer { background: #0f172a; color: rgba(255,255,255,.7); padding-top: 80px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; padding: 0 32px 40px; }
+    .footer-brand .logo-text strong { color: white; }
+    .footer-col h4 { color: white; margin-bottom: 16px; font-size: 1rem; }
+    .footer-col ul { list-style: none; display: grid; gap: 12px; }
+    .footer-col a { color: rgba(255,255,255,.7); transition: color var(--transition); }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding: 24px 32px; display: flex; justify-content: space-between; font-size: .85rem; max-width: 1280px; margin: 0 auto;}
+
+    /* Animations */
+    .reveal { opacity: 0; transform: translateY(24px); transition: all 0.8s var(--transition); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .hero-animate { opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .ha-1 { animation-delay: 0.1s; } .ha-2 { animation-delay: 0.2s; } .ha-3 { animation-delay: 0.3s; }
+
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      .hero-title { font-size: 2.2rem; }
+      .section-title { font-size: 1.8rem; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
+    }
+    </style>
+</head>
+      <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="mainNav">
+    <div class="navbar-inner">
+      <a href="lpmpp-home.html" class="logo">
+        <div class="logo-badge">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Shield background -->
+            <path d="M50 8C50 8 20 25 20 45C20 70 50 88 50 88C50 88 80 70 80 45C80 25 50 8 50 8Z" fill="white" stroke="white" stroke-width="1"/>
+            <!-- Inner circle -->
+            <circle cx="50" cy="50" r="28" fill="#1E3A8A" stroke="white" stroke-width="1.5"/>
+            <!-- Lamp symbol -->
+            <path d="M50 32V45M45 42H55M46 45H54C54 45 54 50 50 55C46 50 46 45 46 45Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- Book symbol lines -->
+            <line x1="42" y1="58" x2="58" y2="58" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="42" y1="62" x2="58" y2="62" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <strong>LPMPP Unila</strong>
+          <span>Penjaminan Mutu & Pembelajaran</span>
+        </div>
+      </a>
+
+      <button class="nav-search-btn" id="searchBtn" aria-label="Cari"
+        style="background:var(--surface-light);border:1px solid var(--surface-200);color:var(--blue-500);width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all var(--transition);box-shadow:0 8px 20px rgba(30, 58, 138, .08);"><svg
+          width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg></button>
+
+      <ul class="nav-links">
+        <li><a href="lpmpp-home.html">Beranda</a></li>
+        <li class="active">
+          <button>Profil <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="dropdown">
+            <a href="lpmpp-profil.html">Tentang LPMPP</a>
+            <a href="lpmpp-struktur.html">Struktur Organisasi & SDM</a>
+            <a href="lpmpp-renstra.html">Peran & Rencana Strategis</a>
+            <a href="lpmpp-iso.html">Sertifikasi ISO</a>
+          </div>
+        </li>
+        <li>
+          <a href="lpmpp-pusat.html">Pusat LPMPP</a>
+        </li>
+        <li>
+          <button>Informasi <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="dropdown">
+            <a href="lpmpp-informasi.html#peraturan">Peraturan Akademik</a>
+            <a href="lpmpp-informasi.html#kurikulum-info">Panduan Kurikulum 2025</a>
+            <a href="lpmpp-informasi.html#kurikulum-info">Kampus Berdampak</a>
+            <a href="lpmpp-informasi.html">Kelulusan Tepat Waktu</a>
+          </div>
+        </li>
+        <li>
+          <button>Kerja Sama <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="dropdown">
+            <a href="lpmpp-kerjasama.html#program-asuh">Program Asuh PTS</a>
+            <a href="lpmpp-kerjasama.html#bks-ptn">FPM BKS PTN Barat</a>
+          </div>
+        </li>
+        <li>
+          <button>Arsip <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="dropdown">
+            <a href="#weblog-ppm">WEBLOG PPM</a>
+            <a href="#weblog-ppaiip">WEBLOG PPAIIP</a>
+          </div>
+        </li>
+        <li>
+          <button>Survey <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="dropdown">
+            <a href="#survey-skp">Isi Survey SKP</a>
+            <a href="#skp-internal">SKP Internal LPMPP</a>
+            <a href="#laporan-skp">Laporan SKP</a>
+          </div>
+        </li>
+        <li>
+          <button>Layanan <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="dropdown">
+            <a href="lpmpp-layanan.html#ppid">PPID</a>
+            <a href="lpmpp-layanan.html#layanan-dosen">BKD</a>
+            <a href="lpmpp-layanan.html#layanan-dosen">Pelatihan</a>
+          </div>
+        </li>
+        <li>
+          <button>Data Akreditasi <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="dropdown">
+            <a href="lpmpp-akreditasi.html">Akreditasi Institusi Unila</a>
+            <a href="lpmpp-akreditasi.html#prodi">Peringkat Akreditasi Prodi</a>
+            <a href="lpmpp-akreditasi.html#internasional">Status Akreditasi Internasional</a>
+            <a href="lpmpp-akreditasi.html#instrumen">Instrumen Akreditasi</a>
+          </div>
+        </li>
+        <li><a href="lpmpp-download.html">Download</a></li>
+        <li><a href="lpmpp-studitiru.html">Studi Tiru</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+    <section class="hero">
+        <div class="hero-mesh">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+        </div>
+        <div class="hero-inner">
+            <div class="hero-tag hero-animate ha-1">
+                <span class="dot"></span> Peran &amp; Strategi LPMPP
+            </div>
+            <h1 class="hero-title hero-animate ha-2">
+                Tugas, Fungsi &amp; <em>Rencana Strategis</em><br>LPMPP Unila
+            </h1>
+            <p class="hero-desc hero-animate ha-3">
+                Memahami landasan hukum, pembagian peran struktural, serta arah kebijakan strategis LPMPP Universitas Lampung untuk periode 2025-2029 dalam mewujudkan mutu pendidikan yang unggul.
+            </p>
+        </div>
+    </section>
+
+    <div class="curve-divider">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="var(--surface-light)" />
+        </svg>
+    </div>
+
+    <section class="section section-light">
+        <div class="section-inner">
+            <div class="section-head reveal">
+                <div class="section-label">Tupoksi Kelembagaan</div>
+                <h2 class="section-title">Tugas & Fungsi LPMPP</h2>
+                <p class="section-subtitle">
+                    Berdasarkan Peraturan Menteri Pendidikan, Kebudayaan, Riset, dan Teknologi Nomor 49 Tahun 2024 tentang Organisasi dan Tata Kerja Universitas Lampung.
+                </p>
+            </div>
+
+            <div class="content-card reveal">
+                <p><strong>Tugas Utama:</strong> LPMPP bertugas untuk melaksanakan koordinasi, pelaksanaan, pemantauan, dan evaluasi kegiatan penjaminan mutu dan pengembangan pembelajaran di lingkungan Universitas Lampung.</p>
+                <p><strong>Fungsi Lembaga:</strong> Dalam melaksanakan tugasnya, LPMPP menyelenggarakan fungsi penyusunan rencana, program, dan anggaran; pelaksanaan pengembangan sistem penjaminan mutu pendidikan; pelaksanaan penjaminan mutu pendidikan; pelaksanaan fasilitasi peningkatan mutu pendidikan; pelaksanaan peningkatan dan pengembangan pembelajaran; koordinasi pelaksanaan kegiatan penjaminan mutu serta peningkatan pembelajaran; pemantauan dan evaluasi penjaminan mutu; serta pelaksanaan urusan administrasi lembaga.</p>
+            </div>
+
+            <h3 class="reveal" style="text-align: center; font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--blue-600); margin-top: 60px; margin-bottom: 10px;">Peran Struktur Organisasi</h3>
+            <p class="reveal" style="text-align: center; color: var(--text-dark-secondary); margin-bottom: 24px;">Rincian tugas dan fungsi dari masing-masing unit dan pemangku jabatan di lingkungan LPMPP.</p>
+            
+            <div class="roles-grid">
+                <div class="role-card reveal">
+                    <div class="role-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <div class="role-info">
+                        <h4>Kepala LPMPP</h4>
+                        <p>Bertindak sebagai <em>Top Management (TM)</em> yang memimpin dan bertanggung jawab penuh atas seluruh pelaksanaan tugas dan fungsi lembaga.</p>
+                    </div>
+                </div>
+
+                <div class="role-card reveal">
+                    <div class="role-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <div class="role-info">
+                        <h4>Sekretaris LPMPP</h4>
+                        <p>Bertindak sebagai <em>Manager Representative (MR)</em> yang mendampingi Ketua dalam pengelolaan, koordinasi manajerial, dan operasional harian.</p>
+                    </div>
+                </div>
+
+                <div class="role-card reveal">
+                    <div class="role-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    </div>
+                    <div class="role-info">
+                        <h4>Kepala Pusat</h4>
+                        <p>Memimpin operasional pusat-pusat spesifik di LPMPP (seperti Pusat Kurikulum, Akreditasi, dll) sesuai dengan fokus keilmuan dan layanan.</p>
+                    </div>
+                </div>
+
+                <div class="role-card reveal">
+                    <div class="role-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                    <div class="role-info">
+                        <h4>Kepala Sub Bagian Umum</h4>
+                        <p>Mengelola administrasi tata usaha, kerumahtanggaan, kepegawaian, dan aset di lingkungan internal LPMPP.</p>
+                    </div>
+                </div>
+
+                <div class="role-card reveal">
+                    <div class="role-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    </div>
+                    <div class="role-info">
+                        <h4>Bendahara Pembantu Pengeluaran (BPP)</h4>
+                        <p>Bertanggung jawab atas pengelolaan pencairan, pencatatan, dan pelaporan sirkulasi keuangan kegiatan lembaga.</p>
+                    </div>
+                </div>
+
+                <div class="role-card reveal">
+                    <div class="role-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                    </div>
+                    <div class="role-info">
+                        <h4>Pembantu BPP</h4>
+                        <p>Membantu BPP dalam tugas-tugas teknis pengumpulan bukti transaksi, pemberkasan, dan verifikasi keuangan tingkat awal.</p>
+                    </div>
+                </div>
+
+                <div class="role-card reveal">
+                    <div class="role-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    </div>
+                    <div class="role-info">
+                        <h4>Staf Administrasi Umum & Program</h4>
+                        <p>Melaksanakan dukungan teknis harian terkait informasi, penyiapan dokumen, perlengkapan kegiatan, dan dokumentasi LPMPP.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: white;">
+        <div class="section-inner">
+            <div class="section-head reveal">
+                <div class="section-label" style="background: rgba(245, 158, 11, .1); color: var(--amber-500);">Dokumen Strategis</div>
+                <h2 class="section-title">Renstra LPMPP 2025-2029</h2>
+                <p class="section-subtitle">
+                    Rencana Strategis (Renstra) menjadi pedoman arah kebijakan, peta jalan pengembangan, dan target capaian mutu pendidikan tinggi Universitas Lampung untuk 5 tahun ke depan.
+                </p>
+            </div>
+
+            <div class="reveal" style="text-align: center; margin-top: 40px;">
+                <a href="#" class="doc-link-card">
+                    <div class="doc-icon-wrap">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    </div>
+                    <div style="text-align: left;">
+                        <span class="doc-title">Dokumen Renstra LPMPP Unila 2025-2029</span>
+                        <span class="doc-meta">PDF File &bull; Akses Dokumen Resmi</span>
+                    </div>
+                </a>
+                <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-dark-secondary);">
+                    *Tautan dokumen akan membuka tab baru ke penyimpanan Google Drive LPMPP.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="22" height="22">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <strong>LPMPP Unila</strong>
+                        <span>Universitas Lampung</span>
+                    </div>
+                </div>
+                <p style="margin-top: 16px; font-size: 0.85rem; line-height: 1.8;">Lembaga Pengembangan Pembelajaran dan Penjaminan Mutu Pendidikan Universitas Lampung. Mendukung mutu akademik yang berkelanjutan.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="lpmpp-home.html">Beranda</a></li>
+                    <li><a href="lpmpp-profil.html">Profil LPMPP</a></li>
+                    <li><a href="lpmpp-pusat.html">Pusat LPMPP</a></li>
+                    <li><a href="lpmpp-informasi.html">Informasi</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Layanan</h4>
+                <ul>
+                    <li><a href="lpmpp-layanan.html#ppid">PPID</a></li>
+                    <li><a href="lpmpp-layanan.html#layanan-dosen">BKD</a></li>
+                    <li><a href="lpmpp-layanan.html#layanan-dosen">Pelatihan</a></li>
+                    <li><a href="lpmpp-download.html">Download Dokumen</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Kontak</h4>
+                <ul>
+                    <li><a href="#">Jl. Prof. Sumantri Brojonegoro No. 1, Bandar Lampung</a></li>
+                    <li><a href="mailto:lpmpp@unila.ac.id">lpmpp@unila.ac.id</a></li>
+                    <li><a href="tel:+62721704622">(0721) 704622</a></li>
+                    <li><a href="https://lpmpp.unila.ac.id" target="_blank">lpmpp.unila.ac.id</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 LPMPP Universitas Lampung. Hak cipta dilindungi.</span>
+            <span>Dirancang ulang oleh <a href="#">Kelompok 10 &mdash; UX Design Thinking</a></span>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll
+        const navbar = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+
+        // Scroll Reveal Animation
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transitionDelay = `${(i % 5) * 0.1}s`;
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>

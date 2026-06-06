@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Struktur Organisasi & SDM LPMPP Unila</title>
+    <meta name="description" content="Struktur organisasi dan SDM LPMPP Universitas Lampung." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet" />
+    <style>
+    /* ===================== RESET & BASE ===================== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-primary: #1E3A8A;
+      --bg-secondary: #2E4FAE;
+      --bg-card: rgba(30, 58, 138, .25);
+      --bg-glass: rgba(255, 255, 255, .08);
+      --bg-glass-hover: rgba(255, 255, 255, .13);
+      --surface-light: #f8fafc;
+      --surface-100: #f1f5f9;
+      --surface-200: #e2e8f0;
+
+      --blue-400: #7292D4;
+      --blue-500: #1E3A8A;
+      --blue-600: #152F72;
+      --indigo-500: #4F6FD4;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+
+      --text-primary: #f8fafc;
+      --text-secondary: rgba(248, 250, 252, .7);
+      --text-muted: rgba(248, 250, 252, .5);
+      --text-dark: #0f172a;
+      --text-dark-secondary: #475569;
+
+      --border-glass: rgba(255, 255, 255, .12);
+      --border-glass-hover: rgba(255, 255, 255, .22);
+
+      --radius: 16px;
+      --radius-lg: 24px;
+
+      --shadow-card: 0 8px 32px rgba(30, 58, 138, .08);
+      --shadow-card-hover: 0 20px 60px rgba(30, 58, 138, .15);
+
+      --transition: .3s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* NOISE TEXTURE */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* TOPBAR & NAVBAR */
+    .topbar { background: white; border-bottom: 1px solid #e2e8f0; color: #64748b; font-size: .75rem; font-weight: 500; padding: 8px 0; }
+    .topbar-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; align-items: center; }
+    .topbar-right a { margin-left: 20px; transition: color var(--transition); }
+    .topbar-right a:hover { color: var(--amber-500); }
+
+    /* ===================== NAVBAR ===================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: white;
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom: 1px solid #e2e8f0;
+  transition: all var(--transition);
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, .95);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, .08);
+}
+
+.navbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.logo-badge {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(30, 58, 138, .25);
+  transition: transform var(--transition);
+}
+
+.logo:hover .logo-badge {
+  transform: rotate(-6deg) scale(1.05);
+}
+
+.logo-badge svg {
+  width: 22px;
+  height: 22px;
+}
+
+.logo-text {
+  line-height: 1.2;
+}
+
+.logo-text strong {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #0f172a;
+  display: block;
+  letter-spacing: -.2px;
+}
+
+.logo-text span {
+  font-size: .68rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+}
+
+.nav-links>li {
+  position: relative;
+}
+
+.nav-links>li>a,
+.nav-links>li>button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 7px;
+  font-size: .78rem;
+  font-weight: 600;
+  color: #64748b;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all var(--transition);
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.nav-links>li>a:hover,
+.nav-links>li>button:hover,
+.nav-links>li.active>a,
+.nav-links>li.active>button {
+  color: #1f2937;
+  background: #f1f5f9;
+}
+
+.nav-links>li.active>a,
+.nav-links>li.active>button {
+  color: var(--blue-500);
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 240px;
+  background: white;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .1);
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .25s ease;
+  z-index: 100;
+}
+
+.nav-links>li:hover .dropdown,
+.nav-links>li:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown a {
+  display: block;
+  padding: 10px 14px;
+  font-size: .82rem;
+  font-weight: 500;
+  color: #475569;
+  border-radius: 10px;
+  transition: all var(--transition);
+  margin-bottom: 2px;
+}
+
+.dropdown a:hover {
+  background: #f1f5f9;
+  color: var(--blue-500);
+  padding-left: 18px;
+}
+
+/* Chevron */
+.chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition);
+  color: #64748b;
+}
+
+.nav-links>li:hover .chevron {
+  transform: rotate(180deg);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #0f172a;
+  border-radius: 3px;
+  transition: all var(--transition);
+}
+    /* HERO */
+    .hero { position: relative; min-height: 50vh; padding-top: 100px; background: linear-gradient(180deg, rgba(30, 58, 138, .95), var(--bg-primary)); display: flex; align-items: center; justify-content: center; text-align: center; }
+    .hero-inner { max-width: 1100px; padding: 40px 32px; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      background: rgba(245, 158, 11, .1);
+      border: 1px solid rgba(245, 158, 11, .2);
+      border-radius: 50px;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--amber-400);
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      justify-content: center;
+    }
+    
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; }
+    .hero-title { font-size: clamp(2rem, 3.5vw, 3.2rem); font-family: 'Playfair Display', serif; line-height: 1.2; letter-spacing: -.03em; margin-bottom: 24px; color: white; width: 100%; }
+    .hero-desc { font-size: 1.05rem; color: rgba(255,255,255,.9); line-height: 1.8; max-width: 640px; }
+
+    .curve-divider { width: 100%; overflow: hidden; line-height: 0; }
+    .curve-divider svg { display: block; width: 100%; height: 80px; }
+
+    /* SECTIONS */
+    .section { padding: 100px 32px; }
+    .section-light { background: var(--surface-light); color: var(--text-dark); }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-label { display: inline-flex; background: rgba(30, 58, 138, .1); color: var(--blue-500); border-radius: 50px; font-size: .75rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 8px 16px; margin-bottom: 16px; }
+    .section-title { font-size: clamp(2rem, 3.5vw, 2.8rem); font-family: 'Playfair Display', serif; margin-bottom: 16px; color: var(--text-dark); line-height: 1.2; }
+    .section-subtitle { font-size: 1rem; color: var(--text-dark-secondary); max-width: 700px; margin: 0 auto; line-height: 1.8; }
+
+    /* STRUKTUR ORGANISASI CARDS */
+    .pimpinan-card { background: linear-gradient(135deg, var(--blue-600), var(--blue-500)); color: white; border-radius: var(--radius-lg); padding: 40px; text-align: center; box-shadow: var(--shadow-card); margin-bottom: 40px; }
+    .pimpinan-card h3 { font-size: 1.8rem; font-family: 'Playfair Display', serif; margin-bottom: 24px; color: var(--amber-400); }
+    .pimpinan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .pimpinan-item { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 24px; border-radius: var(--radius); backdrop-filter: blur(10px); }
+    .pimpinan-item span { display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; margin-bottom: 8px; }
+    .pimpinan-item strong { font-size: 1.2rem; }
+
+    .pusat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 40px;}
+    .pusat-card { background: white; border: 1px solid var(--surface-200); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; gap: 12px; transition: all var(--transition); box-shadow: 0 4px 16px rgba(0,0,0,0.03); }
+    .pusat-card:hover { border-color: var(--blue-400); box-shadow: var(--shadow-card-hover); transform: translateY(-4px); }
+    .pusat-card h4 { font-size: 1rem; color: var(--blue-600); line-height: 1.4; border-bottom: 1px solid var(--surface-200); padding-bottom: 12px; margin-bottom: 4px;}
+    .pusat-card .nama { font-size: 1.05rem; font-weight: 600; color: var(--text-dark); }
+    .pusat-card .jabatan { font-size: 0.85rem; color: var(--text-dark-secondary); }
+
+    .staff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; background: white; border: 1px solid var(--surface-200); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-card); }
+    .staff-col h4 { font-size: 1.2rem; color: var(--blue-600); margin-bottom: 16px; }
+    .staff-col ul { list-style: none; display: grid; gap: 12px; }
+    .staff-col li { padding: 12px 16px; background: var(--surface-100); border-radius: 12px; font-weight: 500; font-size: 0.95rem; }
+    .staff-col li span { display: block; font-size: 0.8rem; color: var(--text-dark-secondary); font-weight: 400; margin-top: 4px;}
+
+    /* HUKUM PENETAPAN */
+    .hukum-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 32px; }
+    .hukum-item { display: flex; align-items: center; gap: 16px; background: white; padding: 20px; border: 1px solid var(--surface-200); border-radius: var(--radius); }
+    .hukum-icon { width: 40px; height: 40px; background: rgba(245, 158, 11, 0.15); color: var(--amber-500); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .hukum-item span { font-weight: 600; color: var(--text-dark); line-height: 1.4; }
+
+    /* ACCORDION (TENAGA AHLI) */
+    .accordion { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .accordion-item { background: white; border: 1px solid var(--surface-200); border-radius: var(--radius); overflow: hidden; transition: all var(--transition); }
+    .accordion-header { width: 100%; text-align: left; background: white; padding: 20px 24px; border: none; font-size: 1.05rem; font-weight: 600; color: var(--blue-600); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background var(--transition); }
+    .accordion-header:hover { background: var(--surface-100); }
+    .accordion-icon { width: 24px; height: 24px; border-radius: 50%; background: var(--surface-200); display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; }
+    .accordion-item.active .accordion-icon { transform: rotate(180deg); background: var(--blue-100); color: var(--blue-600); }
+    .accordion-item.active { border-color: var(--blue-400); box-shadow: 0 8px 24px rgba(30, 58, 138, 0.08); }
+    
+    .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); background: white; }
+    .accordion-content { padding: 0 24px 24px; }
+    
+    .ahli-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; border-top: 1px solid var(--surface-200); padding-top: 16px; margin-top: 8px;}
+    .ahli-list li { font-size: 0.95rem; color: var(--text-dark); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+    .ahli-list li::before { content: '•'; color: var(--amber-500); font-weight: bold; }
+    
+    .ahli-table-wrap { overflow-x: auto; margin-top: 16px; border: 1px solid var(--surface-200); border-radius: 12px;}
+    .ahli-table { width: 100%; border-collapse: collapse; min-width: 500px; text-align: left; }
+    .ahli-table th, .ahli-table td { padding: 12px 16px; border-bottom: 1px solid var(--surface-200); font-size: 0.9rem; }
+    .ahli-table th { background: var(--surface-100); font-weight: 600; color: var(--blue-600); position: sticky; top: 0;}
+    .ahli-table tr:last-child td { border-bottom: none; }
+    .ahli-table tr:hover td { background: rgba(30,58,138,0.02); }
+
+    /* FOOTER */
+    footer { background: #0f172a; color: rgba(255,255,255,.7); padding-top: 80px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; padding: 0 32px 40px; }
+    .footer-col h4 { color: white; margin-bottom: 16px; font-size: 1rem; }
+    .footer-col ul { list-style: none; display: grid; gap: 12px; }
+    .footer-col a { color: rgba(255,255,255,.7); transition: color var(--transition); }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding: 24px 32px; display: flex; justify-content: space-between; font-size: .85rem; max-width: 1280px; margin: 0 auto;}
+
+    /* Animations */
+    .reveal { opacity: 0; transform: translateY(24px); transition: all 0.8s var(--transition); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .hero-animate { opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .ha-1 { animation-delay: 0.1s; } .ha-2 { animation-delay: 0.2s; } .ha-3 { animation-delay: 0.3s; }
+
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .staff-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .hero-title { font-size: 2.2rem; }
+      .section-title { font-size: 1.8rem; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
+    }
+    </style>
+</head>
+
+<body>
+      <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="mainNav">
+    <div class="navbar-inner">
+      <a href="lpmpp-home.html" class="logo">
+        <div class="logo-badge">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Shield background -->
+            <path d="M50 8C50 8 20 25 20 45C20 70 50 88 50 88C50 88 80 70 80 45C80 25 50 8 50 8Z" fill="white" stroke="white" stroke-width="1"/>
+            <!-- Inner circle -->
+            <circle cx="50" cy="50" r="28" fill="#1E3A8A" stroke="white" stroke-width="1.5"/>
+            <!-- Lamp symbol -->
+            <path d="M50 32V45M45 42H55M46 45H54C54 45 54 50 50 55C46 50 46 45 46 45Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- Book symbol lines -->
+            <line x1="42" y1="58" x2="58" y2="58" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="42" y1="62" x2="58" y2="62" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <strong>LPMPP Unila</strong>
+          <span>Penjaminan Mutu & Pembelajaran</span>
+        </div>
+      </a>
+
+      <button class="nav-search-btn" id="searchBtn" aria-label="Cari"
+        style="background:var(--surface-light);border:1px solid var(--surface-200);color:var(--blue-500);width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all var(--transition);box-shadow:0 8px 20px rgba(30, 58, 138, .08);"><svg
+          width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg></button>
+
+      <ul class="nav-links">
+        <li><a href="lpmpp-home.html">Beranda</a></li>
+        <li class="active">
+          <button>Profil <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="dropdown">
+            <a href="lpmpp-profil.html">Tentang LPMPP</a>
+            <a href="lpmpp-struktur.html">Struktur Organisasi & SDM</a>
+            <a href="lpmpp-renstra.html">Peran & Rencana Strategis</a>
+            <a href="lpmpp-iso.html">Sertifikasi ISO</a>
+          </div>
+        </li>
+        <li>
+          <a href="lpmpp-pusat.html">Pusat LPMPP</a>
+        </li>
+        <li>
+          <button>Informasi <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="dropdown">
+            <a href="lpmpp-informasi.html#peraturan">Peraturan Akademik</a>
+            <a href="lpmpp-informasi.html#kurikulum-info">Panduan Kurikulum 2025</a>
+            <a href="lpmpp-informasi.html#kurikulum-info">Kampus Berdampak</a>
+            <a href="lpmpp-informasi.html">Kelulusan Tepat Waktu</a>
+          </div>
+        </li>
+        <li>
+          <button>Kerja Sama <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="dropdown">
+            <a href="lpmpp-kerjasama.html#program-asuh">Program Asuh PTS</a>
+            <a href="lpmpp-kerjasama.html#bks-ptn">FPM BKS PTN Barat</a>
+          </div>
+        </li>
+        <li>
+          <button>Arsip <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="dropdown">
+            <a href="#weblog-ppm">WEBLOG PPM</a>
+            <a href="#weblog-ppaiip">WEBLOG PPAIIP</a>
+          </div>
+        </li>
+        <li>
+          <button>Survey <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="dropdown">
+            <a href="#survey-skp">Isi Survey SKP</a>
+            <a href="#skp-internal">SKP Internal LPMPP</a>
+            <a href="#laporan-skp">Laporan SKP</a>
+          </div>
+        </li>
+        <li>
+          <button>Layanan <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="dropdown">
+            <a href="lpmpp-layanan.html#ppid">PPID</a>
+            <a href="lpmpp-layanan.html#layanan-dosen">BKD</a>
+            <a href="lpmpp-layanan.html#layanan-dosen">Pelatihan</a>
+          </div>
+        </li>
+        <li>
+          <button>Data Akreditasi <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9" />
+            </svg></button>
+          <div class="dropdown">
+            <a href="lpmpp-akreditasi.html">Akreditasi Institusi Unila</a>
+            <a href="lpmpp-akreditasi.html#prodi">Peringkat Akreditasi Prodi</a>
+            <a href="lpmpp-akreditasi.html#internasional">Status Akreditasi Internasional</a>
+            <a href="lpmpp-akreditasi.html#instrumen">Instrumen Akreditasi</a>
+          </div>
+        </li>
+        <li><a href="lpmpp-download.html">Download</a></li>
+        <li><a href="lpmpp-studitiru.html">Studi Tiru</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+    <section class="hero">
+        <div class="hero-mesh">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+        </div>
+        <div class="hero-inner">
+            <div class="hero-tag hero-animate ha-1">
+                <span class="dot"></span> Profil LPMPP
+            </div>
+            <h1 class="hero-title hero-animate ha-2">
+                Struktur Organisasi &amp; SDM LPMPP Unila
+            </h1>
+            <p class="hero-desc hero-animate ha-3">
+                Menampilkan susunan pimpinan, pusat layanan, serta tenaga ahli yang berdedikasi mengawal mutu pendidikan di Universitas Lampung.
+            </p>
+        </div>
+    </section>
+
+    <div class="curve-divider">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="var(--surface-light)" />
+        </svg>
+    </div>
+
+    <section class="section section-light" id="struktur">
+        <div class="section-inner">
+            <div class="section-head reveal">
+                <div class="section-label">Struktur Kepemimpinan</div>
+                <h2 class="section-title">Pimpinan &amp; Pusat Layanan</h2>
+                <p class="section-subtitle">Susunan pimpinan utama dan kepala pusat di lingkungan Lembaga Penjaminan Mutu dan Pengembangan Pembelajaran (LPMPP).</p>
+            </div>
+
+            <div class="pimpinan-card reveal">
+                <h3>Pimpinan LPMPP</h3>
+                <div class="pimpinan-grid">
+                    <div class="pimpinan-item">
+                        <span>Kepala LPMPP</span>
+                        <strong>Prof. Dr. Abdurrahman, M.Si.</strong>
+                    </div>
+                    <div class="pimpinan-item">
+                        <span>Sekretaris LPMPP</span>
+                        <strong>Prof. Dr. Marselina, S.E., M.P.M.</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pusat-grid">
+                <div class="pusat-card reveal">
+                    <h4>Pusat Kurikulum dan Inovasi Instruksional</h4>
+                    <span class="nama">Anggreini, S.Pd., M.Pd.</span>
+                    <span class="jabatan">Kepala Pusat</span>
+                </div>
+                <div class="pusat-card reveal">
+                    <h4>Pusat Manajemen MBKM dan Kelulusan Tepat Waktu</h4>
+                    <span class="nama">Nur Indah lestari, S.Pd., M.Pd.</span>
+                    <span class="jabatan">Kepala Pusat</span>
+                </div>
+                <div class="pusat-card reveal">
+                    <h4>Pusat Penjaminan Mutu</h4>
+                    <span class="nama">Iqbal Firdaus, S.Si., M.Si.</span>
+                    <span class="jabatan">Kepala Pusat</span>
+                </div>
+                <div class="pusat-card reveal">
+                    <h4>Pusat Audit Mutu, Kepuasan Layanan, & Sistem Maturitas</h4>
+                    <span class="nama">Dian Rahmalia, S.P., M.Si.</span>
+                    <span class="jabatan">Kepala Pusat</span>
+                </div>
+                <div class="pusat-card reveal">
+                    <h4>Pusat Akreditasi Nasional</h4>
+                    <span class="nama">Dr. Agung Putra Wijaya, S.Pd., M.Pd.</span>
+                    <span class="jabatan">Kepala Pusat</span>
+                </div>
+                <div class="pusat-card reveal">
+                    <h4>Pusat Akreditasi Internasional</h4>
+                    <span class="nama">Priyambodo, S.Pd., M.Sc.</span>
+                    <span class="jabatan">Kepala Pusat</span>
+                </div>
+                <div class="pusat-card reveal">
+                    <h4>Pusat Pengelolaan Televisi Pendidikan</h4>
+                    <span class="nama">Vito Prasetya, S.Sos., M.Si.</span>
+                    <span class="jabatan">Kepala Pusat</span>
+                </div>
+                <div class="pusat-card reveal">
+                    <h4>Pusat Manajemen Kinerja Dosen</h4>
+                    <span class="nama">Mudji Rachmat Ramelan, S.E., M.B.A.</span>
+                    <span class="jabatan">Kepala Pusat</span>
+                </div>
+                <div class="pusat-card reveal">
+                    <h4>Pusat Manajemen Mata Kuliah Umum</h4>
+                    <span class="nama">Drs. Nusyirwan, M.Si.</span>
+                    <span class="jabatan">Kepala Pusat</span>
+                </div>
+                <div class="pusat-card reveal">
+                    <h4>Pusat PMB, PJJ, dan PSDKU</h4>
+                    <span class="nama">Dr. Eng. Lukmanul Hakim, S.T., M.Sc.</span>
+                    <span class="jabatan">Kepala Pusat</span>
+                </div>
+            </div>
+
+            <div class="staff-grid reveal">
+                <div class="staff-col">
+                    <h4>Bagian Administrasi & Keuangan</h4>
+                    <ul>
+                        <li>Rahmat Pranoto, S.E., M.S.Ak. <span>Kepala Subbagian Umum</span></li>
+                        <li>Sartina, S.Pd. <span>Bendahara Pengeluaran Pembantu (BPP)</span></li>
+                    </ul>
+                </div>
+                <div class="staff-col">
+                    <h4>Pegawai Kependidikan Pendukung</h4>
+                    <ul>
+                        <li>Maria Montessori, S.Pd.</li>
+                        <li>Desiadini Adila, A.Md.</li>
+                        <li>Desi Ratna, M.Pd.</li>
+                        <li>Franchiska Agustina, S.H., M.H.</li>
+                        <li>Basaria Sinaga, A.Md.</li>
+                        <li>Indah Lestari, S.Pd.</li>
+                        <li>Hermansyah Luthfi, S.H.</li>
+                        <li>Amat Buhori, S.Pd.</li>
+                        <li>M.Aqsa Nelson, S.H.</li>
+                        <li>M.Pandji Pangestu, S.H.</li>
+                        <li>M. Fikri, A.Md.</li>
+                        <li>Roesmini</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: white;" id="tenaga-ahli">
+        <div class="section-inner">
+            <div class="section-head reveal">
+                <div class="section-label" style="background: rgba(245, 158, 11, .1); color: var(--amber-500);">Sumber Daya Ahli</div>
+                <h2 class="section-title">Tim Tenaga Ahli LPMPP</h2>
+                <p class="section-subtitle">
+                    LPMPP memiliki dan bekerja sama dengan tenaga ahli mumpuni dari berbagai bidang keilmuan baik internal maupun eksternal, untuk mewujudkan capaian dan visi pendidikan unggul Universitas Lampung.
+                </p>
+            </div>
+
+            <div class="accordion reveal">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Tenaga Ahli Internal Lembaga
+                        <span class="accordion-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <ul class="ahli-list">
+                                <li>Prof. Dr. Abdurrahman, M.Si.</li>
+                                <li>Dr. Maulana Mukhlis, S.Sos., M.IP.</li>
+                                <li>Anggraeini, S.Pd., M.Pd.</li>
+                                <li>Nur Indah Lestari, S.Pd., M.Pd.</li>
+                                <li>Iqbal Firdaus, S.Si., M.Si.</li>
+                                <li>Dian Rahmalia, S.P., M.Si.</li>
+                                <li>Ir. Gigih Forda Nama, S.T., M.T.I., IPM.</li>
+                                <li>Dr. Agung Putra Wijaya, S.Pd., M.Pd.</li>
+                                <li>Priyambodo, S.Pd., M.Sc.</li>
+                                <li>Vito Prasetya, S.Sos., M.Si.</li>
+                                <li>Mudji Rachmat Ramelan, S.E., M.B.A.</li>
+                                <li>Dr. Eng. Ir. Ratna Widyawati, S.T., M.T., IPM., ASEAN Eng.</li>
+                                <li>Dr. Eng. Lukmanul Hakim, S.T., M.Sc.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Tenaga Ahli Kurikulum dan MBKM
+                        <span class="accordion-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <h4 style="margin: 16px 0 8px; font-size: 0.95rem; color: var(--blue-600);">Narasumber Kurikulum</h4>
+                            <ul class="ahli-list" style="margin-top: 0; padding-top: 0; border: none;">
+                                <li>Prof. Undang Rosidin, M.Pd</li>
+                                <li>Dr. Een Yayah Haenillah, M.Pd</li>
+                            </ul>
+                            
+                            <h4 style="margin: 16px 0 8px; font-size: 0.95rem; color: var(--blue-600);">Reviewer RPS</h4>
+                            <ul class="ahli-list" style="margin-top: 0; padding-top: 0; border: none;">
+                                <li>Prof. Undang Rosidin, M.Pd</li>
+                                <li>Dr. Een Yayah Haenillah, M.Pd</li>
+                                <li>Dr. Pujiati, M.Pd</li>
+                                <li>Dr. Riswanti Rini, M.Pd</li>
+                                <li>Dr. Herpratiwi, M.Pd</li>
+                                <li>Dr. Neni Hasnunidah, M.Pd</li>
+                                <li>Dr. Tina Yunikarti, M.Pd</li>
+                                <li>Dr. Marina Setyorini, M.Si</li>
+                                <li>Dr. Abdurrahman, M.Si</li>
+                                <li>Dr. Pramudiyanti, M.Si</li>
+                                <li>Widyastuti, S.Pd., M.Pd</li>
+                                <li>Dr. Wiyanti, M.Pd</li>
+                                <li>Drs. Eko Suyanto, M.Pd</li>
+                                <li>Dr. Dwi Yulianti, M.Pd</li>
+                                <li>Dr. Sri Hastuti Nur, M.Pd</li>
+                                <li>Dr. Mona Adha, M.Pd</li>
+                                <li>Dr. Riswandi Helmi Nur, M.Pd</li>
+                                <li>Dr. Dina Maulina, M.Pd</li>
+                            </ul>
+
+                            <h4 style="margin: 16px 0 8px; font-size: 0.95rem; color: var(--blue-600);">Reviewer Hibah MBKM</h4>
+                            <ul class="ahli-list" style="margin-top: 0; padding-top: 0; border: none;">
+                                <li>Prof. Dr. Wasinton</li>
+                                <li>Prof. Dr. Cipta Ginting</li>
+                                <li>Dr. F.X. Sumarja</li>
+                            </ul>
+
+                            <h4 style="margin: 16px 0 8px; font-size: 0.95rem; color: var(--blue-600);">Narasumber Sosialisasi MBKM</h4>
+                            <ul class="ahli-list" style="margin-top: 0; padding-top: 0; border: none;">
+                                <li>Dr. Kusuma Adhianto</li>
+                                <li>Dr. Diah Permata</li>
+                                <li>Dr. Pramudiyanti, M.Si</li>
+                                <li>Ahmad Zazili, S.H., M.H</li>
+                                <li>Ujang Efendi, M.Pd.I</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Tenaga Ahli Pembelajaran Daring & PJJ
+                        <span class="accordion-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <ul class="ahli-list">
+                                <li>Dr. Rangga Firdaus, S.Kom., M.Kom.</li>
+                                <li>Ir. Gigih Forda Nama, S.T., M.T.I., IPM.</li>
+                                <li>Meizano Ardhi Muhammad, S.T., M.T.</li>
+                                <li>Listumbinang Halengkara, S.Si., M.Sc.</li>
+                                <li>Leni Rumiyanti, S.Pd, M.Sc.</li>
+                                <li>Wahyu Eko Sulistiono, S.T., M.Sc.</li>
+                                <li>Puput Budi Wintoro, M.T.I.</li>
+                                <li>Dr. Fitriani, S.Si., M.Si</li>
+                                <li>Rizky Prabowo, M. Kom.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Tenaga Ahli Akreditasi Nasional & Internasional
+                        <span class="accordion-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                             <h4 style="margin: 16px 0 8px; font-size: 0.95rem; color: var(--blue-600);">Tenaga Ahli Eksternal</h4>
+                             <ul class="ahli-list" style="margin-top: 0; padding-top: 0; border: none;">
+                                <li>Prof. Dr. Ir. Ari Purbayanto, M.Sc.</li>
+                                <li>Leni Sophia Heliani, S.T., M.Sc., Ph.D.</li>
+                                <li>Prof. Dr. Ibnu Qizam, SE., M.Si., Ak., CA.</li>
+                                <li>Dr. Siegfried Hermes</li>
+                                <li>Pepen Arifin, Ph.D.</li>
+                                <li>Prof. Dr. Hj. Sri Puji Astuti Wahyuningsih, M.Si.</li>
+                                <li>Herri Trilaksana, M.Si., Ph.D.</li>
+                             </ul>
+
+                             <h4 style="margin: 24px 0 8px; font-size: 0.95rem; color: var(--blue-600);">Asesor Internal & Asesor BANPT/LAM</h4>
+                             <ul class="ahli-list" style="margin-top: 0; padding-top: 0; border: none;">
+                                <li>Prof. Dr. Yulianto, M.Si.</li>
+                                <li>Prof. Dr. Murhadi, M.Si.</li>
+                                <li>Prof. Dr. Toto Gunarto, S.E., M.Si.</li>
+                                <li>Prof. Dr. Suharno</li>
+                                <li>Prof. Dr. I Gede AB Wiranata, S.H., M.H.</li>
+                                <li>Prof. Dr. Sunyono, M.Si.</li>
+                                <li>Prof. Dr. M. Fuad</li>
+                                <li>Prof. Dr. Agus Suyatna</li>
+                                <li>Dr. FX. Sumarja, S.H., M.H.</li>
+                                <li>Dr. Teguh Endaryanto, M.Si.</li>
+                                <li>Tristiyanto, S.Kom., M.I.S., Ph.D.</li>
+                                <li>Dr. Ahmad Irzal Fardiansyah</li>
+                                <li>Dr. Nur Efendi, S.Sos., M.Si.</li>
+                                <li>Dr. Ayi Ahadiat, S.E., M.B.A.</li>
+                                <li>Dr. Sudrajat, S.E., M.Acc., Akt. CA.</li>
+                                <li>Dr. Ambya, S.E., M.Si.</li>
+                             </ul>
+
+                             <h4 style="margin: 24px 0 8px; font-size: 0.95rem; color: var(--blue-600);">Asesor Internal (Tersertifikasi AUN QA)</h4>
+                             <ul class="ahli-list" style="margin-top: 0; padding-top: 0; border: none;">
+                                <li>Elida Purba, Ph.D.</li>
+                                <li>Mulyono, Ph.D.</li>
+                                <li>Priyambodo, M.Sc.</li>
+                             </ul>
+
+                             <h4 style="margin: 24px 0 8px; font-size: 0.95rem; color: var(--blue-600);">Asesor Internal (Member ASIIN Expert)</h4>
+                             <ul class="ahli-list" style="margin-top: 0; padding-top: 0; border: none;">
+                                <li>Prof. Ir. Lusmeilia Afriani, D.E.A., Ph.D., IPM., ASEAN Eng.</li>
+                                <li>Prof. Dr. Abdurrahman, M.Si.</li>
+                                <li>Dr. Eng. Suripto Dwi Yuwono, S.Si., M.T.</li>
+                                <li>Dr. Eng. Dikpride Despa, S.T., M.T., IPM., ASEAN Eng.</li>
+                                <li>Dra. Endang Linirin Widiastuti, M.Sc., Ph.D.</li>
+                                <li>Dr. Ir. Melya Riniarti, S.P., M.Si., IPU.</li>
+                                <li>Dr. Eng. Diah Permata, S.T., M.T.</li>
+                                <li>Dr. M. Setyarini, M.Si.</li>
+                                <li>dr. Hanna Mutiara, S.Ked., M.Kes., Sp.Par.K.</li>
+                                <li>Priyambodo, S.Pd., M.Sc.</li>
+                                <li>Dr. rer. nat. Roniyus Marjunus, S.Si., M.Si.</li>
+                                <li>Rara Diantari, S.Pi., M.Sc.</li>
+                                <li>Winda Rahmawati, S.TP., M.Si., M.Sc.</li>
+                                <li>Iqbal Firdaus, S.Si., M.Si.</li>
+                                <li>Dr. Agung Putra Wijaya, S.Pd., M.Pd.</li>
+                                <li>Dr. dr. Betta Kurniawan, M.Kes.</li>
+                                <li>Dian Rahmalia, S.P., M.Si.</li>
+                                <li>Dr. Dina Maulina</li>
+                                <li>Favorisen Rosyking Lumbanraja, Ph.D.</li>
+                                <li>Fitri Yelli, Ph.D.</li>
+                                <li>Dr. Fitriani</li>
+                                <li>Inggar Damayanti, S.Hut., M.Si.</li>
+                                <li>Dr. Eng. Nining Purwasih</li>
+                                <li>Novri Tanti, S.T., M.T.</li>
+                                <li>Siti Anugrah Mulya Putri Ofrial, S.T., M.T.</li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Tenaga Ahli Inovasi Pembelajaran
+                        <span class="accordion-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <ul class="ahli-list">
+                                <li>Prof. Dr. Karomani.</li>
+                                <li>Prof. Dr. Yulianto, M.S.</li>
+                                <li>Prof. Dr. Heryandi, S.H., M.S.</li>
+                                <li>Prof. Dr. Ir. Wan Abbas Zakaria, M.S.</li>
+                                <li>Prof. Dr. Ir. Murhadi, M.Si.</li>
+                                <li>Prof. Dr. Sunyono, M.Si.</li>
+                                <li>Prof. Dr. Agus Suyatna, M.Si</li>
+                                <li>Dr. M. Setyorini, M.Si.</li>
+                                <li>Dr. Pujiati, M.Pd.</li>
+                                <li>Drs. Eko Suyanto, M.Pd.</li>
+                                <li>Dr. Dwi Yulianti, M.Pd.</li>
+                                <li>Ir. Gigih Forda Nama, S.T., M.T.I., IPM</li>
+                                <li>Dr. Rangga Firdaus, M.Kom</li>
+                                <li>Prof. Bambang Setiyadi, Ph.D</li>
+                                <li>Dr. Een Yayah Haenillah, M.Pd.</li>
+                                <li>Dr. Neni Hasnunidah, M.Si.</li>
+                                <li>Prof. Dr. Buhani, M.Si.</li>
+                                <li>Dr. Pramudiyanti, M.Si</li>
+                                <li>Prof. Dr. Undang Rosidin, M.Pd</li>
+                                <li>Dr. Feni Munifatullah, M. Hum.</li>
+                                <li>Dr. Herpratiwi, M.Pd.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Tenaga Ahli Internal Universitas Lampung Lainnya
+                        <span class="accordion-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <ul class="ahli-list">
+                                <li>Prof. Dr. Ir. Murhadi, M.Si</li>
+                                <li>Sutikno, Ph.D.</li>
+                                <li>Ir. Idalina Haris, M.S.</li>
+                                <li>Dr. Herpratiwi, M. Pd</li>
+                                <li>Dr. Pujiati, S.Pd., M.Pd</li>
+                                <li>Prof. Dr. H. Bujang Rahman, M.Si</li>
+                                <li>Dr. H. Muhammad Fuad, M.Hum.</li>
+                                <li>Dr. Lilik Sabdaningtyas, M.Pd</li>
+                                <li>Dr. Een Yayah Haenilah , M.Pd.</li>
+                                <li>Dr. Riswanti Rini,, M.Si</li>
+                                <li>Dr. Undang Rosidin, M.Pd.</li>
+                                <li>Dr. Abdurrahman, M.Si</li>
+                                <li>Prof. Dr. Agus Suyatna, M.Si.</li>
+                                <li>Prof. Ag. Bambang Setiyadi, M.A., Ph.D.</li>
+                                <li>Prof. Dr. Ir. Cipta Ginting, M. Sc.</li>
+                                <li>Elida Purba , Ph.D.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Tenaga Ahli Eksternal Universitas Lampung
+                        <span class="accordion-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <ul class="ahli-list">
+                                <li>Prof. Intan Ahmad, Ph.D. (BELMAWA RISTEKDIKTI)</li>
+                                <li>Dr. Ir. Syamsul Arifin, MT. (Institut Teknologi Surabaya - ITS)</li>
+                                <li>Dr. Cut Kamaril (Universitas Negeri Jakarta - UNJ)</li>
+                                <li>Effendy, Drs., M.Pd., Ph.D,H (Universitas Negeri Malang - UM)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Tenaga Ahli Penjaminan Mutu (Quality Assurance)
+                        <span class="accordion-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p style="font-size: 0.9rem; color: var(--text-dark-secondary); margin: 16px 0;">Daftar Auditor Penjaminan Mutu Internal berdasarkan Fakultas di Universitas Lampung.</p>
+                            <div class="ahli-table-wrap">
+                                <table class="ahli-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 50px;">No.</th>
+                                            <th>Nama Auditor</th>
+                                            <th>Fakultas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>1</td><td>Ade Widiyanti, S.E., M.S.Ak,Akt</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>36</td><td>Dr. FX Sumarja, S.H., M.Hum.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>60</td><td>Agung Wibawa, S.I.Kom., M.Si</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>104</td><td>dr. Ari Wahyuni</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>128</td><td>Ari Sofia, S.Psi.,M.A.,Psi</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>198</td><td>Dian Herasari, M.Si.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>248</td><td>Ahmad Tusi, S.T.P., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>340</td><td>Dr. Eng. Ageng Sadnowo Repelianto, S.T., M.T</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>400</td><td>Agus Setiawan</td><td>Pascasarjana</td></tr>
+                                        <tr><td colspan="3" style="text-align: center; color: var(--text-muted); font-style: italic;">...dan 390+ auditor lainnya tersebar di seluruh fakultas.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="section-inner reveal">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--text-dark); margin-bottom: 8px;">Dasar Hukum Penetapan</h3>
+            <p style="color: var(--text-dark-secondary);">Legitimasi pembentukan dan pengangkatan struktur organisasi LPMPP Unila.</p>
+            
+            <div class="hukum-list">
+                <div class="hukum-item">
+                    <div class="hukum-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+                    <span>Keputusan Menteri:<br>Statuta Universitas Lampung</span>
+                </div>
+                <div class="hukum-item">
+                    <div class="hukum-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></div>
+                    <span>Keputusan Menteri:<br>Organisasi Tata Kelola Universitas Lampung</span>
+                </div>
+                <div class="hukum-item">
+                    <div class="hukum-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+                    <span>Keputusan Rektor:<br>Pengangkatan Kepala LPMPP</span>
+                </div>
+                <div class="hukum-item">
+                    <div class="hukum-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+                    <span>Keputusan Rektor:<br>Pengangkatan Sekretaris LPMPP</span>
+                </div>
+                <div class="hukum-item">
+                    <div class="hukum-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg></div>
+                    <span>Keputusan Rektor:<br>Pembentukan Pusat di LPMPP</span>
+                </div>
+                <div class="hukum-item">
+                    <div class="hukum-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg></div>
+                    <span>Keputusan Rektor:<br>Pengangkatan Kepala Pusat</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-col" style="grid-column: span 1.5;">
+                <div class="logo" style="margin-bottom: 16px;">
+                    <div class="logo-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="22" height="22">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <strong style="color:white;">LPMPP Unila</strong>
+                        <span style="color:rgba(255,255,255,.7);">Universitas Lampung</span>
+                    </div>
+                </div>
+                <p style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 16px;">Lembaga Pengembangan Pembelajaran dan Penjaminan Mutu Pendidikan Universitas Lampung. Mendukung mutu akademik yang berkelanjutan.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="lpmpp-home.html">Beranda</a></li>
+                    <li><a href="lpmpp-profil.html">Profil LPMPP</a></li>
+                    <li><a href="lpmpp-pusat.html">Pusat LPMPP</a></li>
+                    <li><a href="lpmpp-informasi.html">Informasi</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Layanan</h4>
+                <ul>
+                    <li><a href="lpmpp-layanan.html#ppid">PPID</a></li>
+                    <li><a href="lpmpp-layanan.html#layanan-dosen">BKD</a></li>
+                    <li><a href="lpmpp-layanan.html#layanan-dosen">Pelatihan</a></li>
+                    <li><a href="lpmpp-download.html">Download Dokumen</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Kontak</h4>
+                <ul>
+                    <li><a href="#">Jl. Prof. Sumantri Brojonegoro No. 1, Bandar Lampung</a></li>
+                    <li><a href="mailto:lpmpp@unila.ac.id">lpmpp@unila.ac.id</a></li>
+                    <li><a href="tel:+62721704622">(0721) 704622</a></li>
+                    <li><a href="https://lpmpp.unila.ac.id" target="_blank">lpmpp.unila.ac.id</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 LPMPP Universitas Lampung. Hak cipta dilindungi.</span>
+            <span>Dirancang ulang oleh <a href="#">Kelompok 10 &mdash; UX Design Thinking</a></span>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll
+        const navbar = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+
+        // Scroll Reveal Animation
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transitionDelay = `${(i % 5) * 0.1}s`;
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Accordion Logic
+        const accordions = document.querySelectorAll('.accordion-header');
+        accordions.forEach(acc => {
+            acc.addEventListener('click', function() {
+                // Tutup yang lain jika ingin hanya 1 yang terbuka (opsional)
+                // document.querySelectorAll('.accordion-item').forEach(item => {
+                //    if (item !== this.parentElement) {
+                //        item.classList.remove('active');
+                //        item.querySelector('.accordion-body').style.maxHeight = null;
+                //    }
+                // });
+
+                const item = this.parentElement;
+                const body = item.querySelector('.accordion-body');
+                
+                item.classList.toggle('active');
+                
+                if (item.classList.contains('active')) {
+                    body.style.maxHeight = body.scrollHeight + "px";
+                } else {
+                    body.style.maxHeight = null;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
