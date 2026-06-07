@@ -60,8 +60,8 @@
 
       --shadow-glow-blue: 0 0 60px rgba(30, 58, 138, .25);
       --shadow-glow-amber: 0 0 60px rgba(245, 158, 11, .2);
-      --shadow-card: 0 8px 32px rgba(30, 58, 138, .08);
-      --shadow-card-hover: 0 20px 60px rgba(30, 58, 138, .15);
+      --shadow-card: 0 8px 32px rgba(30, 58, 138, .25);
+      --shadow-card-hover: 0 20px 60px rgba(30, 58, 138, .32);
 
       --transition: .3s cubic-bezier(.4, 0, .2, 1);
       --transition-spring: .5s cubic-bezier(.34, 1.56, .64, 1);
@@ -91,17 +91,6 @@
       color: inherit;
     }
 
-    p {
-      line-height: 1.8;
-      margin-bottom: 16px;
-    }
-
-    ul, ol {
-      margin-left: 20px;
-      margin-bottom: 16px;
-      line-height: 1.8;
-    }
-
     /* ===================== NOISE OVERLAY ===================== */
     body::before {
       content: '';
@@ -113,6 +102,54 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
       background-repeat: repeat;
       background-size: 256px 256px;
+    }
+
+    /* ===================== TOP BAR ===================== */
+    .topbar {
+      background: white;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+      color: #64748b;
+      font-size: .75rem;
+      font-weight: 500;
+      padding: 8px 0;
+      letter-spacing: .3px;
+    }
+
+    .topbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .topbar-right a {
+      color: #64748b;
+      transition: color var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .topbar-right a:hover {
+      color: #f59e0b;
     }
 
     /* ===================== NAVBAR ===================== */
@@ -191,13 +228,51 @@
       font-weight: 500;
     }
 
+    /* Search Bar */
+    .nav-search {
+      flex: 1;
+      max-width: 260px;
+      position: relative;
+    }
+
+    .nav-search input {
+      width: 100%;
+      padding: 9px 16px 9px 40px;
+      border: 1px solid #e2e8f0;
+      border-radius: 50px;
+      font-family: inherit;
+      font-size: .82rem;
+      color: #0f172a;
+      background: #f8fafc;
+      outline: none;
+      transition: all var(--transition);
+    }
+
+    .nav-search input::placeholder {
+      color: #94a3b8;
+    }
+
+    .nav-search input:focus {
+      border-color: var(--blue-500);
+      box-shadow: 0 0 0 3px rgba(30, 58, 138, .12), 0 0 20px rgba(30, 58, 138, .15);
+      background: white;
+    }
+
+    .nav-search .search-icon {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--blue-500);
+      pointer-events: none;
+    }
+
     /* Nav Links */
     .nav-links {
       display: flex;
       align-items: center;
       gap: 2px;
       list-style: none;
-      margin: 0;
     }
 
     .nav-links>li {
@@ -270,7 +345,6 @@
       color: #475569;
       border-radius: 10px;
       transition: all var(--transition);
-      margin-bottom: 2px;
     }
 
     .dropdown a:hover {
@@ -289,6 +363,33 @@
 
     .nav-links>li:hover .chevron {
       transform: rotate(180deg);
+    }
+
+    /* CTA Button */
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .btn-nav-fill {
+      padding: 9px 20px;
+      border-radius: 10px;
+      font-size: .82rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: none;
+      background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
+      color: white;
+      box-shadow: 0 4px 16px rgba(30, 58, 138, .25);
+    }
+
+    .btn-nav-fill:hover {
+      box-shadow: 0 8px 28px rgba(30, 58, 138, .4);
+      transform: translateY(-1px);
     }
 
     /* Hamburger */
@@ -313,12 +414,11 @@
 
     /* ===================== HERO ===================== */
     .hero {
-      min-height: 60vh;
+      min-height: 100vh;
       position: relative;
       overflow: hidden;
       display: flex;
       align-items: center;
-      padding-top: 80px;
     }
 
     /* Animated mesh gradient */
@@ -342,6 +442,7 @@
       background: radial-gradient(circle, rgba(30, 58, 138, .4), transparent 70%);
       top: -15%;
       right: -10%;
+      animation-delay: 0s;
     }
 
     .hero-mesh .orb-2 {
@@ -353,11 +454,33 @@
       animation-delay: -7s;
     }
 
+    .hero-mesh .orb-3 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(175, 223, 255, .18), transparent 70%);
+      top: 40%;
+      left: 40%;
+      animation-delay: -14s;
+    }
+
     @keyframes orbFloat {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25% { transform: translate(30px, -40px) scale(1.1); }
-      50% { transform: translate(-20px, 20px) scale(.95); }
-      75% { transform: translate(15px, 30px) scale(1.05); }
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      25% {
+        transform: translate(30px, -40px) scale(1.1);
+      }
+
+      50% {
+        transform: translate(-20px, 20px) scale(.95);
+      }
+
+      75% {
+        transform: translate(15px, 30px) scale(1.05);
+      }
     }
 
     /* Grid pattern */
@@ -372,13 +495,52 @@
       -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
     }
 
+    /* Floating particles */
+    .particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(255, 255, 255, .15);
+      border-radius: 50%;
+      animation: particleRise linear infinite;
+    }
+
+    @keyframes particleRise {
+      0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+      }
+    }
+
     .hero-inner {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 60px 32px 80px;
+      padding: 120px 32px 80px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 64px;
+      align-items: center;
       position: relative;
       z-index: 1;
-      text-align: center;
     }
 
     .hero-tag {
@@ -395,7 +557,6 @@
       letter-spacing: .8px;
       text-transform: uppercase;
       margin-bottom: 24px;
-      justify-content: center;
     }
 
     .hero-tag .dot {
@@ -409,8 +570,8 @@
 
     .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
-      line-height: 1.1;
+      font-size: clamp(2.8rem, 5vw, 4rem);
+      line-height: 1.08;
       color: var(--text-primary);
       margin-bottom: 24px;
       letter-spacing: -.02em;
@@ -428,13 +589,366 @@
       font-size: 1.05rem;
       line-height: 1.8;
       color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto 40px;
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: linear-gradient(135deg, var(--amber-500), #e67e22);
+      color: #0f172a;
+      font-weight: 800;
+      font-size: .92rem;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all var(--transition);
+      box-shadow: 0 4px 24px rgba(245, 158, 11, .3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(255, 255, 255, .2), transparent);
+      transform: translateX(-100%);
+      transition: transform .5s;
+    }
+
+    .btn-primary:hover::before {
+      transform: translateX(100%);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(245, 158, 11, .45);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: var(--bg-glass);
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: .92rem;
+      border-radius: 14px;
+      border: 1px solid var(--border-glass-hover);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all var(--transition);
+      backdrop-filter: blur(12px);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-glass-hover);
+      border-color: rgba(255, 255, 255, .25);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, .3);
+    }
+
+    /* Hero stats */
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border-glass);
+    }
+
+    .stat {
+      text-align: left;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-num span {
+      background: linear-gradient(135deg, var(--amber-400), var(--rose-400));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: italic;
+    }
+
+    .stat-label {
+      font-size: .78rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    /* Hero visual card */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-card {
+      background: white;
+      border: 1px solid var(--surface-200);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      width: 100%;
+      max-width: 460px;
+      transition: all var(--transition);
+      box-shadow: var(--shadow-card);
+    }
+
+    .hero-card:hover {
+      border-color: var(--border-glass-hover);
+      box-shadow: var(--shadow-card-hover), var(--shadow-glow-blue);
+      transform: translateY(-4px);
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .card-icon-wrap {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, .2), rgba(245, 158, 11, .05));
+      border: 1px solid rgba(245, 158, 11, .15);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-card-header h3 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .hero-card-header p {
+      font-size: .75rem;
+      color: var(--text-dark-secondary);
+      margin-top: 2px;
+    }
+
+    .quick-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .quick-link-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 14px;
+      background: rgba(30, 58, 138, .16);
+      border: 1px solid rgba(30, 58, 138, .25);
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all var(--transition-spring);
+      text-align: center;
+    }
+
+    .quick-link-item:hover {
+      background: rgba(30, 58, 138, .22);
+      border-color: var(--blue-500);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, .16);
+    }
+
+    .quick-link-item .icon-wrap {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+    }
+
+    .quick-link-item:hover .icon-wrap {
+      transform: scale(1.1) rotate(-3deg);
+    }
+
+    .quick-link-item span {
+      font-size: .74rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .ql-blue {
+      background: rgba(30, 58, 138, .15);
+      border: 1px solid rgba(30, 58, 138, .1);
+    }
+
+    .ql-gold {
+      background: rgba(245, 158, 11, .15);
+      border: 1px solid rgba(245, 158, 11, .1);
+    }
+
+    .ql-green {
+      background: rgba(16, 185, 129, .15);
+      border: 1px solid rgba(16, 185, 129, .1);
+    }
+
+    .ql-purple {
+      background: rgba(139, 92, 246, .15);
+      border: 1px solid rgba(139, 92, 246, .1);
+    }
+
+    /* Floating badge */
+    .floating-badge {
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      background: linear-gradient(135deg, var(--amber-400), var(--amber-500));
+      color: #0f172a;
+      border-radius: 16px;
+      padding: 16px 20px;
+      font-weight: 800;
+      font-size: .78rem;
+      box-shadow: 0 8px 32px rgba(245, 158, 11, .35);
+      animation: float 5s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    .floating-badge .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      display: block;
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .5; transform: scale(1.5); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: .5;
+        transform: scale(1.5);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    /* ===================== MARQUEE STRIP ===================== */
+    .marquee-strip {
+      background: white;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 16px 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marqueeScroll 30s linear infinite;
+      width: max-content;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes marqueeScroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .qa-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 32px;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all var(--transition);
+      border-right: 1px solid #e2e8f0;
+    }
+
+    .qa-item:hover {
+      background: #f8fafc;
+    }
+
+    .qa-item:hover .qa-icon {
+      background: var(--blue-600);
+      border-color: var(--blue-500);
+      box-shadow: 0 0 16px rgba(30, 58, 138, .3);
+    }
+
+    .qa-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      color: var(--blue-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all var(--transition);
+    }
+
+    .qa-item:hover .qa-icon {
+      background: rgba(30, 58, 138, .08);
+      border-color: rgba(30, 58, 138, .18);
+      box-shadow: 0 0 16px rgba(30, 58, 138, .2);
+      color: var(--blue-500);
+    }
+
+    .qa-label {
+      font-size: .78rem;
+      font-weight: 700;
+      color: #475569;
+      white-space: nowrap;
     }
 
     /* ===================== SECTION SHARED ===================== */
@@ -444,21 +958,18 @@
     }
 
     .section-inner {
-      max-width: 1080px; /* Lebar dibatasi agar teks lebih nyaman dibaca */
+      max-width: 1280px;
       margin: 0 auto;
       padding: 0 32px;
     }
 
+    /* Light section */
     .section-light {
       background: var(--surface-light);
       color: var(--text-dark);
     }
 
-    .section-white {
-        background: #ffffff;
-        color: var(--text-dark);
-    }
-
+    /* Curved divider */
     .curve-divider {
       position: relative;
       height: 80px;
@@ -475,7 +986,6 @@
 
     .section-head {
       margin-bottom: 56px;
-      text-align: center;
     }
 
     .section-label {
@@ -499,8 +1009,12 @@
       border-radius: 2px;
     }
 
-    .section-light .section-label, .section-white .section-label {
+    .section-light .section-label {
       color: var(--blue-600);
+    }
+
+    .section-light .section-label::before {
+      background: linear-gradient(90deg, var(--blue-600), var(--indigo-500));
     }
 
     .section-title {
@@ -511,197 +1025,761 @@
       letter-spacing: -.02em;
     }
 
-    .section-light .section-title, .section-white .section-title {
+    .section-light .section-title {
       color: var(--text-dark);
     }
 
     .section-subtitle {
       font-size: .95rem;
       color: var(--text-secondary);
-      max-width: 700px;
-      margin: 0 auto;
+      max-width: 560px;
       line-height: 1.75;
     }
 
-    .section-light .section-subtitle, .section-white .section-subtitle {
+    .section-light .section-subtitle {
       color: var(--text-dark-secondary);
     }
 
-    /* ===================== CARDS & CONTENT BLOCKS ===================== */
-    .content-card {
-      background: white;
-      border: 1px solid var(--surface-200);
-      border-radius: var(--radius);
-      padding: 40px;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 32px;
+    /* ===================== SERVICES ===================== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: all var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue-500), var(--indigo-500));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top right, rgba(30, 58, 138, .08), transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .service-card:hover {
+      border-color: var(--border-glass-hover);
+      box-shadow: var(--shadow-card-hover), var(--shadow-glow-blue);
+      transform: translateY(-6px);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-card:hover::after {
+      opacity: 1;
+    }
+
+    .svc-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
       transition: all var(--transition);
     }
 
-    .content-card:hover {
+    .service-card:hover .svc-icon {
+      transform: scale(1.1) rotate(-3deg);
+    }
+
+    .svc-blue {
+      background: rgba(30, 58, 138, .12);
+      border: 1px solid rgba(30, 58, 138, .08);
+      color: var(--blue-400);
+    }
+
+    .svc-gold {
+      background: rgba(245, 158, 11, .12);
+      border: 1px solid rgba(245, 158, 11, .08);
+      color: var(--amber-400);
+    }
+
+    .svc-green {
+      background: rgba(16, 185, 129, .12);
+      border: 1px solid rgba(16, 185, 129, .08);
+      color: var(--emerald-400);
+    }
+
+    .svc-purple {
+      background: rgba(139, 92, 246, .12);
+      border: 1px solid rgba(139, 92, 246, .08);
+      color: var(--violet-500);
+    }
+
+    .svc-red {
+      background: rgba(251, 113, 133, .12);
+      border: 1px solid rgba(251, 113, 133, .08);
+      color: var(--rose-400);
+    }
+
+    .svc-teal {
+      background: rgba(34, 211, 238, .12);
+      border: 1px solid rgba(34, 211, 238, .08);
+      color: var(--cyan-400);
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card p {
+      font-size: .84rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .svc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--blue-400);
+      transition: all var(--transition);
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card:hover .svc-link {
+      gap: 12px;
+      color: var(--amber-400);
+    }
+
+    /* ===================== NEWS ===================== */
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 24px;
+    }
+
+    .news-featured {
+      background: linear-gradient(160deg, var(--blue-500), var(--blue-600));
+      border: 1px solid rgba(30, 58, 138, .3);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+      min-height: 440px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .news-featured:hover {
+      border-color: rgba(30, 58, 138, .5);
       box-shadow: var(--shadow-card-hover);
-      border-color: var(--blue-400);
+      transform: translateY(-4px);
+    }
+
+    .news-featured-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(30, 58, 138, .25) 0%, rgba(136, 170, 236, .12) 50%, transparent 100%);
+    }
+
+    .news-featured-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30, 58, 138, .95) 30%, rgba(30, 58, 138, .4) 70%, transparent 100%);
+    }
+
+    .news-featured-content {
+      position: relative;
+      z-index: 1;
+      padding: 36px;
+    }
+
+    .news-badge {
+      display: inline-block;
+      padding: 5px 14px;
+      background: linear-gradient(135deg, var(--amber-500), #e67e22);
+      color: #0f172a;
+      border-radius: 50px;
+      font-size: .7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      margin-bottom: 14px;
+    }
+
+    .news-featured h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .news-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .78rem;
+      color: var(--text-muted);
+    }
+
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .news-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius);
+      padding: 20px;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .news-item:hover {
+      border-color: var(--border-glass-hover);
+      box-shadow: var(--shadow-card);
+      transform: translateX(4px);
+    }
+
+    .news-item-label {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 10px;
+    }
+
+    .label-spmi {
+      background: rgba(30, 58, 138, .15);
+      color: var(--blue-400);
+    }
+
+    .label-akreditasi {
+      background: rgba(245, 158, 11, .15);
+      color: var(--amber-400);
+    }
+
+    .label-kegiatan {
+      background: rgba(16, 185, 129, .15);
+      color: var(--emerald-400);
+    }
+
+    .news-item h4 {
+      font-size: .88rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .news-item p {
+      font-size: .78rem;
+      color: var(--text-muted);
+    }
+
+    /* View All */
+    .view-all-wrap {
+      margin-top: 36px;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 1px solid var(--border-glass-hover);
+      border-radius: 12px;
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      background: transparent;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all var(--transition);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--blue-500);
+      color: var(--blue-500);
+      background: rgba(30, 58, 138, .1);
+      box-shadow: 0 0 24px rgba(30, 58, 138, .15);
       transform: translateY(-2px);
     }
 
-    .content-card h3 {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.5rem;
-        color: var(--blue-600);
-        margin-bottom: 16px;
+    .section-light .btn-outline {
+      border-color: var(--surface-200);
+      color: var(--text-dark);
     }
 
-    .content-card p {
-        color: var(--text-dark-secondary);
-        font-size: 0.95rem;
-        text-align: justify;
+    .section-light .btn-outline:hover {
+      border-color: var(--blue-500);
+      color: var(--blue-500);
+      background: rgba(30, 58, 138, .05);
     }
 
-    .list-leadership {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-        margin-top: 24px;
+    /* ===================== DOCS GRID ===================== */
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
     }
 
-    .list-leadership h4 {
-        color: var(--blue-500);
-        margin-bottom: 12px;
-        font-size: 1.05rem;
+    .doc-card {
+      background: white;
+      border: 1.5px solid var(--surface-200);
+      border-radius: var(--radius);
+      padding: 24px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition-spring);
+      position: relative;
+      overflow: hidden;
     }
 
-    .list-leadership ol {
-        color: var(--text-dark-secondary);
-        font-size: 0.9rem;
+    .doc-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(30, 58, 138, .04), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
     }
 
-    .list-leadership ol li {
-        margin-bottom: 8px;
+    .doc-card:hover {
+      border-color: var(--blue-500);
+      box-shadow: 0 12px 40px rgba(30, 58, 138, .15);
+      transform: translateY(-6px);
     }
 
-    .update-box {
-        background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(79, 111, 212, 0.05));
-        border-left: 4px solid var(--amber-500);
-        padding: 24px;
-        border-radius: 0 var(--radius) var(--radius) 0;
-        margin-top: 24px;
+    .doc-card:hover::before {
+      opacity: 1;
     }
 
-    .update-box p {
-        margin-bottom: 12px;
-    }
-    
-    .update-box p:last-child {
-        margin-bottom: 0;
-    }
-
-    /* Download/Link Cards */
-    .link-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        margin-top: 24px;
+    .doc-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 14px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      position: relative;
+      z-index: 1;
     }
 
-    .doc-link-card {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        padding: 20px;
-        background: var(--surface-100);
-        border: 1px solid var(--surface-200);
-        border-radius: 16px;
-        color: var(--text-dark);
-        font-weight: 600;
-        transition: all var(--transition);
-        text-decoration: none;
+    .doc-card:hover .doc-icon {
+      transform: scale(1.1) rotate(-5deg);
     }
 
-    .doc-link-card:hover {
-        background: white;
-        border-color: var(--blue-500);
-        box-shadow: 0 10px 25px rgba(30, 58, 138, 0.1);
-        transform: translateY(-3px);
-        color: var(--blue-600);
+    .doc-card h4 {
+      font-size: .84rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+      line-height: 1.4;
+      position: relative;
+      z-index: 1;
     }
 
-    .doc-link-card svg {
-        color: var(--amber-500);
-        flex-shrink: 0;
+    .doc-card span {
+      font-size: .72rem;
+      color: var(--text-dark-secondary);
+      position: relative;
+      z-index: 1;
     }
 
-    /* Video Profil Section */
-    .video-meta {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-        flex-wrap: wrap;
-        font-size: 0.85rem;
-        color: var(--text-secondary);
-        margin-bottom: 24px;
+    /* Light section icon colors */
+    .section-light .svc-blue {
+      background: rgba(37, 99, 235, .08);
+      color: var(--blue-600);
     }
 
-    .video-meta span {
-        display: flex;
-        align-items: center;
-        gap: 6px;
+    .section-light .svc-gold {
+      background: rgba(245, 158, 11, .08);
+      color: var(--amber-500);
     }
 
-    .video-card {
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: var(--radius-lg);
-        padding: 40px;
-        text-align: center;
-        backdrop-filter: blur(10px);
+    .section-light .svc-green {
+      background: rgba(16, 185, 129, .08);
+      color: var(--emerald-500);
     }
 
-    .btn-play {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 16px 32px;
-        background: linear-gradient(135deg, var(--amber-500), #e67e22);
-        color: #0f172a;
-        font-weight: 800;
-        font-size: 1rem;
-        border-radius: 14px;
-        border: none;
-        cursor: pointer;
-        transition: all var(--transition);
-        box-shadow: 0 4px 24px rgba(245, 158, 11, .3);
-        text-decoration: none;
+    .section-light .svc-purple {
+      background: rgba(139, 92, 246, .08);
+      color: var(--violet-500);
     }
 
-    .btn-play:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 40px rgba(245, 158, 11, .45);
+    .section-light .svc-red {
+      background: rgba(244, 63, 94, .08);
+      color: var(--rose-500);
     }
 
-    .post-nav {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-        margin-top: 40px;
-        border-top: 1px solid var(--border-glass);
-        padding-top: 24px;
+    /* ===================== AKREDITASI ===================== */
+    .akreditasi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 56px;
+      align-items: center;
     }
 
-    .post-nav a {
-        font-size: 0.85rem;
-        color: var(--blue-400);
-        font-weight: 600;
-        transition: color var(--transition);
-        flex: 1;
+    .akreditasi-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 36px;
     }
 
-    .post-nav a:hover {
-        color: var(--amber-400);
+    .akreditasi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: all var(--transition);
     }
 
-    .post-nav a.next {
-        text-align: right;
+    .akreditasi-card:hover {
+      border-color: var(--border-glass-hover);
+      box-shadow: var(--shadow-card);
+      transform: translateY(-3px);
+    }
+
+    .akreditasi-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .akreditasi-num span {
+      background: linear-gradient(135deg, var(--blue-400), var(--indigo-500));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .akreditasi-card p {
+      font-size: .8rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .akreditasi-visual {
+      background: linear-gradient(160deg, rgba(30, 58, 138, .9), rgba(136, 170, 236, .7));
+      border: 1px solid rgba(30, 58, 138, .3);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .akreditasi-visual::before {
+      content: '';
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(175, 223, 255, .2) 0%, transparent 70%);
+      top: -120px;
+      right: -120px;
+      border-radius: 50%;
+    }
+
+    .akreditasi-badge-main {
+      background: linear-gradient(135deg, var(--amber-400), var(--amber-500));
+      color: #0f172a;
+      border-radius: 18px;
+      padding: 28px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 32px rgba(245, 158, 11, .25);
+    }
+
+    .akreditasi-badge-main .grade {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: #0f172a;
+      line-height: 1;
+    }
+
+    .akreditasi-badge-main .grade-label {
+      font-size: .8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+
+    .akredetasi-list {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .akredetasi-list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: 12px;
+      padding: 14px 18px;
+      transition: all var(--transition);
+    }
+
+    .akredetasi-list-item:hover {
+      background: var(--bg-glass-hover);
+      transform: translateX(4px);
+    }
+
+    .akredetasi-list-item span:first-child {
+      font-size: .84rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .status-badge {
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: .3px;
+    }
+
+    .status-unggul {
+      background: rgba(52, 211, 153, .15);
+      color: var(--emerald-400);
+    }
+
+    .status-baik {
+      background: rgba(30, 58, 138, .15);
+      color: var(--blue-400);
+    }
+
+    /* ===================== SCHEDULE ===================== */
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+    }
+
+    .calendar-widget {
+      background: white;
+      border: 1.5px solid var(--surface-200);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, .04);
+    }
+
+    .cal-header {
+      background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
+      color: white;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cal-header h3 {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .cal-nav {
+      display: flex;
+      gap: 8px;
+    }
+
+    .cal-nav button {
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .15);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: .85rem;
+      transition: all var(--transition);
+    }
+
+    .cal-nav button:hover {
+      background: rgba(255, 255, 255, .2);
+    }
+
+    .cal-days-header {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      padding: 14px 16px 6px;
+    }
+
+    .cal-days-header span {
+      text-align: center;
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--text-dark-secondary);
+      text-transform: uppercase;
+    }
+
+    .cal-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      padding: 0 16px 16px;
+      gap: 2px;
+    }
+
+    .cal-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--text-dark-secondary);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .cal-day:hover {
+      background: var(--surface-100);
+      color: var(--text-dark);
+    }
+
+    .cal-day.other-month {
+      color: var(--surface-200);
+    }
+
+    .cal-day.today {
+      background: linear-gradient(135deg, var(--blue-600), var(--indigo-500));
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(30, 58, 138, .3);
+    }
+
+    .cal-day.has-event {
+      position: relative;
+    }
+
+    .cal-day.has-event::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      width: 4px;
+      height: 4px;
+      background: var(--amber-500);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--amber-500);
+    }
+
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .event-item {
+      display: flex;
+      gap: 16px;
+      padding: 18px;
+      background: white;
+      border: 1.5px solid var(--surface-200);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .event-item:hover {
+      border-color: var(--blue-500);
+      box-shadow: 0 8px 24px rgba(30, 58, 138, .15);
+      transform: translateX(4px);
+    }
+
+    .event-date {
+      text-align: center;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
+      color: white;
+      border-radius: 12px;
+      padding: 10px 14px;
+      min-width: 56px;
+    }
+
+    .event-date .date-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .event-date .date-month {
+      font-size: .65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      opacity: .7;
+    }
+
+    .event-info h4 {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .event-info p {
+      font-size: .78rem;
+      color: var(--text-dark-secondary);
+    }
+
+    .event-tag {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
     /* ===================== FOOTER ===================== */
@@ -711,6 +1789,17 @@
       padding: 80px 0 0;
       border-top: 1px solid var(--border-glass);
       position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--blue-500), var(--indigo-500), transparent);
     }
 
     .footer-inner {
@@ -729,11 +1818,48 @@
       box-shadow: none;
     }
 
+    .footer-brand .logo-text strong {
+      color: var(--text-primary);
+      font-size: 1.05rem;
+    }
+
+    .footer-brand .logo-text span {
+      color: var(--text-muted);
+    }
+
     .footer-brand p {
       margin-top: 18px;
       font-size: .84rem;
       line-height: 1.8;
       color: var(--text-muted);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition);
+      color: var(--text-muted);
+    }
+
+    .social-btn:hover {
+      background: var(--bg-glass-hover);
+      border-color: var(--border-glass-hover);
+      color: var(--text-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .3);
     }
 
     .footer-col h4 {
@@ -750,11 +1876,6 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin: 0;
-    }
-
-    .footer-col ul li {
-        margin: 0;
     }
 
     .footer-col ul li a {
@@ -781,7 +1902,88 @@
       color: var(--text-muted);
     }
 
-    /* ===================== ANIMATIONS ===================== */
+    .footer-bottom a {
+      color: var(--amber-400);
+      transition: color var(--transition);
+    }
+
+    .footer-bottom a:hover {
+      color: var(--amber-500);
+    }
+
+    /* ===================== MOBILE MENU ===================== */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, .98);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index: 2000;
+      padding: 90px 24px 40px;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform .4s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      color: #0f172a;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+    }
+
+    .mobile-menu-close:hover {
+      background: #e2e8f0;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mobile-nav-links li a {
+      display: block;
+      padding: 16px 18px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #475569;
+      border-radius: 14px;
+      transition: all var(--transition);
+    }
+
+    .mobile-nav-links li a:hover {
+      background: #f1f5f9;
+      color: var(--blue-500);
+    }
+
+    .mobile-divider {
+      height: 1px;
+      background: #e2e8f0;
+      margin: 12px 0;
+    }
+
+    /* ===================== SCROLL ANIMATIONS ===================== */
     .reveal {
       opacity: 0;
       transform: translateY(32px);
@@ -800,407 +2002,525 @@
     }
 
     @keyframes heroFadeIn {
-      to { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .ha-1 { animation-delay: .1s; }
-    .ha-2 { animation-delay: .25s; }
-    .ha-3 { animation-delay: .4s; }
+    .ha-1 {
+      animation-delay: .1s;
+    }
+
+    .ha-2 {
+      animation-delay: .25s;
+    }
+
+    .ha-3 {
+      animation-delay: .4s;
+    }
+
+    .ha-4 {
+      animation-delay: .55s;
+    }
+
+    .ha-5 {
+      animation-delay: .7s;
+    }
+
+    .ha-6 {
+      animation-delay: .85s;
+    }
+
+    /* ===================== SEARCH OVERLAY ===================== */
+    .search-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(24, 55, 110, .7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 900;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 100px;
+    }
+
+    .search-overlay.show {
+      display: flex;
+    }
+
+    .search-box {
+      background: rgba(24, 55, 110, .95);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-xl);
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .5);
+      overflow: hidden;
+    }
+
+    .search-box-input {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-glass);
+    }
+
+    .search-box-input input {
+      flex: 1;
+      font-family: inherit;
+      font-size: 1rem;
+      border: none;
+      outline: none;
+      color: var(--text-primary);
+      background: transparent;
+    }
+
+    .search-box-input input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-suggestions {
+      padding: 12px;
+    }
+
+    .search-suggestion {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .search-suggestion:hover {
+      background: var(--bg-glass-hover);
+    }
+
+    .search-suggestion span {
+      font-size: .82rem;
+      color: var(--text-muted);
+    }
+
+    .search-suggestion strong {
+      font-size: .88rem;
+      color: var(--text-primary);
+      display: block;
+    }
 
     /* ===================== RESPONSIVE ===================== */
     @media (max-width: 1024px) {
-      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .docs-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .hero-title { font-size: 2.2rem; }
-      .list-leadership { grid-template-columns: 1fr; gap: 16px; }
-      .link-grid { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
-      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
-      .section { padding: 64px 0; }
-      .post-nav { flex-direction: column; text-align: left; }
-      .post-nav a.next { text-align: left; }
+
+      .nav-links,
+      .nav-search,
+      .nav-cta .btn-nav-fill {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .topbar-right .btn-topbar {
+        display: none;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 100px 24px 60px;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .hero-card {
+        max-width: 100%;
+      }
+
+      .floating-badge {
+        display: none;
+      }
+
+      .hero-stats {
+        gap: 28px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .docs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .akreditasi-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .schedule-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .section-inner {
+        padding: 0 20px;
+      }
+
+      .topbar-inner,
+      .navbar-inner {
+        padding: 0 20px;
+      }
     }
-    </style>
+
+    @media (max-width: 480px) {
+      .docs-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .hero-stats {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .akreditasi-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===================== BACK TO TOP ===================== */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--blue-600), var(--indigo-500));
+      color: white;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 800;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(16px);
+      transition: all var(--transition);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, .3);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(99, 102, 241, .45);
+    }
+  </style>
 </head>
 
 <body>
 
     <!-- ===== NAVBAR ===== -->
-  <nav class="navbar" id="mainNav">
-    <div class="navbar-inner">
-      <a href="lpmpp-home.html" class="logo">
-        <div class="logo-badge">
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Shield background -->
-            <path d="M50 8C50 8 20 25 20 45C20 70 50 88 50 88C50 88 80 70 80 45C80 25 50 8 50 8Z" fill="white" stroke="white" stroke-width="1"/>
-            <!-- Inner circle -->
-            <circle cx="50" cy="50" r="28" fill="#1E3A8A" stroke="white" stroke-width="1.5"/>
-            <!-- Lamp symbol -->
-            <path d="M50 32V45M45 42H55M46 45H54C54 45 54 50 50 55C46 50 46 45 46 45Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <!-- Book symbol lines -->
-            <line x1="42" y1="58" x2="58" y2="58" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="42" y1="62" x2="58" y2="62" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="logo-text">
-          <strong>LPMPP Unila</strong>
-          <span>Penjaminan Mutu & Pembelajaran</span>
-        </div>
-      </a>
+    <nav class="navbar" id="mainNav">
+        <div class="navbar-inner">
+            <a href="lpmpp-home.html" class="logo">
+                <div class="logo-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <strong>LPMPP Unila</strong>
+                    <span>Penjaminan Mutu & Pembelajaran</span>
+                </div>
+            </a>
 
-      <button class="nav-search-btn" id="searchBtn" aria-label="Cari"
-        style="background:var(--surface-light);border:1px solid var(--surface-200);color:var(--blue-500);width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all var(--transition);box-shadow:0 8px 20px rgba(30, 58, 138, .08);"><svg
-          width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <circle cx="11" cy="11" r="8" />
-          <line x1="21" y1="21" x2="16.65" y2="16.65" />
-        </svg></button>
+            <button class="nav-search-btn" id="searchBtn" aria-label="Cari"
+                style="background:var(--surface-light);border:1px solid var(--surface-200);color:var(--blue-500);width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all var(--transition);box-shadow:0 8px 20px rgba(30, 58, 138, .08);"><svg
+                    width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></button>
 
-      <ul class="nav-links">
-        <li><a href="lpmpp-home.html">Beranda</a></li>
-        <li class="active">
-          <button>Profil <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="6 9 12 15 18 9" />
-            </svg></button>
-          <div class="dropdown">
-            <a href="lpmpp-profil.html">Tentang LPMPP</a>
-            <a href="lpmpp-struktur.html">Struktur Organisasi & SDM</a>
-            <a href="lpmpp-renstra.html">Peran & Rencana Strategis</a>
-            <a href="lpmpp-iso.html">Sertifikasi ISO</a>
-          </div>
-        </li>
-        <li>
+            <ul class="nav-links">
+                <li><a href="lpmpp-home.html">Beranda</a></li>
+                <li class="active">
+                    <button>Profil <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg></button>
+                    <div class="dropdown">
+                        <a href="lpmpp-profil.html">Tentang LPMPP</a>
+                        <a href="lpmpp-struktur.html">Struktur Organisasi & SDM</a>
+                        <a href="lpmpp-renstra.html">Peran & Rencana Strategis</a>
+                        <a href="lpmpp-iso.html">Sertifikasi ISO</a>
+                    </div>
+                </li>
+                <li>
           <a href="lpmpp-pusat.html">Pusat LPMPP</a>
         </li>
-        <li>
-          <button>Informasi <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5">
-              <polyline points="6 9 12 15 18 9" />
-            </svg></button>
-          <div class="dropdown">
-            <a href="lpmpp-informasi.html#peraturan">Peraturan Akademik</a>
-            <a href="lpmpp-informasi.html#kurikulum-info">Panduan Kurikulum 2025</a>
-            <a href="lpmpp-informasi.html#kurikulum-info">Kampus Berdampak</a>
-            <a href="lpmpp-informasi.html">Kelulusan Tepat Waktu</a>
-          </div>
-        </li>
-        <li>
-          <button>Kerja Sama <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5">
-              <polyline points="6 9 12 15 18 9" />
-            </svg></button>
-          <div class="dropdown">
-            <a href="lpmpp-kerjasama.html#program-asuh">Program Asuh PTS</a>
-            <a href="lpmpp-kerjasama.html#bks-ptn">FPM BKS PTN Barat</a>
-          </div>
-        </li>
-        <li>
-          <button>Arsip <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="6 9 12 15 18 9" />
-            </svg></button>
-          <div class="dropdown">
-            <a href="#weblog-ppm">WEBLOG PPM</a>
-            <a href="#weblog-ppaiip">WEBLOG PPAIIP</a>
-          </div>
-        </li>
-        <li>
-          <button>Survey <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="6 9 12 15 18 9" />
-            </svg></button>
-          <div class="dropdown">
-            <a href="#survey-skp">Isi Survey SKP</a>
-            <a href="#skp-internal">SKP Internal LPMPP</a>
-            <a href="#laporan-skp">Laporan SKP</a>
-          </div>
-        </li>
-        <li>
-          <button>Layanan <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="6 9 12 15 18 9" />
-            </svg></button>
-          <div class="dropdown">
-            <a href="lpmpp-layanan.html#ppid">PPID</a>
-            <a href="lpmpp-layanan.html#layanan-dosen">BKD</a>
-            <a href="lpmpp-layanan.html#layanan-dosen">Pelatihan</a>
-          </div>
-        </li>
-        <li>
-          <button>Data Akreditasi <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5">
-              <polyline points="6 9 12 15 18 9" />
-            </svg></button>
-          <div class="dropdown">
-            <a href="lpmpp-akreditasi.html">Akreditasi Institusi Unila</a>
-            <a href="lpmpp-akreditasi.html#prodi">Peringkat Akreditasi Prodi</a>
-            <a href="lpmpp-akreditasi.html#internasional">Status Akreditasi Internasional</a>
-            <a href="lpmpp-akreditasi.html#instrumen">Instrumen Akreditasi</a>
-          </div>
-        </li>
-        <li><a href="lpmpp-download.html">Download</a></li>
-        <li><a href="lpmpp-studitiru.html">Studi Tiru</a></li>
-      </ul>
+                <li>
+                    <button>Informasi <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg></button>
+                    <div class="dropdown">
+                        <a href="lpmpp-informasi.html#peraturan">Peraturan Akademik</a>
+                        <a href="lpmpp-informasi.html#kurikulum-info">Panduan Kurikulum 2025</a>
+                        <a href="lpmpp-informasi.html#kurikulum-info">Kampus Berdampak</a>
+                        <a href="lpmpp-informasi.html">Kelulusan Tepat Waktu</a>
+                    </div>
+                </li>
+                <li>
+                    <button>Kerja Sama <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg></button>
+                    <div class="dropdown">
+                        <a href="lpmpp-kerjasama.html#program-asuh">Program Asuh PTS</a>
+                        <a href="lpmpp-kerjasama.html#bks-ptn">FPM BKS PTN Barat</a>
+                    </div>
+                </li>
+                <li>
+                    <button>Arsip <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg></button>
+                    <div class="dropdown">
+                        <a href="#weblog-ppm">WEBLOG PPM</a>
+                        <a href="#weblog-ppaiip">WEBLOG PPAIIP</a>
+                    </div>
+                </li>
+                <li>
+                    <button>Survey <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg></button>
+                    <div class="dropdown">
+                        <a href="#survey-skp">Isi Survey SKP</a>
+                        <a href="#skp-internal">SKP Internal LPMPP</a>
+                        <a href="#laporan-skp">Laporan SKP</a>
+                    </div>
+                </li>
+                <li>
+                    <button>Layanan <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg></button>
+                    <div class="dropdown">
+                        <a href="lpmpp-layanan.html#ppid">PPID</a>
+                        <a href="lpmpp-layanan.html#layanan-dosen">BKD</a>
+                        <a href="lpmpp-layanan.html#layanan-dosen">Pelatihan</a>
+                    </div>
+                </li>
+                <li>
+                    <button>Data Akreditasi <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg></button>
+                    <div class="dropdown">
+                        <a href="lpmpp-akreditasi.html">Akreditasi Institusi Unila</a>
+                        <a href="lpmpp-akreditasi.html#prodi">Peringkat Akreditasi Prodi</a>
+                        <a href="lpmpp-akreditasi.html#internasional">Status Akreditasi Internasional</a>
+                        <a href="lpmpp-akreditasi.html#instrumen">Instrumen Akreditasi</a>
+                    </div>
+                </li>
+                <li><a href="lpmpp-download.html">Download</a></li>
+                <li><a href="lpmpp-studitiru.html">Studi Tiru</a></li>
+            </ul>
 
-      <div class="nav-cta">
-        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+            <div class="nav-cta">
+                <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== MOBILE MENU ===== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileClose">&times;</button>
+        <ul class="mobile-nav-links">
+            <li><a href="lpmpp-home.html">Beranda</a></li>
+            <div class="mobile-divider"></div>
+            <li class="active"><a href="lpmpp-profil.html">Profil</a></li>
+            <li><a href="lpmpp-pusat.html">Pusat LPMPP</a></li>
+            <li><a href="lpmpp-informasi.html">Informasi</a></li>
+            <li><a href="lpmpp-kerjasama.html">Kerja Sama</a></li>
+            <li><a href="#">Arsip</a></li>
+            <li><a href="#">Survey</a></li>
+            <li><a href="lpmpp-layanan.html">Layanan</a></li>
+            <li><a href="lpmpp-akreditasi.html">Data Akreditasi</a></li>
+            <li><a href="lpmpp-download.html">Download</a></li>
+            <li><a href="lpmpp-studitiru.html">Studi Tiru</a></li>
+            <div class="mobile-divider"></div>
+        </ul>
     </div>
-  </nav>
 
-    <section class="hero">
+    <!-- ===== SEARCH OVERLAY ===== -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-box">
+            <div class="search-box-input">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input type="text" placeholder="Cari dokumen, layanan, informasi..." id="searchOverlayInput" autofocus
+                    autocomplete="off" />
+            </div>
+            <div class="search-suggestions"></div>
+        </div>
+    </div>
+    <!-- ===== HERO PROFIL ===== -->
+    <section class="hero" style="min-height: 60vh; padding-top: 100px;">
         <div class="hero-mesh">
             <div class="orb orb-1"></div>
             <div class="orb orb-2"></div>
         </div>
         <div class="hero-grid"></div>
+        <div class="particles" id="particles"></div>
 
-        <div class="hero-inner">
-            <div class="hero-tag hero-animate ha-1">
-                <span class="dot"></span>
-                Tentang Kami
+        <div class="hero-inner" style="grid-template-columns: 1fr; text-align: center;">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="hero-tag hero-animate ha-1" style="justify-content: center;">
+                    <span class="dot"></span>
+                    Tentang Kami
+                </div>
+
+                <h1 class="hero-title hero-animate ha-2" style="font-size: clamp(2.5rem, 4vw, 3.5rem);">
+                    Membangun <em>Mutu Akademik</em><br>yang Berkelanjutan
+                </h1>
+
+                <p class="hero-desc hero-animate ha-3" style="max-width: 600px; margin: 0 auto 40px;">
+                    Lembaga Pengembangan Pembelajaran dan Penjaminan Mutu Pendidikan (LPMPP) Universitas Lampung
+                    berkomitmen untuk terus berinovasi dalam mengawal mutu pendidikan, akreditasi, dan kurikulum demi
+                    terwujudnya visi Universitas Lampung.
+                </p>
             </div>
-
-            <h1 class="hero-title hero-animate ha-2">
-                Membangun <em>Mutu Akademik</em><br>yang Berkelanjutan
-            </h1>
-
-            <p class="hero-desc hero-animate ha-3">
-                Lembaga Pengembangan Pembelajaran dan Penjaminan Mutu Pendidikan (LPMPP) Universitas Lampung
-                berkomitmen untuk terus berinovasi dalam mengawal mutu pendidikan, akreditasi, dan kurikulum demi
-                terwujudnya visi Universitas Lampung.
-            </p>
         </div>
     </section>
 
+    <!-- ===== CURVE DIVIDER ===== -->
     <div class="curve-divider">
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
             <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="var(--surface-light)" />
         </svg>
     </div>
 
-    <section class="section section-light" id="profil-lembaga">
+    <!-- ===== VISI & MISI ===== -->
+    <section class="section section-light" id="renstra">
         <div class="section-inner">
-            <div class="section-head reveal">
-                <div class="section-label">Profil Lembaga</div>
-                <h2 class="section-title">Sejarah & Perkembangan</h2>
-                <p class="section-subtitle">
-                    Transformasi penjaminan mutu internal Universitas Lampung dari tahun 2003 hingga struktur kelembagaan modern LPMPP saat ini.
-                </p>
-            </div>
-
-            <div class="content-card reveal">
-                <h3>Awal Mula Penjaminan Mutu</h3>
-                <p>Universitas Lampung (Unila), sejak tahun 2003 telah melaksanakan audit internal khususnya untuk kegiatan perkuliahan yang dikoordinir oleh satuan-satuan tugas sistem pemjaminan mutu internal (SPMI) yang diawali oleh Tim SPM (QA) dari Project TPSDP Unila, lalu dilanjutkan dengan gugus tugas dengan nama Kantor Penjaminan Mutu Universitas (KPMU) hingga tahun 2009. Pada tanggal 2 Januari 2007 keluar SK Rektor Unila Nomor: 42/J26/KP/2007 tentang Garis Besar Tugas Pokok dan Fungsi Tim Penjaminan Mutu Unila, lalu pada tanggal 19 Februari 2007 telah disusun dan disahkan oleh Rektor Unila yaitu Dokumen Manual Mutu Unila sebagai acuan pelaksanaan SPMI di Unila.</p>
-                
-                <p>Tahun 2009 dibentuklah Unit Pelaksana Teknis-Pusat Penjaminan Mutu Universitas (UPT-PPMU) Unila sebagai unit kerja resmi secara struktural di bawah Pembantu Rektor I Unila, hingga 2014. Selanjutnya, sesuai dengan Organisasi dan Tata Kelola (OTK) Unila 2014 (Permendikbud No 72 tahun 2014 tentang OTK Unila) dan Surat Keputusan Rektor Unila No. 1348/UN26/KP/2014, Tanggal 13 Agustus 2014 Tentang Pengangkatan Ketua dan Sekretaris Lembaga Pengembangan Pembelajaran dan Penjaminan Mutu (LP3M) Unila serta Pelantikan Ketua dan Sekretaris LP3M Unila pada tanggal 18 Agustus 2014, maka UPT-PPMU dan UPT Pelayanan Pembelajaran (UPT PP) resmi digabung menjadi Lembaga Pengembangan Pembelajaran dan Penjaminan Mutu (LP3M) Unila hingga sekarang.</p>
-
-                <p>Sejak tahun 2018 hingga 2019 LP3M memiliki dua pusat, yaitu Pusat Kurikulum dan Pengembangan Pembelajaran (PKPP) dan Pusat Penjaminan Mutu (PPM). PKPP yang ada saat itu adalah gabungan dari Pusat Pengembangan Pembelajaran (PPP) dan Pusat Pengembangan Kurikulum (PPK). PPP dan PPM dibentuk saat lahirnya LP3M yaitu pada 18 Agustus 2014, sedangkan PPK dibentuk pada tanggal 31 Maret 2015 dengan No. SK Ketua PPK: 178/UN26/KP/2015. Pada tingkat fakultas telah dibentuk 9 (Sembilan) Tim Penjaminan Mutu Fakultas (TPMF) dan Tim Penjaminan Mutu Pascasarjana (TPMP) dan pada tingkat program studi dibentuk juga 76 Tim Penjaminan Mutu Program Studi (TPMP). Upaya ini dilakukan untuk memastikan bahwa konsep dan siklus penjaminan mutu terimplementasi dengan mulai dari tingkat Universitas hingga ke Program Studi. Hal ini juga salah satu strategi dalam mencapai visi LP3M dalam mendukung pencapaian Visi Unila.</p>
-            </div>
-
-            <div class="content-card reveal">
-                <h3>Struktur Kelembagaan</h3>
-                <p>LP3M dipimpin oleh seorang ketua lembaga (Ketua LP3M) dan dibantu seorang sekretaris lembaga (Sekretaris LP3M). Sejak tahun 2023 s.d tahun 2024, terdapat 10 pusat, yaitu (1) Pusat Pengembangan Kurikulum dan Manajemen Merdeka Belajar-Kampus Merdeka, (2) Pusat Pengembangan Aktivitas Instruksional dan Inovasi Pembelajaran, (3) Pusat Penjaminan Mutu, (4) Pusat Akreditasi Nasional dan Internasional, (5) Pusat Pengembangan Pembelajaran Daring dan Pengembangan Pendidikan Jarak Jauh, (6) Pusat Televisi Pendidikan, (7) Pusat Manajemen Kinerja Dosen, (8) Pusat Manajeman Mata Kuliah Umum, (9) Pusat Penerimaan Mahasiswa Baru, dan (10) Pusat Pengembangan Lembaga Sertifikasi Profesi.</p>
-                
-                <p>Urusan administrasi di LP3M dipimpin oleh seorang Kepala Bagian Tata Usaha yang membawahi dua orang Kepala Sub Bagian, yaitu Kepala Sub Bagian Umum dan Kepala Sub Bagian Program dan Informasi serta 1 orang Bendahara Pengeluaran Pembantu (BPP). Masing-masing Kepala Sub Bagian membawahi beberapa orang staf administrasi baik yang berstatus Pegawai Negeri Sipil (PNS) maupun tenaga administrasi kontrak.</p>
-            </div>
-
-            <div class="content-card reveal">
-                <h3>Sejarah Kepemimpinan LP3M</h3>
-                <p>Dalam sejarah perjalanan LP3M hingga akhir tahun 2024 ini, Kepala dan Sekretaris LP3M yang pernah menjabat adalah sebagai berikut:</p>
-                
-                <div class="list-leadership">
-                    <div>
-                        <h4>Ketua:</h4>
-                        <ol>
-                            <li>Prof. Dr. Ir. Murhadi, M.S (13 Agustus 2014 – 31 Desember 2019)</li>
-                            <li>Prof. Dr. Ahmad Saudi Samosir, M.T (31 Desember 2019 – 22 Maret 2021)</li>
-                            <li>Prof. Dr. Ir. Wan Abbas Zakaria, M.S (22 Maret 2021 – 14 April 2023)</li>
-                            <li>Prof. Dr. Abdurrahman, M.Si (14 April 2023 – 31 Desember 2024)</li>
-                        </ol>
-                    </div>
-                    <div>
-                        <h4>Sekretaris:</h4>
-                        <ol>
-                            <li>Prof. Dr. Sowiyah, M.Pd (13 Agustus 2014 – 4 April 2018)</li>
-                            <li>Prof. Dr. Lindrianasari, M.Si., Akt. (2018)</li>
-                            <li>Dr. Elida Purba, S.T., M.T (4 April 2018 – 2 Juni 2020)</li>
-                            <li>Prof. Dr. Buhani, S.Pd., M.Si (2 Juni 2020 – 31 Mei 2023)</li>
-                            <li>Dr. Ir. Dikpride Despa, ST. MT, IPM (31 Mei 2023– 31 Mei 2024)</li>
-                            <li>Dr. Maulana Mukhlis, M.IP. (31 Mei 2024 – 29 April 2026)</li>
-                        </ol>
-                    </div>
-                </div>
-
-                <div class="update-box">
-                    <p>Berdasarkan Permendikbud Nomor 49 Tahun 2024 tentang Organisasi dan Tata Kerja Universitas Lampung, mulai 1 Januari 2025 LP3M berubah nama menjadi <strong>Lembaga Penjaminan Mutu dan Pengembangan Pembelajaran (LPMPP)</strong>. Selanjutnya, berdasarkan Peraturan Rektor Nomor 01 Tahun 2025, dibentuk 10 (sepuluh) pusat di LPMPP.</p>
-                    <p style="margin-top: 16px; color: var(--blue-600);">
-                        <strong>Ketua LPMPP:</strong> Prof. Dr. Abdurrahman, M.Si. (1 Januari 2025 – sekarang)<br>
-                        <strong>Sekretaris LPMPP:</strong> Prof. Dr. Marselina S.E., M.P.M. (30 April 2026 – sekarang)
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section section-white" id="visi-misi">
-        <div class="section-inner">
-            <div class="section-head reveal">
-                <div class="section-label">Arah & Tujuan</div>
-                <h2 class="section-title">Visi & Misi LPMPP</h2>
-                <p class="section-subtitle">
-                    Sejalan dan searah dengan Visi Unila yang tertera di dalam dokumen Renstra Unila 2025-2029, yaitu “Universitas Berkelas Dunia, Unggul, dan Berkelanjutan”.
-                </p>
-            </div>
-
-            <div class="content-card reveal" style="text-align: center; border-color: var(--amber-400);">
-                <h3 style="color: var(--amber-500); font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px;">Visi LPMPP</h3>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--text-dark); line-height: 1.3; margin-bottom: 24px;">
-                    “Terwujudnya Budaya Mutu Sebagai Pondasi Unila Menjadi Universitas Berkelas Dunia, Unggul, dan Berkelanjutan”
-                </h2>
-                <p style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-dark-secondary);">
-                    Kata kunci dari Visi LPMPP 2025-2029 adalah “Budaya Mutu”, mengandung pengertian yang mendalam tentang segenap keunggulan dalam ranah akademik dan non akademik, bersifat visioner, dan tanpa batas (berkembang dan berkelanjutan) serta teguh pada karakter mutu yaitu continuous improvement. Ke depan diharapkan kata “Budaya Mutu” dalam Visi LPMPP tersebut selalu menginspirasi segenap personal fungsional dan struktural di LPMPP serta unit-unit terkait sehingga dapat berkontribusi besar dan nyata dalam mewujudkan Unila menjadi perguruan tinggi yang berkelas dunia, unggul dan berkelanjutan pada tahun 2025 dan tahun-tahun selanjutnya.
-                </p>
-            </div>
-
-            <div class="content-card reveal">
-                <h3>Misi LPMPP</h3>
-                <p style="margin-bottom: 16px;">Untuk mewujudkan visi tersebut, LPMPP Unila menetapkan 5 (lima) misi yang telah diselaraskan dengan misi Unila, yaitu:</p>
-                <ol>
-                    <li>Meningkatkan siklus PPEPP (penetapan, pelaksanaan, evaluasi, pengendalian, dan peningkatan mutu pembelajaran) sebagai upaya menghasilkan lulusan Unila dengan kapasitas kepemimpinan global;</li>
-                    <li>Mengembangkan, mensosialisasikan, mengimplementasikan, memonitor, mengevaluasi, mengaudit internal, dan melakukan tindakan perbaikan terhadap standar mutu terbaru melalui sistem penjaminan internal dan mutu penunjang pendidikan secara konsisten dan berkelanjutan;</li>
-                    <li>Meningkatkan budaya mutu akademik dan non akademik oleh seluruh sivitas akademika Unila melalui inovasi berkelanjutan untuk akreditasi Unggul dan akreditasi Internasional;</li>
-                    <li>Mengembangkan kemitraan strategis dengan para pihak/instansi di luar Unila pada skala daerah, nasional, dan internasional dalam meningkatkan kualitas mutu dan pengembangan pembelajaran menuju kampus Unila berdampak;</li>
-                    <li>Menjalankan tata kelola kelembagaan dengan baik, benar, dan berkelanjutan (good university governance and institution sustainability) berbasis nilai-nilai integritas dan keunggulan lokal.</li>
-                </ol>
-            </div>
-
-            <div class="content-card reveal" style="background: var(--surface-light);">
-                <h3>Tujuan Misi</h3>
-                <p style="margin-bottom: 16px;">Berdasarkan 5 (lima) misi yang sudah dirumuskan tersebut, LPMPP Unila telah menentukan 5 (lima) tujuan pada setiap misi, sebagai berikut:</p>
-                <ol>
-                    <li><strong>(TM.1)</strong> Menghasilkan dokumen SPMI (Kebijakan, Manual, Standar, dan Formulir Mutu) yang khas Unila dengan tetap merujuk pada panduan nasional dan sesuai untuk dijalankan di Unila secara konsisten dan berkelanjutan;</li>
-                    <li><strong>(TM.2)</strong> Menghasilkan perangkat dan sistem pelaksanaan pembelajaran bermutu yang up to date serta memastikan terimplementasinya SPMI ter-up date di semua unit kerja utama dan unit penunjang di Unila secara bertahap, konsisten, berkelanjutan, dan terintegrasi;</li>
-                    <li><strong>(TM.3)</strong> Tercapainya budaya mutu akademik dan non akademik di Unila secara bertahap, konsisten, dan terus menerus sesuai standar nasional dan atau internasional oleh seluruh sivitas akademika;</li>
-                    <li><strong>(TM.4)</strong> Terselenggaranya kegiatan-kegiatan kerjasama yang saling menguntungkan dengan pihak di luar Unila sesuai kewenangan lembaga, baik pada skala daerah, nasional, dan/atau internasional sebagai perwujudan kampus berdampak;</li>
-                    <li><strong>(TM.5)</strong> Terwujudnya tata pamong organisasi LPMPP yang optimal dan efisien sesuai peraturan berlaku dalam mencapai output dan outcome lembaga mendukung tercapainya Visi Unila 2045.</li>
-                </ol>
-            </div>
-        </div>
-    </section>
-
-    <div class="curve-divider">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-            <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="var(--bg-primary)" />
-        </svg>
-    </div>
-
-    <section class="section" style="background: var(--bg-primary); color: white;" id="profil-lpmpp">
-        <div class="section-inner">
-            <div class="section-head reveal">
-                <div class="section-label" style="color: var(--amber-400);">Publikasi & Media</div>
-                <h2 class="section-title" style="color: white;">Profil LPMPP Unila</h2>
-                <p class="section-subtitle" style="color: var(--text-secondary);">
-                    Unduh dokumen profil resmi Lembaga Penjaminan Mutu dan Pengembangan Pembelajaran (LPMPP) atau tonton video profil kami.
-                </p>
-            </div>
-
-            <div class="reveal">
-                <div class="link-grid" style="margin-bottom: 56px;">
-                    <a href="https://drive.google.com/file/d/1ahxDQ9g2A1XELWAMzT0rIdIHGZ2OZAVZ/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="doc-link-card">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                            <polyline points="14 2 14 8 20 8" />
-                            <line x1="12" y1="18" x2="12" y2="12" />
-                            <polyline points="9 15 12 18 15 15" />
-                        </svg>
-                        <div>
-                            <span style="display: block; font-size: 0.8rem; color: var(--text-dark-secondary); font-weight: 500;">Dokumen PDF</span>
-                            PROFIL LPMPP UNILA 2024
-                        </div>
-                    </a>
-
-                    <a href="https://drive.google.com/file/d/1sI5Q2dlU1wqEWUO1sSsnL9ykN4lrLQ2T/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="doc-link-card">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                            <polyline points="14 2 14 8 20 8" />
-                            <line x1="12" y1="18" x2="12" y2="12" />
-                            <polyline points="9 15 12 18 15 15" />
-                        </svg>
-                        <div>
-                            <span style="display: block; font-size: 0.8rem; color: var(--text-dark-secondary); font-weight: 500;">Dokumen PDF</span>
-                            PROFIL LPMPP UNILA 2025
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div id="video-profil" class="video-card reveal">
-                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 16px;">Video Profil LPMPP</h3>
-                
-                <div class="video-meta">
-                    <span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                        Oct 1, 2022
-                    </span>
-                    <span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                        <a href="https://lpmpp.unila.ac.id/author/lp3mbaru/" style="color: inherit;" target="_blank">Admin LP3M</a>
-                    </span>
-                    <span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                        2020 Views
-                    </span>
-                    <span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                        <a href="https://lpmpp.unila.ac.id/video-profil-lp3m/#respond" style="color: inherit;" target="_blank">0 Comments</a>
-                    </span>
-                </div>
-
-                <a href="https://lpmpp.unila.ac.id/video-profil-lp3m/" target="_blank" rel="noopener noreferrer" class="btn-play">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                    Tonton Video Profil
-                </a>
-
-                <div class="post-nav">
-                    <a href="https://lpmpp.unila.ac.id/workshop-penyusunan-panduan-kurikulum-yang-kompatibel-dengan-bkp-mbkm/" target="_blank" rel="noopener noreferrer">
-                        &larr; Workshop Penyusunan Panduan Kurikulum yang Kompatibel dengan BKP MBKM
-                    </a>
-                    <a href="https://lpmpp.unila.ac.id/lp3m-berhasil-meraih-juara-1-lomba-website-kategori-pelaksana-administrasi-dalam-rangka-dies-natalis-ke-57-universitas-lampung-2022/" class="next" target="_blank" rel="noopener noreferrer">
-                        LP3M Berhasil Meraih Juara 1 Lomba website kategori pelaksana administrasi dalam rangka Dies Natalis ke 57 Universitas Lampung 2022 &rarr;
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </section>
+            <div class="akreditasi-grid" style="align-items: start;">
 
     <footer>
         <div class="footer-inner">
             <div class="footer-brand">
-                <a href="lpmpp-home.html" class="logo" style="margin-bottom: 20px;">
+                <a href="lpmpp-home.html" class="logo">
                     <div class="logo-badge">
                         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="22" height="22">
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                         </svg>
                     </div>
                     <div class="logo-text">
-                        <strong style="color: white; font-size: 1.05rem;">LPMPP Unila</strong>
-                        <span style="color: var(--text-muted);">Universitas Lampung</span>
+                        <strong>LPMPP Unila</strong>
+                        <span>Universitas Lampung</span>
                     </div>
                 </a>
-                <p>Lembaga Pengembangan Pembelajaran dan Penjaminan Mutu Pendidikan Universitas Lampung. Mendukung mutu akademik yang berkelanjutan.</p>
+                <p>Lembaga Pengembangan Pembelajaran dan Penjaminan Mutu Pendidikan Universitas Lampung. Mendukung mutu
+                    akademik yang berkelanjutan.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-btn" title="Instagram">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-btn" title="YouTube">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+                            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-btn" title="Email">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </a>
+                </div>
             </div>
 
             <div class="footer-col">
                 <h4>Navigasi</h4>
                 <ul>
                     <li><a href="lpmpp-home.html">Beranda</a></li>
-                    <li><a href="#profil-lembaga">Profil Lembaga</a></li>
+                    <li><a href="lpmpp-profil.html">Profil LPMPP</a></li>
                     <li><a href="lpmpp-pusat.html">Pusat LPMPP</a></li>
                     <li><a href="lpmpp-informasi.html">Informasi</a></li>
+                    <li><a href="#">Kerjasama</a></li>
+                    <li><a href="#">Arsip</a></li>
                 </ul>
             </div>
 
@@ -1210,7 +2530,9 @@
                     <li><a href="lpmpp-layanan.html#ppid">PPID</a></li>
                     <li><a href="lpmpp-layanan.html#layanan-dosen">BKD</a></li>
                     <li><a href="lpmpp-layanan.html#layanan-dosen">Pelatihan</a></li>
-                    <li><a href="lpmpp-download.html">Download Dokumen</a></li>
+                    <li><a href="#">Survey SKP</a></li>
+                    <li><a href="#">Download Dokumen</a></li>
+                    <li><a href="#">Studi Tiru</a></li>
                 </ul>
             </div>
 
@@ -1228,33 +2550,222 @@
         <div style="max-width:1280px; margin:0 auto;">
             <div class="footer-bottom">
                 <span>&copy; 2026 LPMPP Universitas Lampung. Hak cipta dilindungi.</span>
+                <span>Dirancang ulang oleh <a href="#">Kelompok 10 &mdash; UX Design Thinking</a></span>
             </div>
         </div>
     </footer>
 
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="18 15 12 9 6 15" />
+        </svg>
+    </button>
+
+    <!-- ===== SCRIPTS ===== -->
     <script>
-        // Navbar Scroll Effect
+        // ===== Hamburger menu =====
+        const hamburger = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileClose = document.getElementById('mobileClose');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.style.display = 'block';
+            requestAnimationFrame(() => mobileMenu.classList.add('open'));
+            document.body.style.overflow = 'hidden';
+        });
+        mobileClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+            setTimeout(() => mobileMenu.style.display = 'none', 400);
+        });
+
+        // ===== Search overlay & Real-time search =====
+        const searchBtn = document.getElementById('searchBtn');
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchOverlayInput = document.getElementById('searchOverlayInput');
+        const searchSuggestions = searchOverlay ? searchOverlay.querySelector('.search-suggestions') : null;
+
+        const searchIndex = [
+            { title: "Beranda / Home", desc: "Halaman utama LPMPP Universitas Lampung", url: "lpmpp-home.html", type: "page" },
+            { title: "Profil LPMPP", desc: "Tentang LPMPP, visi, misi, dan tugas pokok", url: "lpmpp-profil.html", type: "page" },
+            { title: "Struktur Organisasi & SDM", desc: "Bagan organisasi dan personel LPMPP Unila", url: "lpmpp-profil.html#struktur", type: "section" },
+            { title: "Peran & Rencana Strategis (Renstra)", desc: "Rencana strategis dan peran LPMPP", url: "lpmpp-profil.html#renstra", type: "section" },
+            { title: "Sertifikasi ISO", desc: "Sertifikasi ISO penjaminan mutu LPMPP Unila", url: "lpmpp-profil.html#iso", type: "section" },
+            { title: "Pusat LPMPP", desc: "Pusat-pusat di bawah naungan LPMPP", url: "lpmpp-pusat.html", type: "page" },
+            { title: "Pengembangan Kurikulum & MBKM", desc: "Pusat Pengembangan Kurikulum dan Merdeka Belajar Kampus Merdeka", url: "lpmpp-pusat.html#kurikulum", type: "section" },
+            { title: "Aktivitas Instruksional & Inovasi Pembelajaran", desc: "Pusat Aktivitas Instruksional dan Teknologi Pembelajaran", url: "lpmpp-pusat.html#instruksional", type: "section" },
+            { title: "Penjaminan Mutu", desc: "Pusat Penjaminan Mutu Internal LPMPP", url: "lpmpp-pusat.html#penjaminan", type: "section" },
+            { title: "Akreditasi Nasional & Internasional", desc: "Pusat Akreditasi Nasional dan Internasional", url: "lpmpp-pusat.html#akreditasi", type: "section" },
+            { title: "Pembelajaran Daring & PJJ", desc: "Pembelajaran daring (online) dan Pendidikan Jarak Jauh", url: "lpmpp-pusat.html#daring", type: "section" },
+            { title: "TV Pendidikan Unila", desc: "Media edukasi dan TV Pendidikan Universitas Lampung", url: "lpmpp-pusat.html#tvpendidikan", type: "section" },
+            { title: "Informasi Peraturan & Panduan", desc: "Peraturan akademik dan panduan kurikulum", url: "lpmpp-informasi.html", type: "page" },
+            { title: "Peraturan Akademik", desc: "Dokumen regulasi dan peraturan akademik Universitas Lampung", url: "lpmpp-informasi.html#peraturan", type: "section" },
+            { title: "Panduan Kurikulum 2025", desc: "Buku panduan kurikulum terbaru Universitas Lampung", url: "lpmpp-informasi.html#kurikulum-info", type: "section" },
+            { title: "Kampus Berdampak", desc: "Informasi program Kampus Berdampak Unila", url: "lpmpp-informasi.html#kurikulum-info", type: "section" },
+            { title: "Kelulusan Tepat Waktu", desc: "Kebijakan dan kiat kelulusan tepat waktu mahasiswa Unila", url: "lpmpp-informasi.html", type: "section" },
+            { title: "Kerja Sama", desc: "Program Kemitraan dan kolaborasi LPMPP Unila", url: "lpmpp-kerjasama.html", type: "page" },
+            { title: "Program Asuh PTS", desc: "Kerja sama kemitraan pengembangan mutu dengan PTS", url: "lpmpp-kerjasama.html#program-asuh", type: "section" },
+            { title: "FPM BKS PTN Barat", desc: "Forum Penjaminan Mutu Badan Kerja Sama PTN Wilayah Barat", url: "lpmpp-kerjasama.html#bks-ptn", type: "section" },
+            { title: "Arsip / Weblog", desc: "Repositori publikasi weblog PPM dan PPAIIP", url: "lpmpp-home.html#weblog", type: "section" },
+            { title: "Survey SKP", desc: "Survey Sasaran Kinerja Pegawai internal & laporan", url: "lpmpp-home.html#survey", type: "section" },
+            { title: "Layanan LPMPP", desc: "Layanan publik dan internal dosen/mahasiswa", url: "lpmpp-layanan.html", type: "page" },
+            { title: "PPID (Pejabat Pengelola Informasi & Dokumentasi)", desc: "Layanan keterbukaan informasi publik LPMPP", url: "lpmpp-layanan.html#ppid", type: "section" },
+            { title: "BKD (Beban Kerja Dosen)", desc: "Layanan pelaporan BKD dan LKD dosen Unila", url: "lpmpp-layanan.html#layanan-dosen", type: "section" },
+            { title: "Pelatihan & PEKERTI / AA", desc: "Layanan pelatihan kompetensi dosen dan PEKERTI/AA", url: "lpmpp-layanan.html#layanan-dosen", type: "section" },
+            { title: "Data Akreditasi Institusi & Prodi", desc: "Status akreditasi institusi Unila dan program studi", url: "lpmpp-akreditasi.html", type: "page" },
+            { title: "Akreditasi Institusi Unila (Unggul)", desc: "Sertifikat akreditasi BAN-PT peringkat Unggul", url: "lpmpp-akreditasi.html#institusi", type: "section" },
+            { title: "Peringkat Akreditasi Prodi", desc: "Cari status akreditasi BAN-PT/LAM tiap program studi", url: "lpmpp-akreditasi.html#prodi", type: "section" },
+            { title: "Status Akreditasi Internasional", desc: "Sertifikasi internasional prodi (FIBAA, ASIIN, ASIC)", url: "lpmpp-akreditasi.html#internasional", type: "section" },
+            { title: "Instrumen Akreditasi", desc: "Akses borang, IPEPA, LED, LKPS", url: "lpmpp-akreditasi.html#instrumen", type: "section" },
+            { title: "Download Center / Unduhan", desc: "Repositori berkas, buku pedoman, dan template borang", url: "lpmpp-download.html", type: "page" },
+            { title: "Buku Pedoman SPMI 2024", desc: "Dokumen pedoman Sistem Penjaminan Mutu Internal (PDF)", url: "lpmpp-download.html#downloads", type: "document" },
+            { title: "Template Borang Akreditasi LAM-PTKes", desc: "Unduhan borang akreditasi kesehatan (Word/Excel)", url: "lpmpp-download.html#downloads", type: "document" },
+            { title: "Panduan Pelaksanaan BKD 2024", desc: "Unduhan pedoman beban kerja dosen terbaru (PDF)", url: "lpmpp-download.html#downloads", type: "document" },
+            { title: "Studi Tiru", desc: "Benchmarking dan kunjungan studi tiru ke institusi lain", url: "lpmpp-studitiru.html", type: "page" }
+        ];
+
+        function getIconSVG(type) {
+            if (type === 'page') {
+                return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>`;
+            } else if (type === 'section') {
+                return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><line x1="4" y1="9" x2="20" y2="9" /><line x1="4" y1="15" x2="20" y2="15" /><line x1="10" y1="3" x2="8" y2="21" /><line x1="16" y1="3" x2="14" y2="21" /></svg>`;
+            } else {
+                return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /></svg>`;
+            }
+        }
+
+        function renderSuggestions(query) {
+            if (!searchSuggestions) return;
+            searchSuggestions.innerHTML = '';
+            const displayItems = query.trim() === ''
+                ? searchIndex.filter(item => item.type === 'page').slice(0, 5)
+                : searchIndex.filter(item =>
+                    item.title.toLowerCase().includes(query.toLowerCase()) ||
+                    item.desc.toLowerCase().includes(query.toLowerCase())
+                );
+
+            if (displayItems.length === 0) {
+                searchSuggestions.innerHTML = `<div style="padding: 16px; text-align: center; color: var(--text-muted); font-size: 0.88rem;">Tidak ada hasil ditemukan untuk "${query}"</div>`;
+                return;
+            }
+
+            displayItems.slice(0, 5).forEach(item => {
+                const suggestionDiv = document.createElement('div');
+                suggestionDiv.className = 'search-suggestion';
+                suggestionDiv.innerHTML = `
+        ${getIconSVG(item.type)}
+        <div><strong>${item.title}</strong><span>${item.desc}</span></div>
+      `;
+                suggestionDiv.addEventListener('click', () => {
+                    window.location.href = item.url;
+                    if (searchOverlay) searchOverlay.classList.remove('show');
+                });
+                searchSuggestions.appendChild(suggestionDiv);
+            });
+        }
+
+        if (searchBtn && searchOverlay && searchOverlayInput) {
+            searchBtn.addEventListener('click', () => {
+                searchOverlay.classList.add('show');
+                searchOverlayInput.value = '';
+                renderSuggestions('');
+                setTimeout(() => searchOverlayInput.focus(), 50);
+            });
+
+            searchOverlayInput.addEventListener('input', (e) => {
+                renderSuggestions(e.target.value);
+            });
+
+            searchOverlay.addEventListener('click', (e) => {
+                if (e.target === searchOverlay) {
+                    searchOverlay.classList.remove('show');
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    searchOverlay.classList.remove('show');
+                }
+            });
+        }
+        // ===== Navbar scroll effect =====
         const navbar = document.getElementById('mainNav');
+        const backToTop = document.getElementById('backToTop');
+
         window.addEventListener('scroll', () => {
             if (window.scrollY > 60) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+            // Back to top
+            if (window.scrollY > 600) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
         });
 
-        // Scroll Reveal Animation
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ===== Scroll reveal animations =====
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry, i) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.transitionDelay = `${(i % 3) * 0.1}s`;
+                    entry.target.style.transitionDelay = `${i * 0.06}s`;
                     entry.target.classList.add('visible');
                     revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // ===== Animated counters =====
+        function animateCounter(el) {
+            const target = parseInt(el.dataset.target);
+            const duration = 2000;
+            const start = performance.now();
+
+            function update(now) {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+                el.textContent = Math.round(target * ease);
+                if (progress < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
+        }
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+        // ===== Floating particles =====
+        const particleContainer = document.getElementById('particles');
+        if (particleContainer) {
+            for (let i = 0; i < 30; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = (8 + Math.random() * 12) + 's';
+                p.style.animationDelay = Math.random() * 10 + 's';
+                p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+                particleContainer.appendChild(p);
+            }
+        }
     </script>
+
 </body>
+
 </html>
