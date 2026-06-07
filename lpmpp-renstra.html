@@ -449,15 +449,172 @@
     .doc-link-card .doc-title { font-size: 1.1rem; color: var(--blue-600); display: block; margin-bottom: 4px; }
     .doc-link-card .doc-meta { font-size: 0.85rem; color: var(--text-dark-secondary); font-weight: 500; }
 
-    /* ===================== FOOTER ===================== */
-    footer { background: #0f172a; color: rgba(255,255,255,.7); padding-top: 80px; }
-    .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; padding: 0 32px 40px; }
-    .footer-brand .logo-text strong { color: white; }
-    .footer-col h4 { color: white; margin-bottom: 16px; font-size: 1rem; }
-    .footer-col ul { list-style: none; display: grid; gap: 12px; }
-    .footer-col a { color: rgba(255,255,255,.7); transition: color var(--transition); }
-    .footer-col a:hover { color: white; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding: 24px 32px; display: flex; justify-content: space-between; font-size: .85rem; max-width: 1280px; margin: 0 auto;}
+/* ===================== FOOTER ===================== */
+    footer {
+      background: var(--bg-primary);
+      color: var(--text-secondary);
+      padding: 80px 0 0;
+      border-top: 1px solid var(--border-glass);
+      position: relative;
+      background: var(--bg-primary);
+      color: var(--text-secondary);
+      padding: 80px 0 0;
+      border-top: 1px solid var(--border-glass);
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--blue-500), var(--indigo-500), transparent);
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 56px;
+      padding-bottom: 56px;
+    }
+
+    .footer-brand .logo-badge {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      box-shadow: none;
+    }
+
+    .footer-brand .logo-text strong {
+      color: var(--text-primary);
+      font-size: 1.05rem;
+    }
+
+    .footer-brand .logo-text span {
+      color: var(--text-muted);
+    }
+
+    .footer-brand p {
+      margin-top: 18px;
+      font-size: .84rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition);
+      color: var(--text-muted);
+    }
+
+    .social-btn:hover {
+      background: var(--bg-glass-hover);
+      border-color: var(--border-glass-hover);
+      color: var(--text-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .3);
+    }
+
+    .footer-col h4 {
+      font-size: .8rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-col ul li a {
+      font-size: .84rem;
+      color: var(--text-muted);
+      transition: all var(--transition);
+      display: inline-block;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--amber-400);
+      transform: translateX(4px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-glass);
+      padding: 24px 32px;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: .78rem;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom a {
+      color: var(--amber-400);
+      transition: color var(--transition);
+    }
+
+    .footer-bottom a:hover {
+      color: var(--amber-500);
+    }
+
+    /* ===================== BACK TO TOP ===================== */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--blue-600), var(--indigo-500));
+      color: white;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 800;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(16px);
+      transition: all var(--transition);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, .3);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(99, 102, 241, .45);
+    }
 
     /* Animations */
     .reveal { opacity: 0; transform: translateY(24px); transition: all 0.8s var(--transition); }
@@ -742,58 +899,96 @@
         </div>
     </section>
 
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <div class="logo">
-                    <div class="logo-badge">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="22" height="22">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                        </svg>
-                    </div>
-                    <div class="logo-text">
-                        <strong>LPMPP Unila</strong>
-                        <span>Universitas Lampung</span>
-                    </div>
-                </div>
-                <p style="margin-top: 16px; font-size: 0.85rem; line-height: 1.8;">Lembaga Pengembangan Pembelajaran dan Penjaminan Mutu Pendidikan Universitas Lampung. Mendukung mutu akademik yang berkelanjutan.</p>
-            </div>
-
-            <div class="footer-col">
-                <h4>Navigasi</h4>
-                <ul>
-                    <li><a href="lpmpp-home.html">Beranda</a></li>
-                    <li><a href="lpmpp-profil.html">Profil LPMPP</a></li>
-                    <li><a href="lpmpp-pusat.html">Pusat LPMPP</a></li>
-                    <li><a href="lpmpp-informasi.html">Informasi</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Layanan</h4>
-                <ul>
-                    <li><a href="lpmpp-layanan.html#ppid">PPID</a></li>
-                    <li><a href="lpmpp-layanan.html#layanan-dosen">BKD</a></li>
-                    <li><a href="lpmpp-layanan.html#layanan-dosen">Pelatihan</a></li>
-                    <li><a href="lpmpp-download.html">Download Dokumen</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Kontak</h4>
-                <ul>
-                    <li><a href="#">Jl. Prof. Sumantri Brojonegoro No. 1, Bandar Lampung</a></li>
-                    <li><a href="mailto:lpmpp@unila.ac.id">lpmpp@unila.ac.id</a></li>
-                    <li><a href="tel:+62721704622">(0721) 704622</a></li>
-                    <li><a href="https://lpmpp.unila.ac.id" target="_blank">lpmpp.unila.ac.id</a></li>
-                </ul>
-            </div>
+   <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="lpmpp-home.html" class="logo">
+          <div class="logo-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="22" height="22">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <div class="logo-text">
+            <strong>LPMPP Unila</strong>
+            <span>Universitas Lampung</span>
+          </div>
+        </a>
+        <p>Lembaga Pengembangan Pembelajaran dan Penjaminan Mutu Pendidikan Universitas Lampung. Mendukung mutu
+          akademik yang berkelanjutan.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg>
+          </a>
+          <a href="#" class="social-btn" title="YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+            </svg>
+          </a>
+          <a href="#" class="social-btn" title="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+          </a>
         </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 LPMPP Universitas Lampung. Hak cipta dilindungi.</span>
-            <span>Dirancang ulang oleh <a href="#">Kelompok 10 &mdash; UX Design Thinking</a></span>
-        </div>
-    </footer>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="lpmpp-home.html">Beranda</a></li>
+          <li><a href="lpmpp-profil.html">Profil LPMPP</a></li>
+          <li><a href="lpmpp-pusat.html">Pusat LPMPP</a></li>
+          <li><a href="lpmpp-informasi.html">Informasi</a></li>
+          <li><a href="#">Kerjasama</a></li>
+          <li><a href="#">Arsip</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Layanan</h4>
+        <ul>
+          <li><a href="lpmpp-layanan.html#ppid">PPID</a></li>
+          <li><a href="lpmpp-layanan.html#layanan-dosen">BKD</a></li>
+          <li><a href="lpmpp-layanan.html#layanan-dosen">Pelatihan</a></li>
+          <li><a href="#">Survey SKP</a></li>
+          <li><a href="#">Download Dokumen</a></li>
+          <li><a href="#">Studi Tiru</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="#">" Jl. Prof. Sumantri Brojonegoro No. 1, Bandar Lampung</a></li>
+          <li><a href="mailto:lpmpp@unila.ac.id">lpmpp@unila.ac.id</a></li>
+          <li><a href="tel:+62721704622">" (0721) 704622</a></li>
+          <li><a href="https://lpmpp.unila.ac.id" target="_blank">lpmpp.unila.ac.id</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="max-width:1280px; margin:0 auto;">
+      <div class="footer-bottom">
+        <span>2026 LPMPP Universitas Lampung. Hak cipta dilindungi.</span>
+        <span>Dirancang ulang oleh <a href="#">Kelompok 10 " UX Design Thinking</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15" />
+    </svg>
+  </button>
 
     <script>
         // Navbar Scroll
@@ -814,6 +1009,20 @@
             });
         }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 600) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
     </script>
 </body>
 </html>
