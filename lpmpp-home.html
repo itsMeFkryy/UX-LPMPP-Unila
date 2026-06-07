@@ -731,16 +731,20 @@
       margin-bottom: 24px;
     }
 
-    .card-icon-wrap {
-      width: 52px;
-      height: 52px;
-      background: linear-gradient(135deg, rgba(245, 158, 11, .2), rgba(245, 158, 11, .05));
-      border: 1px solid rgba(245, 158, 11, .15);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+ .card-icon-wrap {
+  width: 52px;
+  height: 52px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-icon-wrap svg * {
+  stroke: var(--blue-500) !important;
+}
 
     .hero-card-header h3 {
       font-size: .95rem;
@@ -760,82 +764,113 @@
       gap: 10px;
     }
 
-    .quick-link-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      padding: 18px 14px;
-      background: rgba(30, 58, 138, .16);
-      border: 1px solid rgba(30, 58, 138, .25);
-      border-radius: 16px;
-      cursor: pointer;
-      transition: all var(--transition-spring);
-      text-align: center;
-    }
+ /* ==========================================================================
+   1. BASE STYLE .QUICK-LINK-ITEM (TETAP MENJAGA BAGIAN BAWAIAN TEMPLATE)
+   ========================================================================== */
+.quick-link-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 14px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all var(--transition-spring);
+  text-align: center;
+}
 
-    .quick-link-item:hover {
-      background: rgba(30, 58, 138, .22);
-      border-color: var(--blue-500);
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, .16);
-    }
+/* ==========================================================================
+   2. FIX FINAL: 4 KOTAK HERO ATAS (PUTIH BORDER BIRU - TEKS & ICON TERLIHAT)
+   ========================================================================== */
+/* Memaksa kotak di area .hero-card menjadi putih border biru */
+.hero-card .quick-link-item {
+  background: #ffffff !important;                   /* Latar belakang putih bersih */
+  border: 1.5px solid var(--bg-secondary) !important; /* Border biru tua */
+}
 
-    .quick-link-item .icon-wrap {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition);
-    }
+/* Efek Hover untuk 4 kotak atas */
+.hero-card .quick-link-item:hover {
+  background: #f8fafc !important;                   /* Abu-abu super tipis saat di-hover */
+  border-color: #3a5cb8 !important;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(30, 58, 138, 0.15);
+}
 
-    .quick-link-item:hover .icon-wrap {
-      transform: scale(1.1) rotate(-3deg);
-    }
+/* Memaksa teks span di 4 kotak atas agar berwarna gelap */
+.hero-card .quick-link-item span {
+  font-size: .74rem !important;
+  font-weight: 600 !important;
+  color: var(--text-dark) !important;               /* Warna teks gelap */
+}
 
-    .quick-link-item span {
-      font-size: .74rem;
-      font-weight: 600;
-      color: var(--text-dark);
-    }
+/* Memaksa wadah ikon agar berwarna biru transparan */
+.hero-card .quick-link-item .icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    .ql-blue {
-      background: rgba(30, 58, 138, .15);
-      border: 1px solid rgba(30, 58, 138, .1);
-    }
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
 
-    .ql-gold {
-      background: rgba(245, 158, 11, .15);
-      border: 1px solid rgba(245, 158, 11, .1);
-    }
+/* TRIK UTAMA: Memaksa warna semua SVG/Ikon di dalam 4 kotak atas menjadi BIRU */
+.hero-card .quick-link-item .icon-wrap svg,
+.hero-card .quick-link-item .icon-wrap svg path,
+.hero-card .quick-link-item .icon-wrap svg circle,
+.hero-card .quick-link-item .icon-wrap svg rect,
+.hero-card .quick-link-item .icon-wrap svg line,
+.hero-card .quick-link-item .icon-wrap svg polyline,
+.hero-card .quick-link-item .icon-wrap svg polygon {
+  stroke: var(--bg-secondary) !important;           /* Paksa garis ikon jadi biru */
+  fill: transparent !important;                     /* Menghindari icon ngeblok warna */
+}
 
-    .ql-green {
-      background: rgba(16, 185, 129, .15);
-      border: 1px solid rgba(16, 185, 129, .1);
-    }
+.hero-card .quick-link-item:hover .icon-wrap {
+  transform: scale(1.1) rotate(-3deg);
+}
 
-    .ql-purple {
-      background: rgba(139, 92, 246, .15);
-      border: 1px solid rgba(139, 92, 246, .1);
-    }
+/* ==========================================================================
+   3. KELAS UTALITAS WARNA ASLI (BIAR BAGIAN BAWAH AMAN)
+   ========================================================================== */
+.ql-blue {
+  background: rgba(30, 58, 138, .15);
+  border: 1px solid rgba(30, 58, 138, .1);
+}
 
-    /* Floating badge */
-    .floating-badge {
-      position: absolute;
-      bottom: -16px;
-      right: -16px;
-      background: linear-gradient(135deg, var(--amber-400), var(--amber-500));
-      color: #0f172a;
-      border-radius: 16px;
-      padding: 16px 20px;
-      font-weight: 800;
-      font-size: .78rem;
-      box-shadow: 0 8px 32px rgba(245, 158, 11, .35);
-      animation: float 5s ease-in-out infinite;
-      z-index: 2;
-    }
+.ql-gold {
+  background: rgba(245, 158, 11, .15);
+  border: 1px solid rgba(245, 158, 11, .1);
+}
+
+.ql-green {
+  background: rgba(16, 185, 129, .15);
+  border: 1px solid rgba(16, 185, 129, .1);
+}
+
+.ql-purple {
+  background: rgba(139, 92, 246, .15);
+  border: 1px solid rgba(139, 92, 246, .1);
+}
+
+/* Floating badge */
+.floating-badge {
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  background: linear-gradient(135deg, var(--amber-400), var(--amber-500));
+  color: #0f172a;
+  border-radius: 16px;
+  padding: 16px 20px;
+  font-weight: 800;
+  font-size: .78rem;
+  box-shadow: 0 8px 32px rgba(245, 158, 11, .35);
+  animation: float 5s ease-in-out infinite;
+  z-index: 2;
+}
 
     .floating-badge .num {
       font-family: 'Playfair Display', serif;
@@ -1112,41 +1147,15 @@
       transform: scale(1.1) rotate(-3deg);
     }
 
-    .svc-blue {
-      background: rgba(30, 58, 138, .12);
-      border: 1px solid rgba(30, 58, 138, .08);
-      color: var(--blue-400);
-    }
-
-    .svc-gold {
-      background: rgba(245, 158, 11, .12);
-      border: 1px solid rgba(245, 158, 11, .08);
-      color: var(--amber-400);
-    }
-
-    .svc-green {
-      background: rgba(16, 185, 129, .12);
-      border: 1px solid rgba(16, 185, 129, .08);
-      color: var(--emerald-400);
-    }
-
-    .svc-purple {
-      background: rgba(139, 92, 246, .12);
-      border: 1px solid rgba(139, 92, 246, .08);
-      color: var(--violet-500);
-    }
-
-    .svc-red {
-      background: rgba(251, 113, 133, .12);
-      border: 1px solid rgba(251, 113, 133, .08);
-      color: var(--rose-400);
-    }
-
-    .svc-teal {
-      background: rgba(34, 211, 238, .12);
-      border: 1px solid rgba(34, 211, 238, .08);
-      color: var(--cyan-400);
-    }
+    .svc-blue,
+.svc-gold,
+.svc-green,
+.svc-purple,
+.svc-red,
+.svc-teal {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.08);
+}
 
     .service-card h3 {
       font-size: 1rem;
@@ -1263,8 +1272,8 @@
     }
 
     .news-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border-glass);
+      background: white;
+      border: 1.5px solid var(--blue-500);
       border-radius: var(--radius);
       padding: 20px;
       cursor: pointer;
@@ -1288,20 +1297,13 @@
       margin-bottom: 10px;
     }
 
-    .label-spmi {
-      background: rgba(30, 58, 138, .15);
-      color: var(--blue-400);
-    }
-
-    .label-akreditasi {
-      background: rgba(245, 158, 11, .15);
-      color: var(--amber-400);
-    }
-
-    .label-kegiatan {
-      background: rgba(16, 185, 129, .15);
-      color: var(--emerald-400);
-    }
+  .label-spmi,
+.label-akreditasi,
+.label-kegiatan {
+   background: linear-gradient(135deg, var(--amber-500), #e67e22);
+  color: #0f172a;
+  border: none;
+}
 
     .news-item h4 {
       font-size: .88rem;
@@ -1364,7 +1366,7 @@
 
     .doc-card {
       background: white;
-      border: 1.5px solid var(--surface-200);
+      border: 2px solid var(--blue-500);
       border-radius: var(--radius);
       padding: 24px 16px;
       text-align: center;
@@ -1427,31 +1429,30 @@
       z-index: 1;
     }
 
-    /* Light section icon colors */
-    .section-light .svc-blue {
-      background: rgba(37, 99, 235, .08);
-      color: var(--blue-600);
-    }
+.section-light .svc-blue {
+  background: transparent !important;
+  color: var(--blue-500) !important;
+}
 
-    .section-light .svc-gold {
-      background: rgba(245, 158, 11, .08);
-      color: var(--amber-500);
-    }
+.section-light .svc-gold {
+  background: transparent !important;
+  color:var(--blue-500) !important;
+}
 
-    .section-light .svc-green {
-      background: rgba(16, 185, 129, .08);
-      color: var(--emerald-500);
-    }
+.section-light .svc-green {
+  background: transparent !important;
+  color: var(--blue-500) !important;
+}
 
-    .section-light .svc-purple {
-      background: rgba(139, 92, 246, .08);
-      color: var(--violet-500);
-    }
+.section-light .svc-purple {
+  background: transparent !important;
+  color: var(--blue-500) !important;
+}
 
-    .section-light .svc-red {
-      background: rgba(244, 63, 94, .08);
-      color: var(--rose-500);
-    }
+.section-light .svc-red {
+  background: transparent !important;
+  color:var(--blue-500) !important;
+}
 
     /* ===================== AKREDITASI ===================== */
     .akreditasi-grid {
@@ -1503,7 +1504,7 @@
       font-weight: 500;
     }
 
-    .akreditasi-visual {
+   .akreditasi-visual {
       background: linear-gradient(160deg, rgba(30, 58, 138, .9), rgba(136, 170, 236, .7));
       border: 1px solid rgba(30, 58, 138, .3);
       border-radius: var(--radius-xl);
@@ -1513,6 +1514,42 @@
       backdrop-filter: blur(12px);
     }
 
+    .akreditasi-visual::before {
+      content: '';
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(175, 223, 255, .2) 0%, transparent 70%);
+      top: -120px;
+      right: -120px;
+      border-radius: 50%;
+    }
+
+    .akreditasi-badge-main {
+      background: linear-gradient(135deg, var(--amber-400), var(--amber-500));
+      color: #0f172a;
+      border-radius: 18px;
+      padding: 28px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 32px rgba(245, 158, 11, .25);
+    }
+
+    .akreditasi-badge-main .grade {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: #0f172a;
+      line-height: 1;
+    }
+
+    .akreditasi-badge-main .grade-label {
+      font-size: .8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
     .akreditasi-visual::before {
       content: '';
       position: absolute;
@@ -1608,7 +1645,7 @@
 
     .calendar-widget {
       background: white;
-      border: 1.5px solid var(--surface-200);
+      border: 1.5px solid var(--blue-500);
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: 0 4px 24px rgba(0, 0, 0, .04);
@@ -1725,7 +1762,7 @@
       gap: 16px;
       padding: 18px;
       background: white;
-      border: 1.5px solid var(--surface-200);
+      border:  1.5px solid var(--blue-500);
       border-radius: var(--radius);
       cursor: pointer;
       transition: all var(--transition);
@@ -1737,28 +1774,36 @@
       transform: translateX(4px);
     }
 
-    .event-date {
-      text-align: center;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
-      color: white;
-      border-radius: 12px;
-      padding: 10px 14px;
-      min-width: 56px;
-    }
+.event-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    .event-date .date-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      line-height: 1;
-    }
+  min-width: 70px;
+  padding: 12px;
 
-    .event-date .date-month {
-      font-size: .65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      opacity: .7;
-    }
+  background: rgba(59, 130, 246, .08);
+  border: 1px solid rgba(59, 130, 246, .12);
+  border-radius: 14px;
+
+  text-align: center;
+}
+
+   .event-date .date-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1;
+}
+
+ .event-date .date-month {
+  margin-top: 8px;
+  font-size: .9rem;
+  font-weight: 600;
+  color: #0f172a;
+  text-transform: uppercase;
+}
 
     .event-info h4 {
       font-size: .88rem;
@@ -2478,21 +2523,6 @@
             </svg>
           </a>
         </div>
-
-        <div class="hero-stats hero-animate ha-5">
-          <div class="stat">
-            <span class="stat-num" data-count="6">0<span>+</span></span>
-            <div class="stat-label">Pusat Layanan</div>
-          </div>
-          <div class="stat">
-            <span class="stat-num" data-count="200">0<span>+</span></span>
-            <div class="stat-label">Dokumen Tersedia</div>
-          </div>
-          <div class="stat">
-            <span class="stat-num">Unggul</span>
-            <div class="stat-label">Akreditasi Institusi</div>
-          </div>
-        </div>
       </div>
 
       <!-- Right visual -->
@@ -2870,7 +2900,7 @@
       <div class="section-head reveal">
         <div class="section-label">Terkini</div>
         <h2 class="section-title">Pengumuman & Berita</h2>
-        <p class="section-subtitle">Informasi terbaru dari LPMPP Universitas Lampung " langsung dari halaman
+        <p class="section-subtitle">Informasi terbaru dari LPMPP Universitas Lampung langsung dari halaman
           utama, tanpa perlu menelusuri menu.</p>
       </div>
 
@@ -2880,7 +2910,7 @@
           <div class="news-featured-bg"></div>
           <div class="news-featured-overlay"></div>
           <div class="news-featured-content">
-            <span class="news-badge">" Pengumuman Penting</span>
+            <span class="news-badge">Pengumuman Penting</span>
             <h2>Audit Mutu Internal (AMI) Semester Genap 2025/2026 Segera Dibuka</h2>
             <div class="news-meta">
               <span>
@@ -2944,8 +2974,7 @@
         <div>
           <div class="section-label">Download</div>
           <h2 class="section-title">Dokumen Paling Sering Diakses</h2>
-          <p class="section-subtitle">Shortcut menuju dokumen-dokumen yang paling banyak dicari " menjawab
-            pain point P-1 & P-6 dari riset kami.</p>
+  
         </div>
         <a href="#" class="btn-outline" style="flex-shrink:0;">Semua Dokumen</a>
       </div>
@@ -2996,7 +3025,7 @@
             </svg>
           </div>
           <h4>Borang Akreditasi Nasional</h4>
-          <span>" Diperbarui Nov 2025</span>
+          <span>Diperbarui Nov 2025</span>
         </div>
 
         <div class="doc-card reveal">
@@ -3009,7 +3038,7 @@
             </svg>
           </div>
           <h4>Standar Greenmetric</h4>
-          <span>" Diperbarui Okt 2025</span>
+          <span>Diperbarui Okt 2025</span>
         </div>
       </div>
     </div>
@@ -3175,39 +3204,44 @@
         <div class="events-list">
           <div class="event-item reveal">
             <div class="event-date">
-              <div class="date-num">28</div>
+               <div class="date-num" style="color:#0f172a;">28</div>
               <div class="date-month">Mei</div>
             </div>
             <div class="event-info">
               <h4>Pelatihan Penyusunan Instrumen Akreditasi Prodi</h4>
               <p>Gedung LPMPP Lt. 2 &middot; 08.00 &ndash; 16.00 WIB</p>
-              <span class="event-tag" style="background:rgba(30,58,138,.08); color:var(--blue-600);">Pelatihan</span>
+              <span class="event-tag"
+      style="background:linear-gradient(135deg, var(--amber-500), #e67e22); color:#0f172a;">
+  Pelatihan
+</span>
             </div>
           </div>
           <div class="event-item reveal">
-            <div class="event-date" style="background: linear-gradient(135deg, var(--amber-400), var(--amber-500));">
+           <div class="event-date">
               <div class="date-num" style="color:#0f172a;">31</div>
               <div class="date-month" style="color:#0f172a;">Mei</div>
             </div>
             <div class="event-info">
               <h4>Pembukaan Audit Mutu Internal Semester Genap 2025/2026</h4>
               <p>Online via Zoom &middot; 09.00 WIB</p>
-              <span class="event-tag" style="background:rgba(245,158,11,.08); color:#b45309;">Audit
-                Mutu</span>
+              <span class="event-tag"
+      style="background:linear-gradient(135deg, var(--amber-500), #e67e22); color:#0f172a;">
+  Audit Mutu
+</span>
             </div>
           </div>
           <div class="event-item reveal">
-            <div class="event-date"
-              style="background: linear-gradient(135deg, var(--emerald-400), var(--emerald-500));">
-              <div class="date-num">9</div>
+            <div class="event-date">
+               <div class="date-num" style="color:#0f172a;">9</div>
               <div class="date-month">Jun</div>
             </div>
             <div class="event-info">
               <h4>Rapat Koordinasi Program Studi & LPMPP &mdash; Kurikulum OBE</h4>
               <p>Aula Rektorat Unila &middot; 10.00 WIB</p>
-              <span class="event-tag" style="background:rgba(16,185,129,.08); color:#059669;">Rapat
-                Koordinasi</span>
-            </div>
+             <span class="event-tag"
+      style="background:linear-gradient(135deg, var(--amber-500), #e67e22); color:#0f172a;">
+  Rapat Koordinasi
+</span>
           </div>
         </div>
       </div>
@@ -3282,9 +3316,8 @@
       <div class="footer-col">
         <h4>Kontak</h4>
         <ul>
-          <li><a href="#">" Jl. Prof. Sumantri Brojonegoro No. 1, Bandar Lampung</a></li>
-          <li><a href="mailto:lpmpp@unila.ac.id">lpmpp@unila.ac.id</a></li>
-          <li><a href="tel:+62721704622">" (0721) 704622</a></li>
+          <li><a href="#">Jl. Prof. Sumantri Brojonegoro No. 1, Bandar Lampung</a></li>
+          <li><a href="tel:+62721704622">(0721) 704622</a></li>
           <li><a href="https://lpmpp.unila.ac.id" target="_blank">lpmpp.unila.ac.id</a></li>
         </ul>
       </div>
@@ -3293,7 +3326,7 @@
     <div style="max-width:1280px; margin:0 auto;">
       <div class="footer-bottom">
         <span>2026 LPMPP Universitas Lampung. Hak cipta dilindungi.</span>
-        <span>Dirancang ulang oleh <a href="#">Kelompok 10 " UX Design Thinking</a></span>
+        <span>Dirancang ulang oleh <a href="#">Kelompok 10 UX Design Thinking</a></span>
       </div>
     </div>
   </footer>
