@@ -87,220 +87,85 @@
     .topbar-right a:hover { color: var(--amber-500); }
 
     /* ===================== NAVBAR ===================== */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: white;
-  backdrop-filter: blur(20px) saturate(1.5);
-  -webkit-backdrop-filter: blur(20px) saturate(1.5);
-  border-bottom: 1px solid #e2e8f0;
-  transition: all var(--transition);
-}
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: white;
+      backdrop-filter: blur(20px) saturate(1.5);
+      -webkit-backdrop-filter: blur(20px) saturate(1.5);
+      border-bottom: 1px solid #e2e8f0;
+      transition: all var(--transition);
+    }
 
-.navbar.scrolled {
-  background: rgba(255, 255, 255, .95);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, .08);
-}
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, .95);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, .08);
+    }
 
-.navbar-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 32px;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
+    .navbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-/* Logo */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
+    /* Logo */
+    .logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .logo-badge {
+      width: 44px; height: 44px; background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; box-shadow: 0 4px 16px rgba(30, 58, 138, .25); transition: transform var(--transition);
+    }
+    .logo:hover .logo-badge { transform: rotate(-6deg) scale(1.05); }
+    .logo-badge svg { width: 22px; height: 22px; }
+    .logo-text { line-height: 1.2; }
+    .logo-text strong { font-size: 1rem; font-weight: 800; color: #0f172a; display: block; letter-spacing: -.2px; }
+    .logo-text span { font-size: .68rem; color: #64748b; font-weight: 500; }
 
-.logo-badge {
-  width: 44px;
-  height: 44px;
-  background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba(30, 58, 138, .25);
-  transition: transform var(--transition);
-}
+    /* Nav Links */
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; margin: 0; }
+    .nav-links>li { position: relative; }
+    .nav-links>li>a,
+    .nav-links>li>button {
+      display: flex; align-items: center; gap: 4px; padding: 5px 7px;
+      font-size: .78rem; font-weight: 600; color: #64748b; border: none;
+      background: none; cursor: pointer; border-radius: 10px; transition: all var(--transition);
+      font-family: inherit; white-space: nowrap;
+    }
+    .nav-links>li>a:hover,
+    .nav-links>li>button:hover,
+    .nav-links>li.active>a,
+    .nav-links>li.active>button { color: #1f2937; background: #f1f5f9; }
+    .nav-links>li.active>a,
+    .nav-links>li.active>button { color: var(--blue-500); }
 
-.logo:hover .logo-badge {
-  transform: rotate(-6deg) scale(1.05);
-}
+    /* Dropdown */
+    .dropdown {
+      position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(-8px);
+      min-width: 240px; background: white; backdrop-filter: blur(24px); border: 1px solid #e2e8f0;
+      border-radius: var(--radius); box-shadow: 0 20px 60px rgba(0, 0, 0, .1); padding: 8px;
+      opacity: 0; visibility: hidden; transition: all .25s ease; z-index: 100;
+    }
+    .nav-links>li:hover .dropdown,
+    .nav-links>li:focus-within .dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .dropdown a { display: block; padding: 10px 14px; font-size: .82rem; font-weight: 500; color: #475569; border-radius: 10px; transition: all var(--transition); margin-bottom: 2px; }
+    .dropdown a:hover { background: #f1f5f9; color: var(--blue-500); padding-left: 18px; }
+    .chevron { width: 14px; height: 14px; transition: transform var(--transition); color: #64748b; }
+    .nav-links>li:hover .chevron { transform: rotate(180deg); }
 
-.logo-badge svg {
-  width: 22px;
-  height: 22px;
-}
-
-.logo-text {
-  line-height: 1.2;
-}
-
-.logo-text strong {
-  font-size: 1rem;
-  font-weight: 800;
-  color: #0f172a;
-  display: block;
-  letter-spacing: -.2px;
-}
-
-.logo-text span {
-  font-size: .68rem;
-  color: #64748b;
-  font-weight: 500;
-}
-
-/* Nav Links */
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  list-style: none;
-  margin: 0;
-}
-
-.nav-links>li {
-  position: relative;
-}
-
-.nav-links>li>a,
-.nav-links>li>button {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 5px 7px;
-  font-size: .78rem;
-  font-weight: 600;
-  color: #64748b;
-  border: none;
-  background: none;
-  cursor: pointer;
-  border-radius: 10px;
-  transition: all var(--transition);
-  font-family: inherit;
-  white-space: nowrap;
-}
-
-.nav-links>li>a:hover,
-.nav-links>li>button:hover,
-.nav-links>li.active>a,
-.nav-links>li.active>button {
-  color: #1f2937;
-  background: #f1f5f9;
-}
-
-.nav-links>li.active>a,
-.nav-links>li.active>button {
-  color: var(--blue-500);
-}
-
-/* Dropdown */
-.dropdown {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%) translateY(-8px);
-  min-width: 240px;
-  background: white;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid #e2e8f0;
-  border-radius: var(--radius);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, .1);
-  padding: 8px;
-  opacity: 0;
-  visibility: hidden;
-  transition: all .25s ease;
-  z-index: 100;
-}
-
-.nav-links>li:hover .dropdown,
-.nav-links>li:focus-within .dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-
-.dropdown a {
-  display: block;
-  padding: 10px 14px;
-  font-size: .82rem;
-  font-weight: 500;
-  color: #475569;
-  border-radius: 10px;
-  transition: all var(--transition);
-  margin-bottom: 2px;
-}
-
-.dropdown a:hover {
-  background: #f1f5f9;
-  color: var(--blue-500);
-  padding-left: 18px;
-}
-
-/* Chevron */
-.chevron {
-  width: 14px;
-  height: 14px;
-  transition: transform var(--transition);
-  color: #64748b;
-}
-
-.nav-links>li:hover .chevron {
-  transform: rotate(180deg);
-}
-
-/* Hamburger */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-}
-
-.hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: #0f172a;
-  border-radius: 3px;
-  transition: all var(--transition);
-}
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #0f172a; border-radius: 3px; transition: all var(--transition); }
+    
     /* HERO */
     .hero { position: relative; min-height: 50vh; padding-top: 100px; background: linear-gradient(180deg, rgba(30, 58, 138, .95), var(--bg-primary)); display: flex; align-items: center; justify-content: center; text-align: center; }
     .hero-inner { max-width: 1100px; padding: 40px 32px; z-index: 1; display: flex; flex-direction: column; align-items: center; }
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 16px;
-      background: rgba(245, 158, 11, .1);
-      border: 1px solid rgba(245, 158, 11, .2);
-      border-radius: 50px;
-      font-size: .75rem;
-      font-weight: 700;
-      color: var(--amber-400);
-      letter-spacing: .8px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-      justify-content: center;
-    }
-    
+    .hero-tag { display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px; background: rgba(245, 158, 11, .1); border: 1px solid rgba(245, 158, 11, .2); border-radius: 50px; font-size: .75rem; font-weight: 700; color: var(--amber-400); letter-spacing: .8px; text-transform: uppercase; margin-bottom: 24px; justify-content: center; }
     .dot { width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; }
     .hero-title { font-size: clamp(2rem, 3.5vw, 3.2rem); font-family: 'Playfair Display', serif; line-height: 1.2; letter-spacing: -.03em; margin-bottom: 24px; color: white; width: 100%; }
     .hero-desc { font-size: 1.05rem; color: rgba(255,255,255,.9); line-height: 1.8; max-width: 640px; }
@@ -360,10 +225,10 @@
     .ahli-list li { font-size: 0.95rem; color: var(--text-dark); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
     .ahli-list li::before { content: '•'; color: var(--amber-500); font-weight: bold; }
     
-    .ahli-table-wrap { overflow-x: auto; margin-top: 16px; border: 1px solid var(--surface-200); border-radius: 12px;}
+    .ahli-table-wrap { overflow-x: auto; margin-top: 16px; border: 1px solid var(--surface-200); border-radius: 12px; max-height: 500px; overflow-y: auto;}
     .ahli-table { width: 100%; border-collapse: collapse; min-width: 500px; text-align: left; }
-    .ahli-table th, .ahli-table td { padding: 12px 16px; border-bottom: 1px solid var(--surface-200); font-size: 0.9rem; }
-    .ahli-table th { background: var(--surface-100); font-weight: 600; color: var(--blue-600); position: sticky; top: 0;}
+    .ahli-table th, .ahli-table td { padding: 12px 16px; border-bottom: 1px solid var(--surface-200); font-size: 0.9rem; color: var(--text-dark);}
+    .ahli-table th { background: var(--surface-100); font-weight: 600; color: var(--blue-600); position: sticky; top: 0; z-index: 10;}
     .ahli-table tr:last-child td { border-bottom: none; }
     .ahli-table tr:hover td { background: rgba(30,58,138,0.02); }
 
@@ -398,19 +263,14 @@
 </head>
 
 <body>
-      <!-- ===== NAVBAR ===== -->
   <nav class="navbar" id="mainNav">
     <div class="navbar-inner">
       <a href="lpmpp-home.html" class="logo">
         <div class="logo-badge">
           <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Shield background -->
             <path d="M50 8C50 8 20 25 20 45C20 70 50 88 50 88C50 88 80 70 80 45C80 25 50 8 50 8Z" fill="white" stroke="white" stroke-width="1"/>
-            <!-- Inner circle -->
             <circle cx="50" cy="50" r="28" fill="#1E3A8A" stroke="white" stroke-width="1.5"/>
-            <!-- Lamp symbol -->
             <path d="M50 32V45M45 42H55M46 45H54C54 45 54 50 50 55C46 50 46 45 46 45Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <!-- Book symbol lines -->
             <line x1="42" y1="58" x2="58" y2="58" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
             <line x1="42" y1="62" x2="58" y2="62" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
@@ -936,15 +796,408 @@
                                     </thead>
                                     <tbody>
                                         <tr><td>1</td><td>Ade Widiyanti, S.E., M.S.Ak,Akt</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>2</td><td>Afri Aripin, S.E., M.S.M.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>3</td><td>Dr. Agriyanti Komalasari, S.E., M.Akt.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>4</td><td>Dr. Ambya, S.E., M.Si.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>5</td><td>Andi Windah, S.I.Kom, MComn&MediaSt</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>6</td><td>Doni Sagitarian Warganegara, S.E., M.B.A.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>7</td><td>Dr. Arivina Ratih, S.E., M.M.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>8</td><td>Dr. Dorothy Rouly Haratua Panjaitan, M.Si.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>9</td><td>Prof. Dr. Erlina, S.E., M.Si.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>10</td><td>Prof. Dr. Nairobi, SE., M.Si</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>11</td><td>Dr. Ribhan., SE., M.Si</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>12</td><td>Faila Shofa, S.E., M.S.M.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>13</td><td>Heru Wahyudi, SE., M.Si</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>14</td><td>Mega Metalia, S.E., M.Si., M.S.Ak., Akt.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>15</td><td>Ninuk Dewi K., SE., M.Si</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>16</td><td>Prakarsa Panji Negara, S.E.,M.Si.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>17</td><td>Prof. Dr. Lindrianasari, S.E., M.Si., Akt.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>18</td><td>Tiara Nirmala, S.E., M.Sc.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>19</td><td>Yunia Amelia, S.E., M.Si., Akt.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>20</td><td>Dr. Yuniarti Fihartini, S.E., M.Si.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>21</td><td>Yuztitya Asmaranti, S.E., M.Si.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>22</td><td>Zulfa Emalia, SE., M.Si</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>23</td><td>Igo Febrianto, S.E., M.Sc.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>24</td><td>Neny Desriani, S.E., M.Si.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>25</td><td>Lidya Ayuni Putri, S.Pd., M.Hum.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>26</td><td>Resha Moniyana Putri, S.E., M.Si.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>27</td><td>Rinaldi Busan, S.E., M.Si.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>28</td><td>Ukhti Ciptawaty, S.E., M.Si.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>29</td><td>Nindytia Puspitasari Dalimunthe, S.E., M.Sc.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>30</td><td>Widya Rizki Eka Putri, S.E., M.S.Ak.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>31</td><td>Mutiasari Nur Wulan, S.A.B., M.M.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>32</td><td>Aida Sari, S.E., M.P</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>33</td><td>Nuzul Inas Nabila. S.E., M.S.M.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>34</td><td>Sri Suningsih, S.Pd., M.Pd.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
+                                        <tr><td>35</td><td>Syarifah Nurbaiti, S.Pd.I., M.Pd.I.</td><td>Fak. Ekonomi dan Bisnis</td></tr>
                                         <tr><td>36</td><td>Dr. FX Sumarja, S.H., M.Hum.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>37</td><td>Emilia Susanti, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>38</td><td>Kasmawati, S.H., M.Hum.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>39</td><td>M. Farid, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>40</td><td>Marlia Eka Putri A.T., S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>41</td><td>Martha Riananda, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>42</td><td>Rehulina, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>43</td><td>Satria Prayoga, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>44</td><td>Selvia Oktaviana, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>45</td><td>Desy Churul Aini, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>46</td><td>Dewi Septiana, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>47</td><td>Siti Nurhasanah, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>48</td><td>Bayu Sujadmiko, Ph.D.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>49</td><td>Agung Budi Prasteyo, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>50</td><td>Rohaini, Ph.D</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>51</td><td>Aisyah Muda Cemerlang, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>52</td><td>Nenny Dwi Ariani, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>53</td><td>Ria Wierma Putri, S.H., M.Hum., Ph.D.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>54</td><td>Isroni Muhammad Miraj Mirza, S.H., M.H</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>55</td><td>Harsa Wahyu Ramadhan, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>56</td><td>Dewi Nurhalimah, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>57</td><td>Maya Shafira, S.H., M.H.</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>58</td><td>Ati Yuniati, S.H., M.H</td><td>Fak. Hukum</td></tr>
+                                        <tr><td>59</td><td>Dwi Rimadona, S.H., M.Kn.</td><td>Fak. Hukum</td></tr>
                                         <tr><td>60</td><td>Agung Wibawa, S.I.Kom., M.Si</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>61</td><td>Ahmad Rifai, S.Sos., M.Si.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>62</td><td>Dr. Ani Agus Puspawati, S.A.P., M.A.P.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>63</td><td>Darmawan Purba, S.I.P., M.I.P.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>64</td><td>Dhanik Sulistyarini, S.Sos., MComn&MediaSt.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>65</td><td>Dr. Erna Rohana, M.Si.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>66</td><td>Prof. Dr. Noverman Duadji, M.Si</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>67</td><td>Prof. Dr. Novita Tresiana, M.Si.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>68</td><td>Dr. Nur Efendi, S.Sos, M.Si</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>69</td><td>Dr. Suripto, S.Sos., M.A.B.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>70</td><td>Dr. Tina Kartika</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>71</td><td>Dra. Dian Kagungan, M.H.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>72</td><td>Dra. Ida Nurhaida, M.Si</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>73</td><td>Drs. Aman Toto Dwijono, M.H.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>74</td><td>Drs. Piping Setia Priangga, M.Si.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>75</td><td>Drs. Sugiyanta, S.Sos., M.Pd.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>76</td><td>Eko Budi Sulistio, S.Sos, M.AP</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>77</td><td>Gita Karisma, S.IP., M.Si.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>78</td><td>Intan Fitria Meutia, M.A., Ph.D.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>79</td><td>Maulana Agung, S.Sos., M.A.B</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>80</td><td>Mediya Destalia, S.A.B., M.A.B.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>81</td><td>Supriyanto, S.AB., M.Si.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>82</td><td>Teuku Fahmi, S.Sos., M.Krim</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>83</td><td>Wulan Suciska, S.I.Kom., M.Si</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>84</td><td>Damar Wibisono, S.Sos., M.A.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>85</td><td>Ifaty Fadliliana Sari</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>86</td><td>Gita Paramita Djausal, S. IP., M. A. B.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>87</td><td>Akgis Cahya Ningtyas., S.Pd.,M.Pd</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>88</td><td>Arnila Purnamayanti, S.Sos., M.A</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>89</td><td>Dr. Feni Rosalia, M.Si</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>90</td><td>Vina Karmilasari</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>91</td><td>Fri rejeki Noviera</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>92</td><td>Tabah Maryanah</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>93</td><td>Bendi Juantara</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>94</td><td>Ani Agus Puspawati</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>95</td><td>Vito Frasetya</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>96</td><td>Lilih Muflihah</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>97</td><td>Tety Rachmawati</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>98</td><td>Prayoga Ardhi Pratama, S.I.Kom., M.A</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>99</td><td>M. Irsyad Fadoli, S.A.P., M.A.P.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>100</td><td>Feri Ferdaus, S.I.Kom., M.A.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>101</td><td>Diang Adistya, S.Kom.,M.Si</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>102</td><td>Rahayu Lestari, S.I.Kom., M.A.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
+                                        <tr><td>103</td><td>Dr. R. Pitojo Budiono, M.Si.</td><td>Fak. Ilmu Sosial dan Ilmu Politik</td></tr>
                                         <tr><td>104</td><td>dr. Ari Wahyuni</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>105</td><td>dr. Dwi Indria Anggraini, M.Sc.</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>106</td><td>dr. Fitria Saftarina, M.Sc.</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>107</td><td>dr. Hanna Mutiara,M.Kes</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>108</td><td>dr. Intanri Kurniati, Sp.KK.</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>109</td><td>dr. Oktafany, S.Ked., M.Pd.,Ked.</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>110</td><td>dr. Rika Lisiswanti, MMedEd</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>111</td><td>dr. Rizki Hanriko, S.Ked., Sp.PA.</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>112</td><td>dr. Roro Rukmi WP, M.Sc., Sp.A.</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>113</td><td>dr. Susianti, M.Sc</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>114</td><td>dr. Syazili Mustofa, M.Biomed.</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>115</td><td>Dr. dr. Jhons Fatriyadi, M.Kes.</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>116</td><td>dr. Merry Indah Sari, MMedEd.</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>117</td><td>Ns. Bayu Anggileo Pramesona, S.Kep, MMR, PhD</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>118</td><td>Dewi Nur Fiana</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>119</td><td>Selvi Rahmawati, S.Si., M.Sc.</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>120</td><td>Diyan Ekawati</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>121</td><td>M. Fitra wardhana</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>122</td><td>apt. Muhammad Iqbal ,M.Sc.</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>123</td><td>Dr. dr. Dian Isti Angraini, S.Ked, M.P.H.</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>124</td><td>Sofyan Musyabiq Wijaya, S.Gz., M.Gizi</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>125</td><td>dr. Winda Trijayanthi Utama, S.Ked., S.H., MKK</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>126</td><td>Andi Nafisah Tendri Adjeng, S.Farm., M.Sc.</td><td>Fak. Kedokteran</td></tr>
+                                        <tr><td>127</td><td>Dr. Suharmanto, S.Kep., MKM.</td><td>Fak. Kedokteran</td></tr>
                                         <tr><td>128</td><td>Ari Sofia, S.Psi.,M.A.,Psi</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>129</td><td>Bambang Riadi, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>130</td><td>Diana Rosita, M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>131</td><td>Dr. Abdurahman, M.Si.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>132</td><td>Dr. Caswita, M.Si.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>133</td><td>Dr. I Wayan Distrik, M.Si.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>134</td><td>Dr. Iing Sunarti, M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>135</td><td>Dr. Nurlaksana Eko R.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>136</td><td>Dr. Ratu Betta Rudibyani, M.Si.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>137</td><td>Dr. Sri Hastuti Noer, M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>138</td><td>Dr. Ujang Suparman</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>139</td><td>Dr. Undang Rosidin, M.Pd</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>140</td><td>Dra. M. Setyarini, M. Si.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>141</td><td>Feni Manifatullah, M.Hum.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>142</td><td>Gede Eka Putrawan, S.S., M.Hum.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>143</td><td>Hermi Yanzi, S.Pd.,M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>144</td><td>Listumbinang Halengkara, S.Si., M.Sc.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>145</td><td>Prof. Dr. Agus Suyatna, M.Si</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>146</td><td>Rahma Kurnia, S.Si., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>147</td><td>Rahmah Dianti Putri, SE., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>148</td><td>Rini Rita T.Marpaung, S.Pd.,M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>149</td><td>Rohman, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>150</td><td>Shinta Mayasari, S.Psi., M.Psi., Psi.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>151</td><td>Sugeng Widodo, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>152</td><td>Viyanti, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>153</td><td>Wayan Rumite, S.Pd., M.Si.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>154</td><td>Wayan Suana, S.Pd., M.Si.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>155</td><td>Widyastuti, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>156</td><td>Yustina Sri Ekwandari, S.Pd., M.Hum.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>157</td><td>Dr. Neni Hasnunidah, M.Si.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>158</td><td>Lungit Wicaksono, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>159</td><td>Gian Fitria Anggraini, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>160</td><td>Dr. Tuntun Sinaga, M.Hum.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>161</td><td>Anggreini, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>162</td><td>Muhammad Mona Adha</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>163</td><td>Nadya Meriza, M.Pd</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>164</td><td>Dr. Chandra Ertikanto, M.Pd</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>165</td><td>Annisa Salsabilla, S.Pd, M.Si</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>166</td><td>Dian Utami M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>167</td><td>Citra Abriani Maharani</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>168</td><td>Erizal Barnawi, M. Sn</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>169</td><td>Gamilla Nuri Utami, M.Pd</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>170</td><td>Ranni Rahmayanthi z</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>171</td><td>Mella Triana, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>172</td><td>Ana Mentari, M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>173</td><td>Frida Destini</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>174</td><td>Drs. Ali Mustofa, M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>175</td><td>Rinaldo Adi Pratama, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>176</td><td>Rahmat Prayogi</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>177</td><td>Yusuf Perdana, S. Pd, M. Pd</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>178</td><td>Deris Astriawan, M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>179</td><td>Susi Wendhaningsih, S.Pd., M.Pd</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>180</td><td>Annisa Yulistia, M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>181</td><td>Yinda Dwi Gustira</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>182</td><td>Indah Nevira Trisna, M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>183</td><td>Rizky Drupadi</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>184</td><td>Fanni Rahmawati,S.Pd,M.Pd</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>185</td><td>Ika Wulandari Utamining Tias</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>186</td><td>Devi Sutrisno Putri, M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>187</td><td>Widya Hestiningtyas, M.Pd</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>188</td><td>Listumbinang Halengkara, S.Si., M.Sc.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>189</td><td>Novinta Nurulsari, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>190</td><td>Nurain Suryadinata, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>191</td><td>Fadhilah Khairani, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>192</td><td>Fajar Riyantika, S.Pd., M.A.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>193</td><td>Agung Putra Wijaya, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>194</td><td>Drs. Darlen Sikumbang, M.Biomed.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>195</td><td>Novita Nurdiana, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>196</td><td>Dr. Novia Fitri Istiawati, M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
+                                        <tr><td>197</td><td>Alif Luthvi Azizah, S.Pd., M.Pd.</td><td>Fak. Keguruan dan Ilmu Pendidikan</td></tr>
                                         <tr><td>198</td><td>Dian Herasari, M.Si.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>199</td><td>Dian Septiani Pratama, M.Si.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>200</td><td>Dr. Aang Nuryaman</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>201</td><td>Dr. Agung Abadi Kiswandono, M.Sc.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>202</td><td>Dr. Bambang Irawan, M.Sc.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>203</td><td>Dr. Ilim, M.Si.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>204</td><td>Dr. Kamisah Pandiangan, M.Si.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>205</td><td>Dr. Khoirin Nisa, M.Si.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>206</td><td>Dr. Mahfut, M.Sc.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>207</td><td>Dr. Muslim Ansori,M.Si</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>208</td><td>Dr. Ni luh Gede Ratna</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>209</td><td>Dr. Nuning Nurcahyani, M.Sc.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>210</td><td>Dr. Sumardi</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>211</td><td>Dra. Dwi Asmi, M.Si., Ph.D.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>212</td><td>Dra. Elly Lestari Rustiati, M.Sc.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>213</td><td>Drs. Amir Supriyanto, M.Si.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>214</td><td>Endang Linirin Widiastuti, Ph.D.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>215</td><td>Gurum Ahmad Pauzi, S.Si., M.T.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>216</td><td>Leni Rumiyanti, S.Pd., M.Sc.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>217</td><td>Mulyono, Ph.D.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>218</td><td>Priyambodo, M.Sc.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>219</td><td>Prof. Dr. Buhani, M.Si</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>220</td><td>Prof. Dr. Suharso</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>221</td><td>Prof. Warsito, Ph.D</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>222</td><td>Prof.Dr. Yandri A.S., M.S.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>223</td><td>Rochmah Agustrina, Ph.D</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>224</td><td>Tristiyanto, Ph.D.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>225</td><td>Widiarti, S.Si., M.Si.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>226</td><td>Yulianty, M.Si.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>227</td><td>Dr. Fitriani, M.Sc.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>228</td><td>Dr. Nurhasanah, M.Si</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>229</td><td>Dr. Jani Master</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>230</td><td>Lili Chrisnawati</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>231</td><td>Humairoh Ratu Ayu</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>232</td><td>Junaidi</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>233</td><td>Dr. rer. nat. Akmal Junaidi, M.Sc.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>234</td><td>Amanto</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>235</td><td>Dr. Ahmad Faisol, M.Sc.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>236</td><td>Dzul Fithria Mumtazah</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>237</td><td>Donni Kis Apriyanto, S.Si., M.Si.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>238</td><td>Gina Dania Pratami</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>239</td><td>Mita Rilyanti</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>240</td><td>Dina Eka Nurvazly, S.Pd., M.Si.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>241</td><td>Siti Laelatul Chasanah, S.Pd., M.Si.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>242</td><td>Yuli Ambarwati</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>243</td><td>Iqbal Firdaus, S.Si., M.Si</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>244</td><td>Primasari Pertiwi, M.Si.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>245</td><td>Hapin Afriyani, S.Si., M.Si.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>246</td><td>Devi Nur Anisa, M.Sc</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
+                                        <tr><td>247</td><td>Dewi Asiah Shofiana, M.Kom.</td><td>Fak. Matematika dan Ilmu Pengetahuan Alam</td></tr>
                                         <tr><td>248</td><td>Ahmad Tusi, S.T.P., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>249</td><td>Berta Putri, S.Si., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>250</td><td>Cicih Sugianti, S.TP. M.Si</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>251</td><td>Deny Sapto Chondro Utomo, M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>252</td><td>Dian Septinova, S.Pt., M.T.A.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>253</td><td>Dr. Bainah Sari Dewi, S.Hut., M.P.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>254</td><td>Dr. Hidayat Puji Siswanto, M.P.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>255</td><td>Dr. Ir. Dame Trully Gultom, M.S.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>256</td><td>Dr. Ir. Darwin H Pangaribuan, M.Sc.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>257</td><td>Dr. Ir. Dewangga Nikmatullah, M.S.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>258</td><td>Dr. Ir. Dyah Aring Hepiana Lestari, M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>259</td><td>Dr. Ir. Fembriarti Erry Prasmatiwi, M.P.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>260</td><td>Dr. Ir. Ktut Murniati, M.T.A</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>261</td><td>Dr. Ir. M. Irfan Affandi, M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>262</td><td>Dr. Ir. Nyimas Sa’diyah</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>263</td><td>Dr. Ir. R. Hanung Ismono, M.P.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>264</td><td>Dr. Ir. Siti Nurdjanah, M.Sc.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>265</td><td>Dr. Ir. Siti Suharyatun, S.TP., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>266</td><td>Dr. Ir. Sulastri, M.P.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>267</td><td>Dr. Ir. Suskandini Ratih D, M.S.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>268</td><td>Dr. Ir. Tamrin, M.S.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>269</td><td>Dr. Ir. Tubagus Hasanudin, M.S.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>270</td><td>Dr. Ir. Wuryaningsih Dwi Sayekti,M.S.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>271</td><td>Dr. Maria Erna, M.Sc.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>272</td><td>Dr. Melya Riniarti, S.P.,M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>273</td><td>Dr. Supriatin, S.P., M.Sc.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>274</td><td>Dr. Teguh Endaryanto, S.P., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>275</td><td>Dr. Yuniar Aviati Syarief, S.P., M.T.A.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>276</td><td>Duryat, S.Hut., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>277</td><td>Esti Harpeni, S.P., M.App., Sc.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>278</td><td>Fibra Nurainy, S.T.P., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>279</td><td>Heni Wijayanti Maharani, S.Pi.,M.Pi.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>280</td><td>Ir. Harun Al Rasyid, M.T.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>281</td><td>Ir. Otik Nawansih, M.P.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>282</td><td>Ir. Rabiatul Adawiyah, M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>283</td><td>Ir. Suriaty Situmorang, M.Si</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>284</td><td>Ir. Sutikno, M.Sc., Ph.D</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>285</td><td>Ivayani, S.P., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>286</td><td>Kusuma Adhyanto, S.Pt., M.P.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>287</td><td>Lina Marlina, S.P., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>288</td><td>Novi Rosanti, M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>289</td><td>Novita Herdiana, M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>290</td><td>Nur Afni Afrianti, S.P., M.Sc.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>291</td><td>Pramita Sari Anungputri, S.T.P., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>292</td><td>Prof. Dr. Ir. Murhadi, M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>293</td><td>Puspita Yuliandari, S.T.P., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>294</td><td>Siswanto, S.Pt., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>295</td><td>Sri Suharyati, S.Pt., M.P.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>296</td><td>Warji, S.T.P., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>297</td><td>Winda Rahmawati, S.T.P., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>298</td><td>Wisnu Satya Jaya, S.T.P., M.Si</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>299</td><td>Yuliana Saleh, S.P., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>300</td><td>Dr. Ir. Tubagus Hasanudin, M.S.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>301</td><td>Dr. Ir. Arif Qisthon, M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>302</td><td>Dr. Hidayat Pujisiswanto, M.P.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>303</td><td>Dr.Ir. Kordiyana K. Rangga, M.S</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>304</td><td>Dr. Helvi Yanfika, S.P., M.E.P</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>305</td><td>Dewi Mulia Sari, S.P., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>306</td><td>drh. Ratna Ermawati, M.Sc.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>307</td><td>Efri</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>308</td><td>Fitri Yelli, S.P., M.Si., Ph.D</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>309</td><td>Liska Mutiara Septiana</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>310</td><td>Hilma Putri Fidyandini., S.Pi., M.Si</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>311</td><td>Indah Listiana</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>312</td><td>Diki Danar Tri Winanti, S.T.P., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>313</td><td>Rahmat Safe’i</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>314</td><td>Esa Ghanim Fadhallah, S.Pi., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>315</td><td>Oktora Susanti, S.Pi., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>316</td><td>Dedy Prasetyo, S.P., M.Si</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>317</td><td>Machya Kartika Tsani</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>318</td><td>Susni Herwanti</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>319</td><td>Darma Yuliana</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>320</td><td>Muhammad Ibnu</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>321</td><td>Lathifa Indraningtyas, S.TP., M.Sc.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>322</td><td>Teguh Setiawan</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>323</td><td>Fitria Tsani Farda</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>324</td><td>drh. Muhammad Mirandy Pratama Sirat, M.Sc.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>325</td><td>Nur Afni Afrianti</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>326</td><td>Dr. Tri Maryono</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>327</td><td>Elhamida Rezkia Amien, S.T.P., M.Si</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>328</td><td>Dian Rahmalia,S.P., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>329</td><td>Dr. Dewi Sartika, STP,  M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>330</td><td>Dian Iswandaru</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>331</td><td>Siti Hudaidah, Ir. M. Sc</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>332</td><td>Firdasari, S.P., M.E.P., Ph.D.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>333</td><td>Dian Kurniawati, S.Pt., M.Sc.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>334</td><td>Etha ‘Azizah Hasiib, S.Pt., M.Sc.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>335</td><td>Nidya Kartini, S.Pi., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>336</td><td>Teguh Rafian, S.Pt., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>337</td><td>Munti Sarida, S.Pi., M.Sc., Ph.D.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>338</td><td>Almira Fardani Lahay, S.Pi., M.Si.</td><td>Fak. Pertanian</td></tr>
+                                        <tr><td>339</td><td>Tyas Sekartiara Syafani, S.P., M.Si.</td><td>Fak. Pertanian</td></tr>
                                         <tr><td>340</td><td>Dr. Eng. Ageng Sadnowo Repelianto, S.T., M.T</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>341</td><td>Agus Trisanto, Ph.D.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>342</td><td>Ahmad Su’udi, S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>343</td><td>Ahmad Yahya T.P., S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>344</td><td>Armijon., S.T, M.T</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>345</td><td>Charles Ronald, S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>346</td><td>Darmansyah, S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>347</td><td>Donny Lesmana, S.T., M.Sc.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>348</td><td>Dr. Ahmad Herison, S.T. M.T</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>349</td><td>Dr. Ahmad Zaenudin, M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>350</td><td>Dr. Eng. Dewi Agustina Iryani, S.T., M.T</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>351</td><td>Dr. Eng. Diah Permata</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>352</td><td>Dr. Eng. Endah Komalasari, S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>353</td><td>Dr. Eng. Suryadi Wansa Harun</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>354</td><td>Prof. Dr. Joni Agustian, S.T., M.Sc.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>355</td><td>Dr. Nandi Haerudin, M.Si.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>356</td><td>Drs. Nandang, M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>357</td><td>Elida Purba, S.T., M.Sc., Ph.D</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>358</td><td>Dr. Endro Prasetyo W, S.T., M.Sc.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>359</td><td>Heri Rustamaji, S.T, M.Eng.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>360</td><td>Herlinawati,S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>361</td><td>Ir. Herry Wardono, M.Sc.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>362</td><td>Lia  Lismeri S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>363</td><td>Dr. M. Irsyad, S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>364</td><td>Misfa Susanto, S.T., M.Sc.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>365</td><td>Muhammad Hanif, S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>366</td><td>Novri Tanti, S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>367</td><td>Prof. Dr. Ahmad Saudi Samosir, S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>368</td><td>Siti Nurul Khotimah, S.T., M.Sc.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>369</td><td>Sumadi, S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>370</td><td>Syamsurijal Rasimeng, S.Si., M.Si.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>371</td><td>Taharuddin, S.T., M.Sc.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>372</td><td>Tarkono, S.T.,M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>373</td><td>Vera Agustriana Noorhidana, M.T., Ph.D.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>374</td><td>Yuda Romdania, S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>375</td><td>Yuli Darni, S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>376</td><td>Yunita Kesuma, S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>377</td><td>Fajriyanto</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>378</td><td>Rahma Anisa</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>379</td><td>Dr. Eng. Mardiana, S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>380</td><td>Muhammad Haviz</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>381</td><td>Rizka Mayasari</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>382</td><td>Ahmad Yonanda</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>383</td><td>Kristianto Usman, S.T., M.T., Ph.D.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>384</td><td>Rahmat Catur Wibowo</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>385</td><td>Nugroho Ifadianto</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>386</td><td>Riki Chandra Wijaya</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>387</td><td>Anisa Ulya Darajat</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>388</td><td>Dr. Eng. Ir. Dikpride Despa, S.T., M.T., IPM., ASEAN Eng.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>389</td><td>Dr. Sri Purwiyanti, ST., MT</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>390</td><td>Amrizal</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>391</td><td>Aminudin Syah, S.T., M.Eng.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>392</td><td>MM. Hizbullah Sesunan</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>393</td><td>Ir. Trisya Septiana, S.T., M.T., IPM</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>394</td><td>Zulmiftah Huda</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>395</td><td>Hasrul Anwar</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>396</td><td>Miftahul Djana, S.T., M.T.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>397</td><td>Sandri Erfani, S.Si., M.Eng.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>398</td><td>Hesti, S.Si., M.Eng.</td><td>Fak. Teknik</td></tr>
+                                        <tr><td>399</td><td>Akhmad Riszal, S.Pd., M.Eng.</td><td>Fak. Teknik</td></tr>
                                         <tr><td>400</td><td>Agus Setiawan</td><td>Pascasarjana</td></tr>
-                                        <tr><td colspan="3" style="text-align: center; color: var(--text-muted); font-style: italic;">...dan 390+ auditor lainnya tersebar di seluruh fakultas.</td></tr>
+                                        <tr><td>401</td><td>Hari Kaskoyo, S.Hut., M.P., Ph.D.</td><td>Pascasarjana</td></tr>
+                                        <tr><td>402</td><td>Dr. Maya Riantini, S.P., M.Si.</td><td>Pascasarjana</td></tr>
+                                        <tr><td>403</td><td>Dr. Agus Setyawan, M.P.</td><td>Pascasarjana</td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -1067,14 +1320,6 @@
         const accordions = document.querySelectorAll('.accordion-header');
         accordions.forEach(acc => {
             acc.addEventListener('click', function() {
-                // Tutup yang lain jika ingin hanya 1 yang terbuka (opsional)
-                // document.querySelectorAll('.accordion-item').forEach(item => {
-                //    if (item !== this.parentElement) {
-                //        item.classList.remove('active');
-                //        item.querySelector('.accordion-body').style.maxHeight = null;
-                //    }
-                // });
-
                 const item = this.parentElement;
                 const body = item.querySelector('.accordion-body');
                 
@@ -1091,3 +1336,4 @@
 </body>
 
 </html>
+
